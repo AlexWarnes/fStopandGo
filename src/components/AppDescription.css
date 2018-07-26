@@ -1,0 +1,39 @@
+
+.about {
+    display: block;
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+    color: rgb(44, 44, 44);
+    text-align: center;
+  }
+  
+  .about-icon {
+    font-size: 40px;
+  }
+  
+  .landing-footer {
+    width: 100%;
+    padding: 10px 0 40px 0;
+    background-color: #444444;
+    color: #ffffff;
+  }
+  
+  .app-info, .tech-stack {
+    padding: 5px 10px;
+  }
+  
+  .code-block {
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #444444;
+    color: #FFFFFF;
+  }
+  
+  .code-block * {
+    display: inline;
+  }
