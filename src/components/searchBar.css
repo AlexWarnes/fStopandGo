@@ -1,0 +1,18 @@
+.dash-search-form {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+  
+  #dash-search-input {
+    width: 80%;
+    max-width: 500px;
+  }
+  
+  .dash-search-button {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+  }

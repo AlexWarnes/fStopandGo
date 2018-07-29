@@ -1,0 +1,12 @@
+.shoot-card {
+    width: 100%;
+    margin: 15px auto;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+  }
+  
+  .shoot-card:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 5px lightgray;
+  }

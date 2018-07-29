@@ -1,10 +1,11 @@
-import { TOGGLE_VIS_CREATE_ACCT, TOGGLE_VIS_LOGIN } from '../actions/actions';
+import { TOGGLE_VIS_CREATE_ACCT, TOGGLE_VIS_LOGIN, TOGGLE_DEMO, TOGGLE_NAV_DRAWER, LOGOUT } from '../actions/actions';
 
 const initialState = {
-    loggedIn: false,
+    isLoggedIn: false,
     form_visibility: {createAcct: false, login: false, photoshoot: false},
+    navDrawerIsOpen: false,
     userName: 'Alex',
-    photoShoots: [
+    photoshoots: [
         {
             title: 'Milky Way Shoot', 
             location: 'Range View Overlook, Shenandoah National Park',
@@ -31,6 +32,21 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 ...state,
                 form_visibility: {...state.form_visibility, login: action.isVisible}
+            });
+        case TOGGLE_DEMO:
+            return Object.assign({}, state, {
+                ...state,
+                isLoggedIn: action.isLoggedIn
+            });
+        case TOGGLE_NAV_DRAWER:
+            return Object.assign({}, state, {
+                ...state,
+                navDrawerIsOpen: action.navDrawerIsOpen
+            });
+        case LOGOUT:
+            return Object.assign({}, state, {
+                ...state,
+                isLoggedIn: action.isLoggedIn
             });
         default:
             return state

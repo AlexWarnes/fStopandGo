@@ -2,7 +2,7 @@ import React from 'react';
 import './LandingActions.css';
 
 import { connect } from 'react-redux';
-import { toggleVisCreateAcct, toggleVisLogin } from '../actions/actions';
+import { toggleVisCreateAcct, toggleVisLogin, toggleDemo } from '../actions/actions';
 
 export class LandingActions extends React.Component{
     
@@ -12,6 +12,10 @@ export class LandingActions extends React.Component{
 
     openLoginForm() {
         this.props.dispatch(toggleVisLogin(true));
+    }
+
+    demoApp() {
+        this.props.dispatch(toggleDemo(true));
     }
 
     render(){       
@@ -33,7 +37,11 @@ export class LandingActions extends React.Component{
                         </button>
                     </li>
                     <li className="action-item">Just Visiting?
-                        <button className="create-account action-button">Demo</button>
+                        <button 
+                            onClick={()=> this.demoApp()}
+                            className="create-account action-button">
+                            Demo
+                        </button>
                     </li>
                 </ul>
             </section>

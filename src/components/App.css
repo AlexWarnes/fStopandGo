@@ -14,168 +14,16 @@ main {
 
 
 
-/* BOTTOM APP BAR */
 
-nav {
-  width: 100%;
-  height: 40px;
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 15px;
-  background-color: #D3D3D3;
-  font-size: 18px;
-}
-
-.nav-hamburger {
-  position: absolute;
-  left: 15px;
-  font-size: 25px;
-}
-
-.nav-hamburger-button {
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  border: none;
-  background: transparent;
-}
-
-
-.floating-action-button {
-  background: none;
-  border: none;
-  position: relative;
-  bottom: 18px;
-  font-size: 45px;
-  padding: 0;
-}
-
-.fab-icon {
-  color: #4682b4;
-  background-color: #FFFFFF;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-}
-
-.nav-buttons-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 70%;
-  font-size: 25px;
-}
-
-.nav-button {
-  background: transparent;
-  border: none;
-}
-
-
-.map-placeholder {
-  width: 90%;
-  height: 300px;
-  margin: 20px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 72px;
-  border: 1px solid #d6d6d6;
-  border-radius: 5px;
-
-}
 
 
 /* DASHBOARD */
 
-.dash-search-form {
-  width: 100%;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-}
 
-#dash-search-input {
-  width: 80%;
-  max-width: 500px;
-}
 
-.dash-search-button {
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  border: none;
-}
 
-.shoot-card {
-  width: 100%;
-  margin: 15px auto;
-  padding: 10px;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-}
 
-.shoot-card:hover {
-  cursor: pointer;
-  box-shadow: 5px 5px 5px lightgray;
-}
 
-/* NAVIGATION DRAWER */
-
-.drawer {
-  z-index: 10;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000000D8;
-}
-
-.drawer-content {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #FFFFFF;
-  color: #444444;
-  box-shadow: 0 -5px 10px #0000001c;
-  padding: 10px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-}
-
-.drawer-header {
-  text-align: center;
-}
-
-.drawer-nav, .drawer-settings, .drawer-dev {
-  margin-bottom: 15px;
-  border-top: 1px solid silver;
-}
-
-.drawer-title {
-  margin: 0;
-}
-
-.drawer-icon {
-  margin: 10px;
-  width: 20px;
-}
-
-.drawer-close {
-  text-align: center;
-}
-
-.drawer-icon-close {
-  width: 40px;
-  height: 40px;
-  font-size: 32px;
-  margin-top: 15px;
-}
 
 
 /* SHOOT VIEW */
