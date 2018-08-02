@@ -1,15 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { toggleVisLogin } from '../actions/actions'
-
 import './Forms.css';
 
 export class LoginForm extends React.Component{
-
-    closeLoginForm() {
-        this.props.dispatch(toggleVisLogin(false));
-    }
 
     render(){
         return(
@@ -24,7 +18,7 @@ export class LoginForm extends React.Component{
                     <div className="acct-action-buttons-container">
                             <button className="create-acct-button acct-go-button acct-action-button">Login</button>
                             <button 
-                                onClick={()=> this.closeLoginForm()}
+                                onClick={()=> this.props.history.goBack()}
                                 className="acct-cancel-button acct-action-button">
                                 Cancel
                             </button>

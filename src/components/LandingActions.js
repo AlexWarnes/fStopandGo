@@ -1,52 +1,32 @@
 import React from 'react';
-import './LandingActions.css';
-
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { toggleVisCreateAcct, toggleVisLogin, toggleDemo } from '../actions/actions';
 
-export class LandingActions extends React.Component{
-    
-    openCreateAcctForm() {
-        this.props.dispatch(toggleVisCreateAcct(true));
-    }
+import './LandingActions.css';
+import { toggleLogin } from '../actions/actions';
 
-    openLoginForm() {
-        this.props.dispatch(toggleVisLogin(true));
-    }
-
-    demoApp() {
-        this.props.dispatch(toggleDemo(true));
-    }
-
-    render(){       
-        return(
-            <section className="header-actions">
-                <ul className="action-list">
-                    <li className="action-item">New User?
-                        <button 
-                            onClick={()=> this.openCreateAcctForm()}
-                            className="create-account action-button">
-                            Create an Account
-                        </button>
-                    </li>
-                    <li className="action-item">Existing User?
-                        <button 
-                        onClick={()=> this.openLoginForm()}
-                        className="create-account action-button">
-                        Log In
-                        </button>
-                    </li>
-                    <li className="action-item">Just Visiting?
-                        <button 
-                            onClick={()=> this.demoApp()}
-                            className="create-account action-button">
-                            Demo
-                        </button>
-                    </li>
-                </ul>
-            </section>
-        );
-    }
+export const LandingActions = (props) => {   
+    return(
+        <section className="header-actions">
+            <ul className="action-list">
+                <li className="action-item">New User?
+                    <Link to="/createaccount">
+                        <p className="create-account action-button">Create an Account</p>
+                    </Link>
+                </li>
+                <li className="action-item">Existing User?
+                    <Link to="/login">
+                        <p className="login-account action-button">Login</p>
+                    </Link>
+                </li>
+                <li className="action-item">Just Visiting?
+                    <Link to="/dashboard">
+                        <p className="demo-account action-button" onClick={()=> props.dispatch(toggleLogin(true))}>Demo</p>
+                    </Link>
+                </li>
+            </ul>
+        </section>
+    );
 }
 
-export default connect()(LandingActions);
+export default connect()(LandingActions)

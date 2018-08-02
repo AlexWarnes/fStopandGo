@@ -46,13 +46,13 @@ export default class AppDescription extends React.Component{
                         </ul>
                     </article>
 
-                        <a href="https://github.com/AlexWarnes/Plan-and-Shoot_API" target="_blank" rel="noopener noreferrer" className="code-link">
+                        <a href="https://github.com/AlexWarnes/fStopandGo_API" target="_blank" rel="noopener noreferrer" className="code-link">
                             <div className="backend-block code-block">
                                 <p>Back-end </p>
                                 <i className="fab fa-github"></i>
                             </div>
                         </a>
-                        <a href="https://github.com/AlexWarnes/Plan-and-Shoot" target="_blank" rel="noopener noreferrer" className="code-link">
+                        <a href="https://github.com/AlexWarnes/fStopandGo" target="_blank" rel="noopener noreferrer" className="code-link">
                             <div className="frontend-block code-block">
                                 <p>Front-end</p>
                                 <i className="fab fa-github"></i>

@@ -1,53 +1,68 @@
 /* NAVIGATION DRAWER */
 
 .drawer {
-    z-index: 10;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000000D8;
+	z-index: 10;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000000D8;
   }
   
-  .drawer-content {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #FFFFFF;
-    color: #444444;
-    box-shadow: 0 -5px 10px #0000001c;
-    padding: 10px;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-  }
-  
-  .drawer-header {
-    text-align: center;
-  }
-  
-  .drawer-nav, .drawer-settings, .drawer-dev {
-    margin-bottom: 15px;
-    border-top: 1px solid silver;
-  }
-  
-  .drawer-title {
-    margin: 0;
-  }
-  
-  .drawer-icon {
-    margin: 10px;
-    width: 20px;
-  }
-  
-  .drawer-close {
-    text-align: center;
-  }
-  
-  .drawer-icon-close {
-    width: 40px;
-    height: 40px;
-    font-size: 32px;
-    margin-top: 15px;
-  }
+.drawer-content {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #FFFFFF;
+	color: #444444;
+	box-shadow: 0 -5px 10px #0000001c;
+	padding: 10px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+
+.drawer-header {
+  	text-align: center;
+}
+
+.drawer-nav, .drawer-settings, .drawer-dev {
+	margin-bottom: 15px;
+	border-top: 1px solid silver;
+}
+
+.drawer-title {
+  	margin: 0;
+}
+
+.drawer-item {
+	transition: all .2s;
+}
+
+.drawer-item:hover {
+	cursor: pointer;
+	letter-spacing: .1rem;
+}
+
+.drawer-icon {
+	margin: 10px;
+	width: 20px;
+	transition: all .2s;
+}
+
+.drawer-close {
+	text-align: center;
+}
+
+.drawer-close:hover {
+	cursor: pointer;
+	color: black;
+}
+
+.drawer-icon-close {
+	width: 40px;
+	height: 40px;
+	font-size: 32px;
+	margin-top: 15px;
+}
