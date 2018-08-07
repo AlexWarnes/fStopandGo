@@ -6,22 +6,30 @@ import PhotoshootGrid from './photoshootGrid';
 import BottomAppBar from './bottomAppBar';
 import AppDescription from './AppDescription';
 import SingleShoot from './singleShoot';
+import ShootFormView from './shootFormView';
 import { Error } from './error';
 
 import './dashboard.css';
 
-export const Dashboard = () => {
-    return (
+export class Dashboard extends React.Component {
+    
+
+
+    render() {
+        return (
             <div>
                 <BottomAppBar />
                 <Switch>
                     <Route exact path="/dashboard" component={PhotoshootGrid} />
                     <Route path="/dashboard/about" component={AppDescription} />
                     <Route path="/dashboard/shoot/:shootId" component={SingleShoot} />
+                    <Route path="/dashboard/newshoot" component={ShootFormView} />
+                    <Route path="/dashboard/editshoot/:shootId" component={ShootFormView} />
                     <Route component={Error} />
                 </Switch>
             </div>
-    );
+        );
+    }
 }
 
 
@@ -56,9 +64,9 @@ export const Dashboard = () => {
 
 const mapStateToProps = (state) => {
     return {
-        isLoggedIn: state.isLoggedIn,
-        userName: state.userName,
-        photoshoots: state.photoshoots
+        isLoggedIn: state.app.isLoggedIn,
+        userName: state.app.userName,
+        photoshoots: state.app.photoshoots
     }
 }
 

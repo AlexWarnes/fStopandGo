@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import './Forms.css';
+import './forms.css';
 
 export class CreateAcctForm extends React.Component{
     
@@ -25,7 +25,7 @@ export class CreateAcctForm extends React.Component{
                     <div className="acct-action-buttons-container">
                         <button className="create-acct-button acct-go-button acct-action-button">Create Account</button>
                         <button 
-                            className="acct-cancel-button acct-action-button"
+                            className="cancel-btn acct-cancel-button acct-action-button"
                             onClick={()=> this.props.history.goBack()}>
                             Cancel
                         </button>

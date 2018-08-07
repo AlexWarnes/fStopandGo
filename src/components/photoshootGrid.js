@@ -23,6 +23,13 @@ export class PhotoshootGrid extends React.Component{
             <div className="photoshootGrid">
                 <SearchBar />
                 {this.photoshoots}
+                <div className="app-bar-actions">
+                    <Link to="/dashboard/newshoot">
+                        <button className="new-shoot-fab floating-action-button">
+                            <i className="fas fa-plus-circle fab-icon"></i>
+                        </button>
+                    </Link>
+                </div>
             </div>
         );
     }
@@ -30,7 +37,7 @@ export class PhotoshootGrid extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        photoshoots: state.photoshoots
+        photoshoots: state.app.photoshoots
     }
 }
 

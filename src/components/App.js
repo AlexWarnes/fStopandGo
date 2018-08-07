@@ -60,13 +60,13 @@ export class App extends React.Component {
 		// return(
 		// 	<Router>
 				// <div className="App">
-				// 	<Route exact path="/" render={()=> (
-				// 		this.props.isLoggedIn ? (
-				// 			<Redirect exact to="/dashboard" component={Dashboard}/>
-				// 		) : (
-				// 			<Landing />
-				// 		)
-				// 	)}/>
+					// <Route exact path="/" render={()=> (
+					// 	this.props.isLoggedIn ? (
+					// 		<Redirect exact to="/dashboard" component={Dashboard}/>
+					// 	) : (
+					// 		<Landing />
+					// 	)
+					// )}/>
 				// 	<Route exact path="/dashboard" component={Dashboard} />
 				// </div>
 		// 	</Router>
@@ -86,7 +86,7 @@ export class App extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		isLoggedIn: state.isLoggedIn
+		isLoggedIn: state.app.isLoggedIn
 	}
 }
 

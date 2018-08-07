@@ -10,7 +10,6 @@ main {
 /* LANDING PAGE */
 
 
-/* CREATE ACCOUNT FORM && LOGIN FORM (Mostly Shared Classes)*/
 
 
 
@@ -30,30 +29,3 @@ main {
 
 
 
-/* SHOOT FORM VIEW */
-
-.shoot-form input, .shoot-form textarea {
-  width: 75%;
-  padding: 10px;
-  border-radius: 3px;
-  border: 1px solid lightgray;
-}
-
-.shoot-form>label {
-  display: block;
-  margin-top: 20px;
-}
-
-.shoot-form-gearList {
-  list-style: none;
-}
-
-.add-gear-button {
-  padding: 5px;
-  margin-top: 10px;
-  border-radius: 3px;
-}
-
-.add-gear-icon {
-  margin-right: 5px;
-}

@@ -1,3 +1,5 @@
+/* CREATE ACCOUNT FORM && LOGIN FORM (Mostly Shared Classes)*/
+
 .acct-action-container {
     position: absolute;
     top: 0;
@@ -39,3 +41,62 @@
     padding: 5px;
     border-radius: 3px;
   }
+
+  /* SHOOT FORM VIEW */
+
+.shoot-form-view {
+  padding: 20px;
+}
+
+.form-row {
+  margin: 20px 0;
+}
+
+.shoot-form input, .shoot-form textarea {
+  width: 75%;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid lightgray;
+}
+
+.shoot-form-gearList {
+  list-style: none;
+  padding: 0;
+}
+
+.add-gear-btn {
+  display: block;
+  padding: 15px;
+  margin: 10px auto;
+  border-radius: 3px;
+}
+
+.add-gear-icon {
+  margin-right: 5px;
+}
+
+.remove-gear-btn {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  color: #FFFFFF;
+  background-color: #FF4420;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px #00000025;
+}
+
+.gearList-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: #e3f1e9;
+  padding: 10px;
+}
+
+.gearList-entry-field {
+  width: 95%;
+}
+
+
+
