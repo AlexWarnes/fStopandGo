@@ -1,10 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 
 import './forms.css';
-
-
 
 const renderField = ({ input, label, meta: { touched, error } }) => (
     <div className="gearList-entry-field">
@@ -48,19 +45,13 @@ const renderGearList = ({ fields, meta: { error } }) => (
 	</ul>
 )
 
- 
-
 let EditShootForm = (props) => {
-    const { handleSubmit, pristine, reset, submitting } = props;
-    // const shoot = props.initialValues.find((item) => item.id === props.shootId);
+    const { handleSubmit, pristine, reset, submitting, history } = props;
 
-
-	const cancelShoot = () => {
+	const cancel = () => {
 		reset();
-		props.onCancel();
+		history.goBack();
     }
-    
-    // console.log(props.initialValues);
 
     return(
         
@@ -89,7 +80,7 @@ let EditShootForm = (props) => {
 					<i className="far fa-check-circle app-bar-icon nav-complete"></i>
 					Save Shoot
                 </button>
-                <button className="app-bar-btn cancel-btn" type="button" disabled={submitting} onClick={()=> cancelShoot()}>
+                <button className="app-bar-btn cancel-btn" type="button" disabled={submitting} onClick={()=> cancel()}>
 					<i className="far fa-times-circle app-bar-icon nav-cancel"></i>
 					Cancel
                 </button>
@@ -99,13 +90,7 @@ let EditShootForm = (props) => {
 }
 
 EditShootForm = reduxForm({
-    form: 'shoot' // a unique identifier for this form
+    form: 'shoot'
   })(EditShootForm)
-
-// EditShootForm = connect(
-//     state => ({
-//       initialValues: state.app.viewingShoot
-//     })
-//   )(EditShootForm)
 
 export default EditShootForm;

@@ -1,7 +1,11 @@
 .header-actions {
-    width: 50%;
-    margin: 30px auto 10px auto;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
   }
   
   .action-list {
@@ -10,7 +14,7 @@
   }
   
   .action-item {
-    margin-top: 15px;
+    margin-top: 20px;
   }
   
   .action-button {
@@ -18,4 +22,6 @@
     background-color: white;
     border-radius: 5px;
     padding: 10px;
+    text-align: center;
+    margin-top: 2px;
   }

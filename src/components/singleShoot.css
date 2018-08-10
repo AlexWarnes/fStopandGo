@@ -1,0 +1,8 @@
+.back-to-dash, .back-to-dash-icon {
+    color: lightslategray;
+}
+
+.back-to-dash {
+    display: inline-block;
+    margin: 10px 0 0 5px;
+}

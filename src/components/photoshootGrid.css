@@ -3,14 +3,33 @@
 }
 
 .shoot-card {
-    width: 100%;
-    margin: 15px auto;
-    padding: 10px;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
-  }
+  width: 100%;
+  margin: 15px auto;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+}
   
-  .shoot-card:hover {
-    cursor: pointer;
-    box-shadow: 5px 5px 5px lightgray;
-  }
+.shoot-card:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 5px lightgray;
+}
+
+.floating-action-button {
+  background: none;
+  border: none;
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  left: calc(50% - 20px);
+  font-size: 45px;
+  padding: 0;
+}
+
+.fab-icon {
+  color: #4682b4;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}

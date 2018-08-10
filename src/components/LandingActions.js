@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './LandingActions.css';
-import { toggleLogin } from '../actions/actions';
+import { demoAccount } from '../actions/actions';
 
 export const LandingActions = (props) => {   
+
+    const launchDemoAccount = () => {
+        props.dispatch(demoAccount());
+    }
+
     return(
         <section className="header-actions">
             <ul className="action-list">
@@ -21,7 +26,7 @@ export const LandingActions = (props) => {
                 </li>
                 <li className="action-item">Just Visiting?
                     <Link to="/dashboard">
-                        <p className="demo-account action-button" onClick={()=> props.dispatch(toggleLogin(true))}>Demo</p>
+                        <p className="demo-account action-button" onClick={()=> launchDemoAccount()}>Demo</p>
                     </Link>
                 </li>
             </ul>

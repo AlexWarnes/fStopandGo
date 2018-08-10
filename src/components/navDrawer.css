@@ -1,7 +1,7 @@
 /* NAVIGATION DRAWER */
 
 .drawer {
-	z-index: 10;
+	z-index: 5;
 	position: fixed;
 	left: 0;
 	top: 0;

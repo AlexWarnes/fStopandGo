@@ -27,24 +27,6 @@ nav {
     background: transparent;
   }
   
-  
-  .floating-action-button {
-    background: none;
-    border: none;
-    position: relative;
-    bottom: 18px;
-    font-size: 45px;
-    padding: 0;
-  }
-  
-  .fab-icon {
-    color: #4682b4;
-    background-color: #FFFFFF;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-  }
-  
   .nav-buttons-container {
     display: flex;
     align-items: center;

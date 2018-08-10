@@ -6,9 +6,9 @@ import SearchBar from './searchBar';
 
 import './photoshootGrid.css';
 
-export class PhotoshootGrid extends React.Component{
+export const PhotoshootGrid = (props) => {
     
-    photoshoots = this.props.photoshoots.map(shoot => (
+    const photoshoots = props.photoshoots.map(shoot => (
         <Link to={`/dashboard/shoot/${shoot.id}`} key={shoot.id}>
             <div className="shoot-card" >
                 <h3 className="shoot-card-title">{shoot.title}</h3>
@@ -18,26 +18,40 @@ export class PhotoshootGrid extends React.Component{
         </Link>
     ))
 
-    render(){
-        return(
-            <div className="photoshootGrid">
-                <SearchBar />
-                {this.photoshoots}
-                <div className="app-bar-actions">
+    console.log(`HEY YOU: ${props.photoshoots.length}`)
+    switch (props.photoshoots.length){
+        case (0):
+            return (
+                <div>
+                    <SearchBar />
+                    <h2>Hi {props.userName}, you don't have any photoshoots yet!</h2>
+                    <p>Click the + button to create a new shoot.</p>
                     <Link to="/dashboard/newshoot">
                         <button className="new-shoot-fab floating-action-button">
                             <i className="fas fa-plus-circle fab-icon"></i>
                         </button>
                     </Link>
                 </div>
-            </div>
-        );
-    }
+            );
+        default:
+            return(
+                <div className="photoshootGrid">
+                    <SearchBar />
+                    {photoshoots}
+                    <Link to="/dashboard/newshoot">
+                        <button className="new-shoot-fab floating-action-button">
+                            <i className="fas fa-plus-circle fab-icon"></i>
+                        </button>
+                    </Link>
+                </div>
+            );
+        }
 };
 
 const mapStateToProps = (state) => {
     return {
-        photoshoots: state.app.photoshoots
+        photoshoots: state.app.photoshoots,
+        userName: state.app.userName
     }
 }
 

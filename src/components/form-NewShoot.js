@@ -46,11 +46,11 @@ const renderGearList = ({ fields, meta: { error } }) => (
 )
 
 const NewShootForm = (props) => {
-    const { handleSubmit, pristine, reset, submitting } = props;
+    const { handleSubmit, pristine, reset, submitting, history } = props;
 
-	const cancelShoot = () => {
-		reset();
-		props.onCancel();
+    const cancel = () => {
+        reset();
+        history.goBack();
 	}
 
     return(
@@ -79,7 +79,7 @@ const NewShootForm = (props) => {
 					<i className="far fa-check-circle app-bar-icon nav-complete"></i>
 					Save Shoot
                 </button>
-                <button className="app-bar-btn cancel-btn" type="button" disabled={submitting} onClick={()=> cancelShoot()}>
+                <button className="app-bar-btn cancel-btn" type="button" disabled={submitting} onClick={()=> cancel()}>
 					<i className="far fa-times-circle app-bar-icon nav-cancel"></i>
 					Cancel
                 </button>

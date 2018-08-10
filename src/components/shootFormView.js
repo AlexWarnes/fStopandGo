@@ -6,9 +6,6 @@ import EditShootForm from './form-EditShoot';
 import Error from './error';
 
 export const ShootFormView = (props) => {
-    const cancel = () => {
-        props.history.goBack();
-    };
 
     const submitNewShoot = (values) => {
         props.dispatch(newShoot(values));
@@ -26,7 +23,7 @@ export const ShootFormView = (props) => {
         case '/dashboard/newshoot':
             return(
             <div className="shoot-form-view">
-                <NewShootForm onSubmit={(values)=> submitNewShoot(values)} onCancel={()=> cancel()}/> 
+                <NewShootForm onSubmit={(values)=> submitNewShoot(values)} {...props}/> 
                 <div className="map-placeholder">
                     <i className="fas fa-map-marked-alt map-placeholder-icon"></i>
                 </div> 
@@ -37,8 +34,8 @@ export const ShootFormView = (props) => {
                 <div className="shoot-form-view">
                     <EditShootForm 
                         onSubmit={(values)=> submitUpdate(values)} 
-                        onCancel={()=> cancel()} 
-                        initialValues={shoot} /> 
+                        initialValues={shoot} 
+                        {...props}/> 
                     <div className="map-placeholder">
                         <i className="fas fa-map-marked-alt map-placeholder-icon"></i>
                     </div> 

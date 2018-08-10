@@ -4,6 +4,39 @@ body {
   font-family: sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: #2e384c;
+}
+
 button:hover {
   cursor: pointer;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  padding: 15px;
+  border: none;
+  border-radius: 3px;
+  margin: 5px;
+  box-shadow: 4px 4px 8px #00000015;
+  text-align: center;
+}
+
+.btn-grey {
+  background-color: rgb(121, 121, 121);
+}
+
+.btn-red {
+  background-color: #FF4420;
+}
+
+.btn-blue {
+  background-color: steelblue;
+}
+
+.btn-green {
+  background-color: #47AD66;
 }

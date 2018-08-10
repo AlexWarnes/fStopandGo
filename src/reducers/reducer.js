@@ -1,26 +1,21 @@
-import { TOGGLE_NAV_DRAWER, LOGIN_LOGOUT, NEW_SHOOT, UPDATE_SHOOT, VIEWING_SHOOT } from '../actions/actions';
+import { 
+    TOGGLE_NAV_DRAWER,
+    TOGGLE_WARNING,
+    LOGIN,
+    LOGOUT,
+    NEW_SHOOT, 
+    UPDATE_SHOOT,
+    DELETE_SHOOT, 
+    CREATE_ACCOUNT,
+    DEMO_ACCOUNT 
+} from '../actions/actions';
 
 const initialState = {
     isLoggedIn: false,
-    form_visibility: {photoshoot: false},
     navDrawerIsOpen: false,
-    userName: 'Alex',
-    photoshoots: [
-        {
-            id: 'pY5vitWQz',
-            title: 'Milky Way Shoot', 
-            location: 'Range View Overlook, Shenandoah National Park',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quam quae optio recusandae molestias alias?',
-            gearList: ['tripod', 'camera', 'lantern', 'batteries']
-        },
-        {
-            id: '2MqnL1Dht',
-            title: 'City Night Lights', 
-            location: 'Memorial Bridge, Washington, DC',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus velit consequatur error, cupiditate voluptas architecto autem ratione, voluptatibus quibusdam enim dolorem iure ea minus est.',
-            gearList: ['tripod', 'camera', 'lantern', 'batteries']
-        }
-    ]
+    warningIsDisplayed: false,
+    userName: undefined,
+    photoshoots: []
 }
 
 export const appReducer = (state = initialState, action) => {
@@ -30,29 +25,64 @@ export const appReducer = (state = initialState, action) => {
                 ...state,
                 navDrawerIsOpen: action.navDrawerIsOpen
             });
-        case LOGIN_LOGOUT:
+        case TOGGLE_WARNING:
             return Object.assign({}, state, {
                 ...state,
-                isLoggedIn:action.isLoggedIn
+                warningIsDisplayed: action.warningIsDisplayed
+            })
+        case LOGIN:
+            return Object.assign({}, state, {
+                ...state,
+                isLoggedIn:action.isLoggedIn,
+                userName: action.data.userName
             });
+        case LOGOUT:
+            return Object.assign({}, state, {
+                ...initialState
+            });
+        case CREATE_ACCOUNT:
+            console.log("HEY YOU DATA:" + action.data)
+            return Object.assign({}, state, {
+                ...state,
+                isLoggedIn: action.isLoggedIn,
+                userName: action.data.userName
+            })
+        case DEMO_ACCOUNT:
+            return Object.assign({}, state, {
+                ...state,
+                isLoggedIn: action.isLoggedIn,
+                userName: action.userName,
+                photoshoots: action.photoshoots
+            })
         case NEW_SHOOT:
             return Object.assign({}, state, {
                 ...state,
                 photoshoots: [...state.photoshoots, action.newShootInfo]
             });
         case UPDATE_SHOOT:
-            console.log(action.data);
-            const targetIndex = state.photoshoots.map(item => item.id).indexOf(action.data.id);
+            const updatedPhotoshoots = state.photoshoots.map(shoot => {
+                if (shoot.id !== action.data.id) {
+                    return shoot;
+                }
+                return {
+                    id: shoot.id, 
+                    title: action.data.title, 
+                    location: action.data.location,
+                    description: action.data.description,
+                    gearList: action.data.gearList,
+                }
+            });
             return Object.assign({}, state, {
                 ...state,
-                //am i allowed to do this?
-                photoshoots: 
-                Object.assign([...state.photoshoots], {[targetIndex]: action.data})
+                photoshoots: updatedPhotoshoots
+            });
+        case DELETE_SHOOT:
+            const shootsAfterDelete = state.photoshoots.filter(shoot => {
+                return shoot.id !== action.id;
                 });
-        case VIEWING_SHOOT:
             return Object.assign({}, state, {
                 ...state,
-                viewingShoot: action.data
+                photoshoots: shootsAfterDelete
             })
         default:
             return state

@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { toggleNavDrawer, toggleLogin } from '../actions/actions';
+import { toggleNavDrawer, logout } from '../actions/actions';
 
 import './navDrawer.css';
 
 export class NavDrawer extends React.Component{
     
     logUserOut() {
-        this.props.dispatch(toggleLogin(false));
+        this.props.dispatch(logout());
         this.props.dispatch(toggleNavDrawer(false));
     }
 
@@ -23,7 +23,7 @@ export class NavDrawer extends React.Component{
                 <div className="drawer-content">
                     <section className="drawer-header">
                         <h2 className="drawer-title">f/StopandGo</h2>
-                        <h3 className="drawer-username">AlexWarnes</h3>
+                        <h3 className="drawer-username">{this.props.userName}</h3>
                     </section>
                     <section className="drawer-nav">
                         <Link to="/dashboard">
@@ -59,4 +59,10 @@ export class NavDrawer extends React.Component{
     }
 };
 
-export default connect()(NavDrawer);
+const mapStateToProps = (state) => {
+    return {
+        userName: state.app.userName
+    }
+}
+
+export default connect(mapStateToProps)(NavDrawer);

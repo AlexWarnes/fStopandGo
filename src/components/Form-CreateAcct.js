@@ -1,39 +1,81 @@
-import React from 'react';
-
+import React from 'react'; 
 import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import { Redirect } from 'react-router-dom';
+import { createAccount } from '../actions/actions';
+
 
 import './forms.css';
 
-export class CreateAcctForm extends React.Component{
-    
-    render(){
-        return(
-            <section className="acct-action-container">
-                <form action="#" className="create-acct-form acct-action-form">
-                    <label htmlFor="create-username">Username</label>
-                    <input type="text" id="create-username" name="username" autoComplete="off" required="true" />
+const CreateAcctForm = (props) => {
+	const { handleSubmit, pristine, submitting, reset, history, dispatch } = props;
+	
+	console.log(props);
+	
+	const cancel = () => {
+		history.goBack();
+		reset();
+	};
+	
+	const createUserAccount = (values) => {
+		dispatch(createAccount(values));
+	}
 
-                    <label htmlFor="create-email">Email</label>
-                    <input type="email" id="create-email" name="email" autoComplete="off" required="true" />
+	switch (props.isLoggedIn){
+		case true:
+			return <Redirect to="/dashboard" />
+		default:
+			return(
+				<section className="acct-action-container">
+					<form onSubmit={handleSubmit(values => createUserAccount(values))} className="create-acct-form acct-action-form">
+						<div>
+							<label htmlFor="create-username">Username</label>
+							<div>
+								<Field name="userName" component="input" type="text" autoComplete="off" required="true" />
+							</div>
+						</div>
+						<div>
+							<label htmlFor="create-email">Email</label>
+							<div>
+								<Field name="email" component="input" type="email" autoComplete="off" required="true" />
+							</div>
+						</div>
+						<div>
+							<label htmlFor="create-password">Password</label>
+							<div>
+								<Field name="password" component="input" type="password" autoComplete="off" required="true" />
+							</div>
+						</div>
+						<div>
+							<label htmlFor="create-password-confirm">Confirm Password</label>
+							<div>
+								<Field name="confirm password" component="input" type="password" autoComplete="off" required="true" />
+							</div>
+						</div>
+						<div className="acct-action-buttons-container">
+							<button 
+								className="create-acct-button acct-go-button acct-action-button"
+								type="submit"
+								disabled={pristine || submitting}>
+								Create Account
+							</button>
+							<button 
+								className="cancel-btn acct-cancel-button acct-action-button"
+								disabled={submitting}
+								onClick={()=> cancel()}>
+								Cancel
+							</button>
+						</div>
+					</form>
+				</section>
+			)
+	}
+}
 
-                    <label htmlFor="create-password">Password</label>
-                    <input type="password" id="create-password" name="password" autoComplete="off" required="true" />
+const mapStateToProps = (state) => {
+	return {
+		isLoggedIn: state.app.isLoggedIn
+	}
+}
 
-                    <label htmlFor="create-password-confirm">Confirm Password</label>
-                    <input type="password" id="create-password-confirm" name="confirm password" autoComplete="off" required="true" />
-
-                    <div className="acct-action-buttons-container">
-                        <button className="create-acct-button acct-go-button acct-action-button">Create Account</button>
-                        <button 
-                            className="cancel-btn acct-cancel-button acct-action-button"
-                            onClick={()=> this.props.history.goBack()}>
-                            Cancel
-                        </button>
-                    </div>
-                </form>
-            </section>
-        );
-    }
-};
-
-export default connect()(CreateAcctForm);
+export default connect(mapStateToProps)(reduxForm({form: 'createAccount'})(CreateAcctForm));
