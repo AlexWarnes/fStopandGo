@@ -1,0 +1,12 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: mQ1jUVkx5U6vFj6OiKSKj5yr3lzy+s5LRlzBkaXXopPbL2BIutgSjfR7bLvHVRLsSOu3zC90521pQukxMsvXXbmPut89MoELz3fjVIgkhuIaUYDeqhpBsBWs/eYZAwa4BzYrKe2QIEEHVnX3XKjAeOdY1ZL7zmgueAjWSroJd5MYlOVa1ni0wHfA9gFtkDpy+I9Nb3hEEEYt1wRKnuo9f8W1lXyoZA3Z65AkudG83dsRszpn79niUDxR8aPgqC2SoFerJ47OjA60K+/toVFdXoLK9FElgjb7UsgWmMBpR5kYM2FbSrgr4YJw8+MQF/si92TONS04Ko2gg7Hm16tcX4Vm4u0M8JN0w4rXmzjOqKYAFxTvSEbqyhr54gpG5MyKb0Q4fW7J1Br2g6g3rk5KCItQAFIisIoKFkPJjR4+bAV/FYHx9g/b21Pbbjt14V8npOY2N/shBLyxyz82Vv5KO3CV/1QdZ+TPn332PvWVEGm2izXCBm+3tCa97xO2jWjzYI/XyK9TRU5+88tPmlEGh1JKGAZYRsrNcRQV85SXEA61LPek4lgNP1cym06SMIDkzrHK54d2l1hz+QotYoynjlP+fXmPYOEXiMDNDF6AtAjbJ0lktMHys0PkEfhMV0KIYp3tHgW27Z+s24gQYpfn4nRWM8zES2y9a2F6+0ssadE=
+  app: fstopandgo
+  on:
+    repo: AlexWarnes/fStopandGo
