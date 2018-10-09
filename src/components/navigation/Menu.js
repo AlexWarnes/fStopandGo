@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { toggleNavDrawer, logout } from '../actions/actions';
+import { toggleNavDrawer, logout } from '../../actions/actions';
 
-import './navDrawer.css';
+import './Menu.css';
 
-export class NavDrawer extends React.Component{
+export class Menu extends React.Component{
     
     logUserOut() {
         this.props.dispatch(logout());
@@ -65,4 +65,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(NavDrawer);
+export default connect(mapStateToProps)(Menu);

@@ -3,12 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 
-import Landing from './Landing';
-import Dashboard from './dashboard';
-// import { DevNav } from './devNav';
-import CreateAcctForm from './Form-CreateAcct';
-import LoginForm from './Form-Login';
-import { Error } from './error';
+import Landing from './components/landing/Landing';
+import Dashboard from './components/dashboard/Dashboard';
+import CreateAcctForm from './components/forms/CreateAcct';
+import LoginForm from './components/forms/Login';
+import { Error } from './components/universal/Error';
 
 export const App = () => {
 

@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import './singleShoot.css';
-import Warning from './warning';
-import { deleteShoot, toggleWarning } from '../actions/actions';
+import './SingleShoot.css';
+import Warning from '../universal/Warning';
+import { deleteShoot, toggleWarning } from '../../actions/actions';
 
 export const SingleShoot = (props) => {
     const shoot = props.photoshoots.find((item) => item.id === props.match.params.shootId);

@@ -2,9 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import SearchBar from './searchBar';
-
-import './photoshootGrid.css';
+import './PhotoshootGrid.css';
 
 export class PhotoshootGrid extends React.Component {
     
@@ -14,6 +12,7 @@ export class PhotoshootGrid extends React.Component {
     
     render(){
 
+        //TODO: Make component ShootSummaryCard for this?
         const photoshoots = this.props.photoshoots.map(shoot => (
             <Link to={`/dashboard/shoot/${shoot.id}`} key={shoot.id}>
                 <div className="shoot-card" >
@@ -28,7 +27,6 @@ export class PhotoshootGrid extends React.Component {
             case (0):
                 return (
                     <div>
-                        <SearchBar />
                         <h2>Hi {this.props.userName}, you don't have any photoshoots yet!</h2>
                         <p>Click the + button to create a new shoot.</p>
                         <Link to="/dashboard/newshoot">
@@ -41,7 +39,6 @@ export class PhotoshootGrid extends React.Component {
             default:
                 return(
                     <div className="photoshootGrid">
-                        <SearchBar />
                         {photoshoots}
                         <Link to="/dashboard/newshoot">
                             <button className="new-shoot-fab floating-action-button">

@@ -1,28 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { toggleNavDrawer } from '../../actions/actions';
+import Menu from './Menu';
+import './NavBar.css';
 
-import { toggleNavDrawer } from '../actions/actions';
-
-import NavDrawer from './navDrawer';
-
-import './bottomAppBar.css';
-
-export class BottomAppBar extends React.Component{
+export class NavBar extends React.Component{
     
-    openNavDrawer(){
+    openMenu(){
         this.props.dispatch(toggleNavDrawer(true));
     }
     
-    render(){
-        
+    render(){   
         switch (this.props.navDrawerIsOpen){
             case false:
                 return(
                     <nav>
                         <div className="nav-hamburger">
                             <button 
-                                onClick={()=> this.openNavDrawer()}
+                                onClick={()=> this.openMenu()}
                                 className="nav-hamburger-button">
                                 <i className="fas fa-bars nav-hamburger-icon nav-icon"></i>
                             </button>
@@ -31,7 +26,7 @@ export class BottomAppBar extends React.Component{
                 );
             case true:
                 return(
-                    <NavDrawer />
+                    <Menu />
                 );
             default:
                 return(
@@ -47,4 +42,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(BottomAppBar);
+export default connect(mapStateToProps)(NavBar);

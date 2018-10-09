@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './LandingActions.css';
-import { demoAccount } from '../actions/actions';
+import { demoAccount } from '../../actions/actions';
 
 export const LandingActions = (props) => {   
 

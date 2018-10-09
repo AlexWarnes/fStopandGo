@@ -2,14 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import PhotoshootGrid from './photoshootGrid';
-import BottomAppBar from './bottomAppBar';
-import AppDescription from './AppDescription';
-import SingleShoot from './singleShoot';
-import ShootFormView from './shootFormView';
-import { Error } from './error';
+import PhotoshootGrid from './PhotoshootGrid';
+import SingleShoot from './SingleShoot';
+import NavBar from '../navigation/NavBar';
+import NewShoot from '../forms/NewShoot';
+import EditShoot from '../forms/EditShoot';
+import { Error } from '../universal/Error';
+// import AppDescription from './AppDescription';
 
-import './dashboard.css';
+import './Dashboard.css';
 
 export const Dashboard = (props) => {
 
@@ -17,13 +18,13 @@ export const Dashboard = (props) => {
 			case true:
 				return (
 					<div>
-						<BottomAppBar />
+						<NavBar />
 						<Switch>
 							<Route exact path="/dashboard" component={PhotoshootGrid} />                    
-							<Route path="/dashboard/about" component={AppDescription} />
+							{/* <Route path="/dashboard/about" component={AppDescription} /> */}
 							<Route path="/dashboard/shoot/:shootId" component={SingleShoot} />
-							<Route path="/dashboard/newshoot" component={ShootFormView} />
-							<Route path="/dashboard/editshoot/:shootId" component={ShootFormView} />
+							<Route path="/dashboard/newshoot" component={NewShoot} />
+							<Route path="/dashboard/editshoot/:shootId" component={EditShoot} />
 							<Route component={Error} />
 						</Switch>
 					</div>

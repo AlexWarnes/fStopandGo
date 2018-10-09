@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router-dom';
-import { login } from '../actions/actions';
+import { login } from '../../actions/actions';
 
 
 import './forms.css';

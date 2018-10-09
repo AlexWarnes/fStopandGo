@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleWarning } from '../actions/actions';
+import { toggleWarning } from '../../actions/actions';
 
-import './warning.css';
+import './Warning.css';
 
 export const Warning = (props) => {
     const cancel = () => {
