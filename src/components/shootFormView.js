@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { newShoot, updateShoot } from '../actions/actions';
-import NewShootForm from './form-NewShoot';
-import EditShootForm from './form-EditShoot';
+import PhotoshootForm from './PhotoshootForm';
 import Error from './error';
 
 export const ShootFormView = (props) => {
@@ -17,28 +16,24 @@ export const ShootFormView = (props) => {
         props.history.push(`/dashboard/shoot/${props.match.params.shootId}`);
     };
 
-    const shoot = props.photoshoots.find((item) => item.id === props.match.params.shootId);
+    const shootToEdit = props.photoshoots.find((item) => item.id === props.match.params.shootId);
     
     switch (props.match.path){
         case '/dashboard/newshoot':
             return(
             <div className="shoot-form-view">
-                <NewShootForm onSubmit={(values)=> submitNewShoot(values)} {...props}/> 
-                <div className="map-placeholder">
-                    <i className="fas fa-map-marked-alt map-placeholder-icon"></i>
-                </div> 
+                <PhotoshootForm 
+                    onSubmit={(values)=> submitNewShoot(values)} 
+                    {...props}/> 
             </div>
             );
         case '/dashboard/editshoot/:shootId':
             return(
                 <div className="shoot-form-view">
-                    <EditShootForm 
+                    <PhotoshootForm 
                         onSubmit={(values)=> submitUpdate(values)} 
-                        initialValues={shoot} 
+                        initialValues={shootToEdit} 
                         {...props}/> 
-                    <div className="map-placeholder">
-                        <i className="fas fa-map-marked-alt map-placeholder-icon"></i>
-                    </div> 
                 </div>
                 );
         default:

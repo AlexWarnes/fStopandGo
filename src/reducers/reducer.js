@@ -10,11 +10,14 @@ import {
     DEMO_ACCOUNT 
 } from '../actions/actions';
 
+const {API_BASE_URL} = require('../config');
+
 const initialState = {
     isLoggedIn: false,
     navDrawerIsOpen: false,
     warningIsDisplayed: false,
     userName: undefined,
+    userJWT: undefined,
     photoshoots: []
 }
 
@@ -31,6 +34,7 @@ export const appReducer = (state = initialState, action) => {
                 warningIsDisplayed: action.warningIsDisplayed
             })
         case LOGIN:
+            console.log(`****${API_BASE_URL}****`)
             return Object.assign({}, state, {
                 ...state,
                 isLoggedIn:action.isLoggedIn,

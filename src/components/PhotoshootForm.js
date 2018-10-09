@@ -45,16 +45,15 @@ const renderGearList = ({ fields, meta: { error } }) => (
 	</ul>
 )
 
-let EditShootForm = (props) => {
+const PhotoshootForm = (props) => {
     const { handleSubmit, pristine, reset, submitting, history } = props;
 
-	const cancel = () => {
-		reset();
-		history.goBack();
-    }
+    const cancel = () => {
+        reset();
+        history.goBack();
+	}
 
     return(
-        
         <form onSubmit={handleSubmit(values => props.onSubmit(values))} className="shoot-form">
             <div className="form-row">
                 <label htmlFor="shoot-form-title">Title</label>
@@ -65,7 +64,7 @@ let EditShootForm = (props) => {
             <div className="form-row">
                 <label htmlFor="shoot-form-location">Location</label>
                 <div>
-                    <Field name="location" component="input" type="text" placeholder="Location" autoComplete="off" />
+                    <Field name="location.name" component="input" type="text" placeholder="Location" autoComplete="off" />
                 </div>
             </div>
             <div className="form-row">
@@ -89,8 +88,4 @@ let EditShootForm = (props) => {
     )
 }
 
-EditShootForm = reduxForm({
-    form: 'shoot'
-  })(EditShootForm)
-
-export default EditShootForm;
+export default reduxForm({form: 'PhotoshootForm'})(PhotoshootForm);

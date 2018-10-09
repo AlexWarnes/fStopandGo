@@ -19,7 +19,8 @@ export const SingleShoot = (props) => {
     } else { gearList = "You haven't added any gear for this shoot."}
 
     const handleDelete = (id) => {
-        props.dispatch(deleteShoot(id))
+        props.dispatch(deleteShoot(id));
+        props.dispatch(toggleWarning(false));
         props.history.push('/dashboard');
     } 
 
@@ -38,7 +39,7 @@ export const SingleShoot = (props) => {
                 <section className="shoot">
                     <div className="shoot-header">
                         <h2 className="shoot-title">{shoot.title}</h2>
-                        <p className="shoot-location">{shoot.location}</p>
+                        <p className="shoot-location">{shoot.location.name}</p>
                     </div>
 
                     <article className="shoot-description-box">
@@ -50,9 +51,6 @@ export const SingleShoot = (props) => {
                             {gearList}
                         </ul>
                     </article>
-                    <div className="map-placeholder">
-                        <i className="fas fa-map-marked-alt map-placeholder-icon"></i>
-                    </div>
                 </section>
                 <div className="app-bar-actions">
                     <Link to={`/dashboard/editshoot/${props.match.params.shootId}`}>
