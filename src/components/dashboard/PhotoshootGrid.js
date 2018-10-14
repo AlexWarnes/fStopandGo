@@ -27,7 +27,7 @@ export class PhotoshootGrid extends React.Component {
             case (0):
                 return (
                     <div>
-                        <h2>Hi {this.props.userName}, you don't have any photoshoots yet!</h2>
+                        <h2>Hi {this.props.username}, you don't have any photoshoots yet!</h2>
                         <p>Click the + button to create a new shoot.</p>
                         <Link to="/dashboard/newshoot">
                             <button className="new-shoot-fab floating-action-button">
@@ -53,8 +53,8 @@ export class PhotoshootGrid extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        photoshoots: state.app.photoshoots,
-        userName: state.app.userName
+        photoshoots: state.photoshoot.photoshoots,
+        username: state.auth.username
     };
 };
 

@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import './App.css';
-
 import Landing from './components/landing/Landing';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateAcctForm from './components/forms/CreateAcct';

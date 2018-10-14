@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleNavDrawer } from '../../actions/actions';
+import { toggleNavDrawer } from '../../store/actions/uiActions';
 import Menu from './Menu';
 import './NavBar.css';
 
@@ -38,7 +38,7 @@ export class NavBar extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        navDrawerIsOpen: state.app.navDrawerIsOpen
+        navDrawerIsOpen: state.ui.navDrawerIsOpen
     }
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router-dom';
-import { createAccount } from '../../actions/actions';
+import { createAccount } from '../../store/actions/authActions';
 
 
 import './forms.css';
@@ -31,7 +31,7 @@ const CreateAcctForm = (props) => {
 						<div>
 							<label htmlFor="create-username">Username</label>
 							<div>
-								<Field name="userName" component="input" type="text" autoComplete="off" required="true" />
+								<Field name="username" component="input" type="text" autoComplete="off" required="true" />
 							</div>
 						</div>
 						<div>
@@ -74,7 +74,7 @@ const CreateAcctForm = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		isLoggedIn: state.app.isLoggedIn
+		isLoggedIn: state.auth.isLoggedIn
 	}
 }
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import { toggleNavDrawer, logout } from '../../actions/actions';
+import { toggleNavDrawer } from '../../store/actions/uiActions';
+import { logout } from '../../store/actions/authActions';
 
 import './Menu.css';
 
@@ -61,7 +61,7 @@ export class Menu extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
-        userName: state.app.userName
+        userName: state.auth.userName
     }
 }
 

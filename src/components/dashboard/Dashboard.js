@@ -38,7 +38,7 @@ export const Dashboard = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		isLoggedIn: state.app.isLoggedIn,
+		isLoggedIn: state.auth.isLoggedIn,
 	}
 }
 

@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './LandingActions.css';
-import { demoAccount } from '../../actions/actions';
+import { demoLogin } from '../../store/actions/authActions';
+import { demoData } from '../../store/actions/photoshootActions';
 
 export const LandingActions = (props) => {   
 
     const launchDemoAccount = () => {
-        props.dispatch(demoAccount());
+        props.dispatch(demoLogin());
+        props.dispatch(demoData());
     }
 
     return(

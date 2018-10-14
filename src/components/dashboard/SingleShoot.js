@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 import './SingleShoot.css';
 import Warning from '../universal/Warning';
-import { deleteShoot, toggleWarning } from '../../actions/actions';
+import { deleteShoot } from '../../store/actions/photoshootActions'
+import { toggleWarning } from '../../store/actions/uiActions';
 
 export const SingleShoot = (props) => {
     const shoot = props.photoshoots.find((item) => item.id === props.match.params.shootId);
@@ -75,7 +76,7 @@ export const SingleShoot = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        photoshoots: state.app.photoshoots
+        photoshoots: state.photoshoot.photoshoots
     };
 };
 

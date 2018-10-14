@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleWarning } from '../../actions/actions';
+import { toggleWarning } from '../../store/actions/uiActions';
 
 import './Warning.css';
 
@@ -28,7 +28,7 @@ export const Warning = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        warningIsDisplayed: state.app.warningIsDisplayed
+        warningIsDisplayed: state.ui.warningIsDisplayed
     }
 }
 

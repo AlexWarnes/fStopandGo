@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { newShoot } from '../../actions/actions';
+import { newShoot } from '../../store/actions/photoshootActions';
 import PhotoshootForm from './PhotoshootForm';
 
 export const NewShoot = (props) => {

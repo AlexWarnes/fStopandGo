@@ -1,44 +1,4 @@
 import shortid from 'shortid';
-const {API_BASE_URL} = require('../config');
-
-
-export const TOGGLE_NAV_DRAWER = 'TOGGLE_NAV_DRAWER';
-export const toggleNavDrawer = (navDrawerIsOpen) => ({
-  type: TOGGLE_NAV_DRAWER,
-  navDrawerIsOpen
-});
-
-export const TOGGLE_WARNING = 'TOGGLE_WARNING';
-export const toggleWarning = (warningIsDisplayed) => ({
-  type: TOGGLE_WARNING,
-  warningIsDisplayed
-});
-
-export const LOGIN = 'LOGIN';
-export const login = (data) => ({
-  type: LOGIN,
-  isLoggedIn: true,
-  data
-});
-
-// export const testLogin = () => dispatch => {
-//   dispatch(fetchToken());
-//   fetch(`${API_BASE_URL}/`).then(res => {
-//       if (!res.ok) {
-//           return Promise.reject(res.statusText);
-//       }
-//       return res.json();
-//   }).then(board => {
-//       dispatch(fetchBoardSuccess(board));
-//   }).catch(err => {
-//       dispatch(fetchBoardError(err));
-//   });
-// };
-
-export const LOGOUT = 'LOGOUT';
-export const logout = () => ({
-  type: LOGOUT
-});
 
 export const NEW_SHOOT = 'NEW_SHOOT';
 export const newShoot = (newShootInfo) => ({
@@ -62,18 +22,9 @@ export const deleteShoot = (id) => ({
   id
 });
 
-export const CREATE_ACCOUNT = 'CREATE_ACCOUNT';
-export const createAccount = (data) => ({
-  type: CREATE_ACCOUNT,
-  isLoggedIn: true,
-  data
-});
-
-export const DEMO_ACCOUNT = 'DEMO_ACCOUNT';
-export const demoAccount = () => ({
-  type: DEMO_ACCOUNT,
-  isLoggedIn: true,
-  userName: 'Demo User',
+export const DEMO_DATA = 'DEMO_DATA';
+export const demoData = () => ({
+  type: DEMO_DATA,
   photoshoots: [{
       id: 'pY5vitWQz',
       title: 'Milky Way Shoot', 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateShoot } from '../../actions/actions';
+import { updateShoot } from '../../store/actions/photoshootActions';
 import PhotoshootForm from './PhotoshootForm';
 
 export const EditShoot = (props) => {
@@ -24,7 +24,7 @@ export const EditShoot = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        photoshoots: state.app.photoshoots
+        photoshoots: state.photoshoot.photoshoots
     };
 };
 
