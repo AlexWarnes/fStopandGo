@@ -1,36 +1,37 @@
-import { LOGIN, LOGOUT, CREATE_ACCOUNT, DEMO_LOGIN} from '../actions/authActions';
+import { LOGIN, LOGOUT, DEMO_LOGIN, SET_USER_INFO} from '../actions/authActions';
 
 const initialState = {
     isLoggedIn: false,
-    username: undefined,
-    userJWT: undefined
+    username: null,
+    userID: null,
+    userJWT: null,
+    userEmail: null
 };
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN:
-            // console.log(`****${API_BASE_URL}****`)
             return Object.assign({}, state, {
                 ...state,
                 isLoggedIn:action.isLoggedIn,
-                username: action.data.username
+                userID: action.userID,
+                userJWT: action.authToken
             });
         case LOGOUT:
             return Object.assign({}, state, {
                 ...initialState
-            });
-        case CREATE_ACCOUNT:
-            console.log("HEY YOU DATA:" + action.data)
-            return Object.assign({}, state, {
-                ...state,
-                isLoggedIn: action.isLoggedIn,
-                username: action.data.username
             });
         case DEMO_LOGIN:
             return Object.assign({}, state, {
                 ...state,
                 isLoggedIn: action.isLoggedIn,
                 username: action.username,
+            });
+        case SET_USER_INFO:
+            return Object.assign({}, state, {
+                ...state,
+                username: action.username,
+                userEmail: action.userEmail
             });
         default:
             return state;

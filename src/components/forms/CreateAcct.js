@@ -2,23 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router-dom';
-import { createAccount } from '../../store/actions/authActions';
+import { createNewUser, getToken } from '../../store/actions/authActions';
 
 
 import './forms.css';
 
-const CreateAcctForm = (props) => {
+export const CreateAcctForm = (props) => {
 	const { handleSubmit, pristine, submitting, reset, history, dispatch } = props;
-	
-	console.log(props);
-	
+		
 	const cancel = () => {
 		history.goBack();
 		reset();
 	};
 	
-	const createUserAccount = (values) => {
-		dispatch(createAccount(values));
+	const createUserAccount = (userData) => {
+		const credentials = { 
+			username: userData.username, 
+			password: userData.password 
+		}
+		return dispatch(createNewUser(userData))
+		.then(() => dispatch(getToken(credentials)));
 	}
 
 	switch (props.isLoggedIn){
@@ -31,25 +34,25 @@ const CreateAcctForm = (props) => {
 						<div>
 							<label htmlFor="create-username">Username</label>
 							<div>
-								<Field name="username" component="input" type="text" autoComplete="off" required="true" />
+								<Field name="username" component="input" type="text" autoComplete="off" required={true} />
 							</div>
 						</div>
 						<div>
 							<label htmlFor="create-email">Email</label>
 							<div>
-								<Field name="email" component="input" type="email" autoComplete="off" required="true" />
+								<Field name="email" component="input" type="email" autoComplete="off" required={true} />
 							</div>
 						</div>
 						<div>
 							<label htmlFor="create-password">Password</label>
 							<div>
-								<Field name="password" component="input" type="password" autoComplete="off" required="true" />
+								<Field name="password" component="input" type="password" autoComplete="off" required={true} />
 							</div>
 						</div>
 						<div>
 							<label htmlFor="create-password-confirm">Confirm Password</label>
 							<div>
-								<Field name="confirm password" component="input" type="password" autoComplete="off" required="true" />
+								<Field name="confirm password" component="input" type="password" autoComplete="off" required={true} />
 							</div>
 						</div>
 						<div className="acct-action-buttons-container">
