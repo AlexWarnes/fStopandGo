@@ -10,3 +10,9 @@ export const toggleWarning = (warningIsDisplayed) => ({
   type: TOGGLE_WARNING,
   warningIsDisplayed
 });
+
+export const TOGGLE_ERROR = 'TOGGLE_ERROR';
+export const toggleError = (errorIsDisplayed) => ({
+  type: TOGGLE_ERROR,
+  errorIsDisplayed
+})

@@ -1,8 +1,9 @@
-import { TOGGLE_NAV_DRAWER, TOGGLE_WARNING } from "../actions/uiActions";
+import { TOGGLE_NAV_DRAWER, TOGGLE_WARNING, TOGGLE_ERROR } from "../actions/uiActions";
 
 const initialState = {
     navDrawerIsOpen: false,
-    warningIsDisplayed: false
+    warningIsDisplayed: false,
+    errorIsDisplayed: false
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -16,6 +17,11 @@ const uiReducer = (state = initialState, action) => {
             return Object.assign({}, state, {
                 ...state,
                 warningIsDisplayed: action.warningIsDisplayed
+            });
+        case TOGGLE_ERROR:
+            return Object.assign({}, state, {
+                ...state,
+                errorIsDisplayed: action.errorIsDisplayed
             });
         default:
             return state;

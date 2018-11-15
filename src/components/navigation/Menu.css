@@ -53,6 +53,7 @@
 
 .drawer-close {
 	text-align: center;
+	width: 100%;
 }
 
 .drawer-close:hover {

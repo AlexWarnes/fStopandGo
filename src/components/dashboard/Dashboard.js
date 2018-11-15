@@ -8,13 +8,21 @@ import NavBar from '../navigation/NavBar';
 import NewShoot from '../forms/NewShoot';
 import EditShoot from '../forms/EditShoot';
 import { Error } from '../universal/Error';
+
+import { getUserInfo } from '../../store/actions/authActions';
+
 // import AppDescription from './AppDescription';
 
 import './Dashboard.css';
 
-export const Dashboard = (props) => {
+export class Dashboard extends React.Component {
 
-		switch (props.isLoggedIn) {
+	componentDidMount(){
+		this.props.dispatch(getUserInfo(this.props.userID, this.props.userJWT))
+	}
+
+	render(){
+		switch (this.props.isLoggedIn) {
 			case true:
 				return (
 					<div>
@@ -34,11 +42,14 @@ export const Dashboard = (props) => {
 					<Redirect exact to="/" />
 				);
 		}
+	}
 }
 
 const mapStateToProps = (state) => {
 	return {
 		isLoggedIn: state.auth.isLoggedIn,
+		userID: state.auth.userID,
+		userJWT: state.auth.userJWT
 	}
 }
 
