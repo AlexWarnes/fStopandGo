@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import './SingleShoot.css';
 import Warning from '../universal/Warning';
-import { deleteShoot } from '../../store/actions/photoshootActions'
+import { deletePhotoshoot } from '../../store/actions/photoshootActions'
 import { toggleWarning } from '../../store/actions/uiActions';
 
 export const SingleShoot = (props) => {
@@ -13,14 +13,13 @@ export const SingleShoot = (props) => {
     let gearList;
     
     if (shoot.gearList.length > 0){
-        console.log('MAPPING THE GEAR')
         gearList = shoot.gearList.map((item, index) => {
             return <li className="gearList-item" key={index}>{item}</li>
         });
     } else { gearList = "You haven't added any gear for this shoot."}
 
-    const handleDelete = (id) => {
-        props.dispatch(deleteShoot(id));
+    const handleDelete = (shootID) => {
+        props.dispatch(deletePhotoshoot(shootID, props.userJWT));
         props.dispatch(toggleWarning(false));
         props.history.push('/dashboard');
     } 
@@ -76,7 +75,8 @@ export const SingleShoot = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        photoshoots: state.photoshoot.photoshoots
+        photoshoots: state.photoshoot.photoshoots,
+        userJWT: state.auth.userJWT
     };
 };
 

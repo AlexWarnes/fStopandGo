@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getUserPhotoshoots } from '../../store/actions/photoshootActions';
 
 import './PhotoshootGrid.css';
 
 export class PhotoshootGrid extends React.Component {
     
-    // componentDidMount() {
-    //     this.props.dispatch(fetchBoard());
-    // }
+    componentDidMount() {       
+        this.props.dispatch(getUserPhotoshoots(this.props.userID, this.props.userJWT))
+    }
     
     render(){
-
         //TODO: Make component ShootSummaryCard for this?
         const photoshoots = this.props.photoshoots.map(shoot => (
             <Link to={`/dashboard/shoot/${shoot.id}`} key={shoot.id}>
@@ -54,6 +54,8 @@ export class PhotoshootGrid extends React.Component {
 const mapStateToProps = (state) => {
     return {
         photoshoots: state.photoshoot.photoshoots,
+        userID: state.auth.userID,
+        userJWT: state.auth.userJWT,
         username: state.auth.username
     };
 };

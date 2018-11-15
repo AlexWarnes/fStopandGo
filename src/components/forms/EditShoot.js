@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateShoot } from '../../store/actions/photoshootActions';
+import { updatePhotoshoot } from '../../store/actions/photoshootActions';
 import PhotoshootForm from './PhotoshootForm';
 
 export const EditShoot = (props) => {
+    const shootId = props.match.params.shootId;
+    const shootToEdit = props.photoshoots.find((item) => item.id === shootId);
 
     const submitUpdate = (values) => {
-        props.dispatch(updateShoot(values));
-        props.history.push(`/dashboard/shoot/${props.match.params.shootId}`);
+        props.dispatch(updatePhotoshoot(values, shootId, props.userJWT));
+        //TODO: Need this to show updated shoot (or just go back to dashboard)
+        props.history.push(`/dashboard/shoot/${shootId}`);
     };
-
-    const shootToEdit = props.photoshoots.find((item) => item.id === props.match.params.shootId);
 
     return(
         <div className="shoot-form-view">
@@ -24,7 +25,8 @@ export const EditShoot = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        photoshoots: state.photoshoot.photoshoots
+        photoshoots: state.photoshoot.photoshoots,
+        userJWT: state.auth.userJWT
     };
 };
 

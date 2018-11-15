@@ -1,10 +1,17 @@
-import shortid from 'shortid';
+// import shortid from 'shortid';
+const { API_BASE_URL } = require('../../config/config');
+
+export const SET_PHOTOSHOOTS = 'SET_PHOTOSHOOTS';
+export const setPhotoshoots = (data) => ({
+  type: SET_PHOTOSHOOTS,
+  photoshoots: data
+});
 
 export const NEW_SHOOT = 'NEW_SHOOT';
 export const newShoot = (newShootInfo) => ({
   type: NEW_SHOOT,
   newShootInfo: {
-    id: shortid.generate(),
+    // id: shortid.generate(),
     gearList: [],
     ...newShootInfo
   }
@@ -16,11 +23,93 @@ export const updateShoot = (data) => ({
   data
 });
 
-export const DELETE_SHOOT = 'DELETE_SHOOT';
-export const deleteShoot = (id) => ({
-  type: DELETE_SHOOT,
-  id
+export const DELETE_SHOOT_SUCCESS = 'DELETE_SHOOT_SUCCESS';
+export const deleteShootSuccess = (shootID) => ({
+  type: DELETE_SHOOT_SUCCESS,
+  shootID
 });
+
+export const getUserPhotoshoots = (userID, userJWT) => dispatch => {
+  fetch(`${API_BASE_URL}/api/shoots?owner=${userID}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type':'application/json; charset=UTF-8',
+      Authorization: `Bearer ${userJWT}`
+    }
+  }).then(res => {
+    if(!res.ok){
+      Promise.reject(res.statusText);
+    }
+    return res.json();
+  }).then(data => {
+    console.log(data);
+    dispatch(setPhotoshoots(data))
+  }).catch(err => {
+    console.log('ERROR');
+  });
+};
+
+export const createNewPhotoshoot = (newShootData, userJWT) => dispatch => {
+  fetch(`${API_BASE_URL}/api/shoots`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      Authorization: `Bearer ${userJWT}`
+    },
+    body: JSON.stringify(newShootData)
+  }).then(res => {
+    if(!res.ok){
+      return Promise.reject(res.statusText);
+    }
+    return res.json();
+  }).then(shoot => {
+    dispatch(newShoot(shoot));
+  }).catch(err => {
+    console.error(err);
+    //dispatch(newShootFailure());
+  });
+};
+
+export const updatePhotoshoot = (updateData, shootID, userJWT) => dispatch => {
+  fetch(`${API_BASE_URL}/api/shoots/${shootID}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      Authorization: `Bearer ${userJWT}`
+    },
+    body: JSON.stringify(updateData)
+  }).then(res => {
+    if(!res.ok){
+      Promise.reject(res.statusText);
+    }
+    return res;
+  }).then(shoot => {
+    dispatch(updateShoot(shoot));
+  }).catch(err => {
+    console.error(err);
+    //dispatch(updateShootFailure());
+  });
+}
+
+export const deletePhotoshoot = (shootID, userJWT) => dispatch => {
+  fetch(`${API_BASE_URL}/api/shoots/${shootID}`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      Authorization: `Bearer ${userJWT}`
+    }
+  }).then(res => {
+    if(!res.ok){
+      Promise.reject(res.statusText);
+    }
+    return res;
+  }).then((shootID) => {
+    dispatch(deleteShootSuccess(shootID))
+  }).catch(err => {
+    console.error(err);
+    //dispatch(deleteShootFailure())
+  });
+}
 
 export const DEMO_DATA = 'DEMO_DATA';
 export const demoData = () => ({

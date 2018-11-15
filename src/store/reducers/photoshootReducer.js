@@ -1,4 +1,4 @@
-import { NEW_SHOOT, UPDATE_SHOOT, DELETE_SHOOT, DEMO_DATA } from "../actions/photoshootActions";
+import { NEW_SHOOT, UPDATE_SHOOT, DELETE_SHOOT_SUCCESS, DEMO_DATA, SET_PHOTOSHOOTS } from "../actions/photoshootActions";
 
 //TODO: Temporary. Delete this import when DB is connected
 import { LOGOUT } from "../actions/authActions";
@@ -31,9 +31,9 @@ const photoshootReducer = (state = initialState, action) => {
                 ...state,
                 photoshoots: updatedPhotoshoots
             });
-        case DELETE_SHOOT:
+        case DELETE_SHOOT_SUCCESS:
             const shootsAfterDelete = state.photoshoots.filter(shoot => {
-                return shoot.id !== action.id;
+                return shoot.id !== action.shootID;
                 });
             return Object.assign({}, state, {
                 ...state,
@@ -44,6 +44,11 @@ const photoshootReducer = (state = initialState, action) => {
                 ...state,
                 photoshoots: action.photoshoots
             });
+        case SET_PHOTOSHOOTS:
+            return Object.assign({}, state, {
+                ...state,
+                photoshoots: action.photoshoots
+            })
         case LOGOUT:
             return Object.assign({}, state, {
                 ...initialState

@@ -64,7 +64,7 @@ const PhotoshootForm = (props) => {
             <div className="form-row">
                 <label htmlFor="shoot-form-location">Location</label>
                 <div>
-                    <Field name="location.name" component="input" type="text" placeholder="Location" autoComplete="off" />
+                    <Field name="location" component="input" type="text" placeholder="Location" autoComplete="off" />
                 </div>
             </div>
             <div className="form-row">

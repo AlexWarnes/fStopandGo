@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { newShoot } from '../../store/actions/photoshootActions';
+import { createNewPhotoshoot } from '../../store/actions/photoshootActions';
 import PhotoshootForm from './PhotoshootForm';
 
 export const NewShoot = (props) => {
 
     const submitNewShoot = (values) => {
-        props.dispatch(newShoot(values));
+        console.log(values);
+        props.dispatch(createNewPhotoshoot(values, props.userJWT));
         props.history.push('/dashboard');    
     };
     
@@ -19,4 +20,10 @@ export const NewShoot = (props) => {
     );
 };
 
-export default connect()(NewShoot);
+const mapStateToProps = (state) => {
+    return {
+        userJWT: state.auth.userJWT
+    }
+}
+
+export default connect(mapStateToProps)(NewShoot);
