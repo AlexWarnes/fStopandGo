@@ -3,10 +3,10 @@ import { shallow } from 'enzyme';
 
 import { Dashboard } from './Dashboard';
 
-describe('<Dashboard />', () => {
-  it('Should render without crashing', () => {
+describe('<Dashboard />', ()=> {
+  it('Should render without crashing', ()=> {
     const dispatch = jest.fn();
 
-    shallow(<Dashboard dispatch={dispatch}/>);
-  })
-})
+    shallow(<Dashboard dispatch={dispatch} />);
+  });
+});
