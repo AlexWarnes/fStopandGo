@@ -14,24 +14,16 @@ export const LandingActions = (props) => {
     }
 
     return(
-        <section className="header-actions">
-            <ul className="action-list">
-                <li className="action-item">New User?
-                    <Link to="/createaccount">
-                        <p className="create-account action-button">Create an Account</p>
-                    </Link>
-                </li>
-                <li className="action-item">Existing User?
-                    <Link to="/login">
-                        <p className="login-account action-button">Login</p>
-                    </Link>
-                </li>
-                <li className="action-item">Just Visiting?
-                    <Link to="/dashboard">
-                        <p className="demo-account action-button" onClick={()=> launchDemoAccount()}>Demo</p>
-                    </Link>
-                </li>
-            </ul>
+        <section className="landing-actions">
+            <Link to="/createaccount">
+                <p className="create-account action-button">Create an Account</p>
+            </Link>
+            <Link to="/login">
+                <p className="login-account action-button">Login</p>
+            </Link>
+            <Link to="/dashboard">
+                <p className="demo-account action-button" onClick={()=> launchDemoAccount()}>Demo</p>
+            </Link>
         </section>
     );
 }

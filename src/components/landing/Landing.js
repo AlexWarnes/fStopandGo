@@ -9,9 +9,9 @@ import AppDescription from './AppDescription';
 export const Landing = () => {
     return(
         <div>
+            <LandingActions />    
             <header className="landing-header">
                 <Header />
-                <LandingActions />    
             </header>
             <AppDescription />
         </div>

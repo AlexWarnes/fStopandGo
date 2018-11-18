@@ -1,39 +1,65 @@
+main {
+  background-color: #f8f8ff;
+}
 
 .about {
-    display: block;
-    width: 90%;
-    margin: 20px auto;
-    padding: 10px;
-    color: rgb(44, 44, 44);
-    text-align: center;
-  }
+  display: block;
+  width: 90%;
+  margin: 20px auto;
+  padding: 10px;
+  color: rgb(44, 44, 44);
+  text-align: center;
+}
+
+.about-icon {
+  font-size: 40px;
+}
+
+.about-icon.fa-check-circle {
+  color: rgb(196, 105, 105);
+}
+
+.about-icon.fa-camera {
+  color: rgb(32, 178, 122);
+}
+
+.about-icon.fa-lightbulb {
+  color: rgb(80, 129, 219);
+}
   
-  .about-icon {
-    font-size: 40px;
-  }
-  
-  .landing-footer {
-    width: 100%;
-    padding: 10px 0 40px 0;
-    background-color: #444444;
-    color: #ffffff;
-  }
-  
-  .app-info, .tech-stack {
-    padding: 5px 10px;
-  }
-  
-  .code-block {
-    display: block;
-    width: 100%;
-    height: 30px;
-    padding: 5px;
-    text-align: center;
-    font-size: 16px;
-    background-color: #444444;
-    color: #FFFFFF;
-  }
-  
-  .code-block * {
-    display: inline;
-  }
+.landing-footer {
+  width: 100%;
+  padding: 10px 0 0;
+  background-color: #272727;
+  color: #ffffff;
+}
+
+.app-info, .tech-stack {
+  padding: 5px 10px;
+}
+
+.code-block {
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  text-align: center;
+  font-size: 16px;
+  background-color: #272727;
+  color: #FFFFFF;
+  transition: all .2s;
+}
+
+.code-block * {
+  display: inline;
+}
+
+.backend-block:hover {
+  letter-spacing: .1rem;
+  background-color: rgb(196, 105, 105);;
+}
+
+.frontend-block:hover {
+  letter-spacing: .1rem;
+  background-color: rgb(32, 178, 122);
+}

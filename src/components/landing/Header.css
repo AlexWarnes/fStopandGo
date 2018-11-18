@@ -1,6 +1,31 @@
-.landing-header, .header-intro {
-    padding: 30px;
-    text-align: center;
-    background-color: #444444;
-    color: #FFFFFF;
-  }
+.landing-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #283846;
+  background-image: linear-gradient(to bottom, #000000b6, #1e222bb6), url("  https://scontent-iad3-1.cdninstagram.com/vp/25a01f95513d51c2fe651de32cacd71b/5C6DDF6B/t51.2885-15/e35/19379279_1406833522745044_6491891085638369280_n.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 60vh;
+  color: #FFFFFF;
+}
+
+.header-intro {
+  width: 60%;
+}
+
+.header-intro h1 {
+  font-weight: 100;
+  font-size: 2.2em;
+  letter-spacing: .12rem;
+  font-family: 'Palatino', serif;
+}
+
+.header-intro p {
+  font-weight: 100;
+  line-height: 24px;
+  border-left: 2px solid #e29191;
+  padding-left: 10px;
+  letter-spacing: .05rem;
+}
