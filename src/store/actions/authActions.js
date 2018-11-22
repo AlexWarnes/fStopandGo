@@ -1,4 +1,5 @@
-// import { toggleError } from './uiActions';
+import {SubmissionError} from 'redux-form';
+import { normalizeResponseErrors } from './uiActions';
 
 const { API_BASE_URL } = require('../../config/config');
 
@@ -15,7 +16,7 @@ export const setUserInfo = (data) => ({
   type: SET_USER_INFO,
   username: data.username,
   userEmail: data.email
-})
+});
 
 export const LOGOUT = 'LOGOUT';
 export const logout = () => ({
@@ -69,21 +70,35 @@ export const getToken = (creds) => dispatch => {
   });
 };
 
-export const createNewUser = (credentials) => dispatch => {
+export const createNewUser = credentials => dispatch => {
   return fetch(`${API_BASE_URL}/api/users`, {
     method: 'POST',
     headers: {
-      'Content-Type':'application/json; charset=UTF-8'
+      'content-type':'application/json; charset=UTF-8'
     },
     body: JSON.stringify(credentials)
-  }).then(res => {
-    if(!res.ok){
-      Promise.reject(res.statusText);
-    }
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => {
+    // if(!res.ok){
+    //   Promise.reject(res.statusText);
+    // }
     return res.json();
   }).catch(err => {
-    console.log('ERROR');
+    console.log(JSON.stringify(err));
     //dispatch(something());
+    const {reason, message, location} = err;
+    console.log('CATCH BLOCK')
+    console.log(location, message, reason)
+    if (reason === 'ValidationError') {
+      console.log(`${location}: ${message}`, reason)
+    // Convert ValidationErrors into SubmissionErrors for Redux Form
+      return Promise.reject(
+        new SubmissionError({
+          [location]: message
+        })
+      );
+    }
   });
 };
 
