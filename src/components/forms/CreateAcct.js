@@ -1,11 +1,15 @@
 import React from 'react'; 
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, focus } from 'redux-form';
 import { Redirect } from 'react-router-dom';
 import { createNewUser, getToken } from '../../store/actions/authActions';
-
-
+import { displayValidationError, clearValidationError } from '../../store/actions/uiActions';
+import {required, nonEmpty, matches, length, isTrimmed} from '../../store/validators';
+import ValidationError from '../universal/ValidationError';
 import './forms.css';
+
+const passwordLength = length({min: 10, max: 72});
+const matchesPassword = matches('password');
 
 export const CreateAcctForm = (props) => {
 	const { handleSubmit, pristine, submitting, reset, history, dispatch } = props;
@@ -13,6 +17,7 @@ export const CreateAcctForm = (props) => {
 	const cancel = () => {
 		history.goBack();
 		reset();
+		dispatch(clearValidationError());
 	};
 	
 	const createUserAccount = (userData) => {
@@ -21,7 +26,8 @@ export const CreateAcctForm = (props) => {
 			password: userData.password 
 		}
 		return dispatch(createNewUser(userData))
-		.then(() => dispatch(getToken(credentials)));
+		.then(() => dispatch(getToken(credentials)))
+		.then(() => dispatch(clearValidationError()));
 	}
 
 	switch (props.isLoggedIn){
@@ -34,7 +40,14 @@ export const CreateAcctForm = (props) => {
 						<div>
 							<label htmlFor="create-username">Username</label>
 							<div>
-								<Field name="username" component="input" type="text" autoComplete="off" required={true} />
+								<Field 
+									name="username" 
+									component="input" 
+									type="text" 
+									autoComplete="off" 
+									required={true}
+									validate={[required, nonEmpty, isTrimmed]} 
+								/>
 							</div>
 						</div>
 						<div>
@@ -46,24 +59,39 @@ export const CreateAcctForm = (props) => {
 						<div>
 							<label htmlFor="create-password">Password</label>
 							<div>
-								<Field name="password" component="input" type="password" autoComplete="off" required={true} />
+								<Field 
+									name="password" 
+									component="input" 
+									type="password" 
+									autoComplete="off" 
+									required={true} 
+									validate={[required, passwordLength, isTrimmed]}
+								/>
 							</div>
 						</div>
 						<div>
 							<label htmlFor="create-password-confirm">Confirm Password</label>
 							<div>
-								<Field name="confirm password" component="input" type="password" autoComplete="off" required={true} />
+								<Field 
+									name="confirm password" 
+									component="input" 
+									type="password" 
+									autoComplete="off" 
+									required={true} 
+									validate={[required, nonEmpty, matchesPassword]}
+								/>
 							</div>
 						</div>
+						<ValidationError />
 						<div className="acct-action-buttons-container">
 							<button 
-								className="create-acct-button acct-go-button acct-action-button"
+								className=" btn-green btn"
 								type="submit"
 								disabled={pristine || submitting}>
 								Create Account
 							</button>
 							<button 
-								className="cancel-btn acct-cancel-button acct-action-button"
+								className="btn btn-grey"
 								disabled={submitting}
 								onClick={()=> cancel()}>
 								Cancel
@@ -77,8 +105,20 @@ export const CreateAcctForm = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		isLoggedIn: state.auth.isLoggedIn
+		isLoggedIn: state.auth.isLoggedIn,
+		isValidationError: state.ui.isValidationError
 	}
 }
 
-export default connect(mapStateToProps)(reduxForm({form: 'createAccount'})(CreateAcctForm));
+
+
+export default connect(mapStateToProps)(reduxForm({
+	form: 'createAccount',
+	onSubmitFail: (errors, dispatch) => {
+		let errorField = Object.keys(errors)[0];
+		let errorMessage = errors[Object.keys(errors)[0]]
+		// TODO: Figure out why redux-form's focus action isn't working
+		// dispatch(focus('createAccount', errorField));
+		dispatch(displayValidationError(`${errorField}: ${errorMessage}`));
+	},
+})(CreateAcctForm));

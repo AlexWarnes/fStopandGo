@@ -32,6 +32,11 @@ button:hover {
   margin: 5px;
   box-shadow: 4px 4px 8px #00000015;
   text-align: center;
+  transition: all .3s;
+}
+
+.btn:hover {
+  box-shadow: 8px 8px 10px #00000025;
 }
 
 .btn-grey {

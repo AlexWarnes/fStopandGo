@@ -34,13 +34,13 @@ const LoginForm = (props) => {
 
 						<div className="acct-action-buttons-container">
 							<button
-								className="create-acct-button acct-go-button acct-action-button"
+								className="btn btn-green"
 								disabled={pristine || submitting}
 								type="submit">
 								Login
 							</button>
 							<button 
-								className="cancel-btn acct-cancel-button acct-action-button"
+								className="btn btn-grey"
 								disabled={submitting}
 								onClick={()=> cancel()}>
 								Cancel
