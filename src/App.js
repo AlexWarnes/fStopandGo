@@ -11,7 +11,7 @@ export const App = () => {
 
 	return(
 		<Router>
-			<div className="App">
+			<div className="app">
 				<Error />
 				<Switch>
 					<Route exact path="/" component={Landing} />
