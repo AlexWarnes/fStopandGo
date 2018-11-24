@@ -14,17 +14,17 @@ export const LandingActions = (props) => {
     }
 
     return(
-        <section className="landing-actions">
-            <Link to="/createaccount">
-                <p className="create-account action-button">Create an Account</p>
-            </Link>
-            <Link to="/login">
-                <p className="login-account action-button">Login</p>
-            </Link>
-            <Link to="/dashboard">
-                <p className="demo-account action-button" onClick={()=> launchDemoAccount()}>Demo</p>
-            </Link>
-        </section>
+        <div className="landing-nav">
+            {/* TODO: Link to game */}
+            <p className="landing-nav-logo">
+                <i class="material-icons landing-nav-icon">filter_center_focus</i>
+                f/StopandGo
+            </p>
+            <section className="landing-actions">
+                <Link to="/login" className="login-account action-button">Login</Link>
+                <Link to="/dashboard" onClick={()=> launchDemoAccount()} className="demo-account action-button" >Demo</Link>
+            </section>
+        </div>
     );
 }
 

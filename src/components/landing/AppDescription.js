@@ -6,34 +6,36 @@ export default class AppDescription extends React.Component{
         return(
             <div>
                 <main role="main">
-                    <article className="about">
-                        <i className="far fa-check-circle about-icon"></i>
-                        <h2>Meet Your Goals</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                            Temporibus aliquam, ut esse libero natus praesentium?</p>
-                    </article>
-
-                    <article className="about">
-                        <i className="fas fa-camera about-icon"></i>
-                        <h2>Plan Your Shoots</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Voluptates quam quae optio recusandae molestias alias?</p>
-                    </article>
-
-                    <article className="about">
-                        <i className="far fa-lightbulb about-icon"></i>
-                        <h2>Learn New Techniques</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Laboriosam, dolorem quis. Enim corporis eaque maxime.</p>
-                    </article>
+                    <div className="row">
+                        <div className="col-4">
+                            <article className="about">
+                            <i className="far fa-check-circle about-icon"></i>
+                            <h2>Set Your Goals</h2>
+                            <p>That new camera can be intimidating. Set small goals and learn more each time you go out.
+                            </p>
+                            </article>
+                        </div>
+                        <div className="col-4">
+                            <article className="about">
+                            <i className="far fa-lightbulb about-icon"></i>
+                            <h2>Find a New Technique</h2>
+                            <p>Long exposure, timelapse, portraits, macro... Find a technique to approach your goal.</p>
+                            </article>
+                        </div>
+                        <div className="col-4">
+                            <article className="about">
+                            <i className="fas fa-camera about-icon"></i>
+                            <h2>Plan Your Shoots</h2>
+                            <p>Don't spend all day watching YouTube tutorials. You have a goal, you have a technique, now give it a shot!</p>
+                            </article>
+                        </div>
+                    </div>
                 </main>
 
                 <footer role="contentinfo" className="landing-footer">
                     <article className="app-info">
                         <h2>About f/StopandGo</h2>
-                        <p>This is a project. Lorem ipsum dolor sit 
-                        amet consectetur adipisicing elit. Consequatur repellendus ea 
-                        placeat iure quam nostrum aperiam! Porro cupiditate molestiae accusantium.</p>
+                        <p>f/StopandGo is built to help photographers of any skill level continue to learn. Planning a photoshoot and remembering the details of a new technique can be challenging, so we've put it all in one place.</p>
                     </article>
 
                     <article className="tech-stack">
