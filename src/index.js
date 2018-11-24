@@ -5,6 +5,7 @@ import store from './store/store';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+import './gridRules.css';
 import './index.css';
 
 ReactDOM.render(
