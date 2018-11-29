@@ -1,5 +1,7 @@
 import {SubmissionError} from 'redux-form';
 import { normalizeResponseErrors } from './uiActions';
+import { displayValidationError } from '../../store/actions/uiActions';
+
 
 const { API_BASE_URL } = require('../../config/config');
 
@@ -65,9 +67,9 @@ export const getToken = (creds) => dispatch => {
   }).then(data => {
       dispatch(login(data));
   }).catch(err => {
-      console.log('ERROR!');
-      // dispatch(toggleError(true))
-  });
+      console.log('ERROR HERE!', JSON.stringify(err));
+      dispatch(displayValidationError('Incorrect Username or Password'))
+    });
 };
 
 export const createNewUser = credentials => dispatch => {
@@ -85,13 +87,8 @@ export const createNewUser = credentials => dispatch => {
     // }
     return res.json();
   }).catch(err => {
-    console.log(JSON.stringify(err));
-    //dispatch(something());
     const {reason, message, location} = err;
-    console.log('CATCH BLOCK')
-    console.log(location, message, reason)
     if (reason === 'ValidationError') {
-      console.log(`${location}: ${message}`, reason)
     // Convert ValidationErrors into SubmissionErrors for Redux Form
       return Promise.reject(
         new SubmissionError({

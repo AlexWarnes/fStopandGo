@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router-dom';
 import { getToken} from '../../store/actions/authActions';
+import { displayValidationError, clearValidationError } from '../../store/actions/uiActions';
+import ValidationError from '../universal/ValidationError';
+
 
 
 import './forms.css';
@@ -13,6 +16,7 @@ const LoginForm = (props) => {
 	const cancel = () => {
 		reset();
 		history.goBack();
+		dispatch(clearValidationError());
 	}
 
 	const logUserIn = (credentials) => {
@@ -31,7 +35,7 @@ const LoginForm = (props) => {
 
 						<label htmlFor="create-password">Password</label>
 						<Field name="password" component="input" type="password" autoComplete="off" required={true} />
-
+						<ValidationError />
 						<div className="acct-action-buttons-container">
 							<button
 								className="btn btn-green"
@@ -58,4 +62,9 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(reduxForm({form: 'login'})(LoginForm));
+export default connect(mapStateToProps)(reduxForm({
+	form: 'login',
+	onSubmitFail: (dispatch) => {
+		dispatch(displayValidationError('Incorrect Username or Password'))
+	}
+})(LoginForm)); 
