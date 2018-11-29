@@ -15,8 +15,8 @@ export const CreateAcctForm = (props) => {
 	const { handleSubmit, pristine, submitting, reset, history, dispatch } = props;
 		
 	const cancel = () => {
-		history.goBack();
 		reset();
+		history.goBack();
 		dispatch(clearValidationError());
 	};
 	
