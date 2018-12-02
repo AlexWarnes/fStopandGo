@@ -1,41 +1,72 @@
-/* BOTTOM APP BAR */
+.landing-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  background-color: #223145;
+  box-shadow: 0 2px 4px #27272788;
+  padding: 0 20px;
+  font-size: .8em;
+  z-index: 10;
+}
 
-nav {
-    width: 100%;
-    height: 40px;
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 15px;
-    background-color: #D3D3D3;
-    font-size: 18px;
+.landing-nav-logo {
+  color: #FFFFFF;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  transition: all .3s;
+  font-family: 'Palatino', serif;
+}
+
+.landing-nav-icon {
+  background: radial-gradient(#a15656 3px, #FFFFFF 30%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-right: 5px;
+  transition: all .3s;
+}
+
+/* TODO: Link to game */
+/* .landing-nav-logo:hover .landing-nav-icon {
+  cursor: pointer;
+} */
+
+.landing-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+}
+
+.action-button {
+  margin: 0 20px 0 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: ghostwhite;
+  padding: 7px 10px 5px 10px;
+  font-weight: 100;
+  letter-spacing: .02rem;
+  border-bottom: 2px solid transparent;
+  transition: all .2s;
+}
+
+.action-button:hover {
+  border-bottom: 2px solid #e29191;
+}
+
+@media only screen and (min-width: 640px) {
+  .landing-nav {
+    font-size: 1em;
   }
   
-  .nav-hamburger {
-    position: absolute;
-    left: 15px;
-    font-size: 25px;
+  .action-button {
+    margin-right: 40px;
   }
-  
-  .nav-hamburger-button {
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    border: none;
-    background: transparent;
-  }
-  
-  .nav-buttons-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 70%;
-    font-size: 25px;
-  }
-  
-  .nav-button {
-    background: transparent;
-    border: none;
-  }
+}

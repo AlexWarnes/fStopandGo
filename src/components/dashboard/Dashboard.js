@@ -8,6 +8,7 @@ import NavBar from '../navigation/NavBar';
 import NewShoot from '../forms/NewShoot';
 import EditShoot from '../forms/EditShoot';
 import { Error } from '../universal/Error';
+import Menu from '../navigation/Menu';
 
 import { getUserInfo } from '../../store/actions/authActions';
 
@@ -22,18 +23,19 @@ export class Dashboard extends React.Component {
 	}
 
 	render(){
+		console.log('DASHBOARD RENDER!!!', this.props.isLoggedIn)
 		switch (this.props.isLoggedIn) {
 			case true:
 				return (
-					<div>
-						<NavBar />
+					<div className="dashboard">
+            <Menu />
 						<Switch>
 							<Route exact path="/dashboard" component={PhotoshootGrid} />                    
 							{/* <Route path="/dashboard/about" component={AppDescription} /> */}
 							<Route path="/dashboard/shoot/:shootId" component={SingleShoot} />
 							<Route path="/dashboard/newshoot" component={NewShoot} />
 							<Route path="/dashboard/editshoot/:shootId" component={EditShoot} />
-							<Route component={Error} />
+							{/* <Route component={Error} /> */}
 						</Switch>
 					</div>
 				)
