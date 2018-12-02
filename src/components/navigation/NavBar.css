@@ -1,4 +1,4 @@
-.landing-nav {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -6,24 +6,25 @@
   height: 50px;
   position: fixed;
   top: 0;
-  background-color: #223145;
+  background-color: #102027;
   box-shadow: 0 2px 4px #27272788;
   padding: 0 20px;
   font-size: .8em;
   z-index: 10;
 }
 
-.landing-nav-logo {
+.logo {
+  width: 130px;
   color: #FFFFFF;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: 0;
+  margin: 0 auto;
   transition: all .3s;
   font-family: 'Palatino', serif;
 }
 
-.landing-nav-icon {
+.logo-icon {
   background: radial-gradient(#a15656 3px, #FFFFFF 30%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -36,17 +37,19 @@
   cursor: pointer;
 } */
 
-.landing-actions {
+.navbar-main {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 100%;
 }
 
-.action-button {
+.navbar-link {
   margin: 0 20px 0 0;
   height: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
   color: ghostwhite;
@@ -57,16 +60,20 @@
   transition: all .2s;
 }
 
-.action-button:hover {
-  border-bottom: 2px solid #e29191;
+.navbar-icon {
+  font-size: 1em;
+}
+
+.navbar-link:hover {
+  border-bottom: 2px solid #15e7b4;
 }
 
 @media only screen and (min-width: 640px) {
-  .landing-nav {
+  .navbar {
     font-size: 1em;
   }
   
-  .action-button {
+  .navbar-link {
     margin-right: 40px;
   }
 }

@@ -7,47 +7,40 @@ import './NavBar.css';
 
 export const NavBar = (props) => {
 
-    // <Menu />
-    switch(props.isLoggedIn) {
-        case true:
-            console.log('RENDER isLoggedIn' + props.isLoggedIn)
-            return(
-                <div className="landing-nav">
-                    <Link to="/">
-                        <p className="landing-nav-logo">
-                            <i className="material-icons landing-nav-icon">filter_center_focus</i>
-                            f/StopandGo
-                        </p>
-                    </Link>
-                    <section className="landing-actions">
-                        <Link to="/dashboard" className="login-account action-button">Dashboard</Link>
-                        <div className="nav-hamburger">
-                            {/* <button 
-                                // onClick={()=> dispatch(toggleMenu())}
-                                className="nav-hamburger-button">
-                                <i className="fas fa-bars nav-hamburger-icon nav-icon"></i>
-                            </button> */}
-                            <Burger />
-                        </div>
-                    </section>
-                </div>
-            );
-        default:
-            console.log('RENDER isLoggedIn' + props.isLoggedIn)
-            return(
-                <div className="landing-nav">
-                    <p className="landing-nav-logo">
-                        <i className="material-icons landing-nav-icon">filter_center_focus</i>
-                        f/StopandGo
-                    </p>
-                    <section className="landing-actions">
-                        <Link to="/login" className="login-account action-button">Login</Link>
-                        {/* TODO: Create launchDemo action */}
-                        <Link to="/"  className="demo-account action-button" >Demo</Link>
-                    </section>
-                </div>
-            );
-    }
+  switch(props.isLoggedIn) {
+    case true:
+      return(
+        <div className="navbar">
+          <Link to="/">
+              <p className="logo">
+                  <i className="material-icons logo-icon">filter_center_focus</i>
+              </p>
+          </Link>
+          <section className="navbar-main">
+            <Link to="/dashboard" className="navbar-link">
+              Dashboard
+            </Link>
+            <Burger />
+          </section>
+        </div>
+      );
+    default:
+      return(
+        <div className="navbar">
+          <Link to="/">
+            <p className="logo">
+              <i className="material-icons logo-icon">filter_center_focus</i>
+              f/StopandGo
+            </p>
+          </Link>
+          <section className="navbar-main">
+            <Link to="/login" className="navbar-link">Login</Link>
+            {/* TODO: Create launchDemo action */}
+            <Link to="/"  className="navbar-link" >Demo</Link>
+          </section>
+        </div>
+      );
+  }
 }
 
 const mapStateToProps = (state) => {

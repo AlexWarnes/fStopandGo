@@ -4,10 +4,8 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import PhotoshootGrid from './PhotoshootGrid';
 import SingleShoot from './SingleShoot';
-import NavBar from '../navigation/NavBar';
 import NewShoot from '../forms/NewShoot';
 import EditShoot from '../forms/EditShoot';
-import { Error } from '../universal/Error';
 import Menu from '../navigation/Menu';
 
 import { getUserInfo } from '../../store/actions/authActions';

@@ -2,48 +2,44 @@
 
 .menu {
 	z-index: 5;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-  background-color: #FFFFFF;
-  padding: 65px 10px 15px;
-  }
-  
-.drawer-content {
 	position: absolute;
 	left: 0;
-	bottom: 0;
-	width: 100%;
-	background-color: #FFFFFF;
-	color: #444444;
-	box-shadow: 0 -5px 10px #0000001c;
-	padding: 10px;
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
+	top: 0;
+  width: 100%;
+  padding: 50px 0;
+  color: #101f27;
+  background-color: #FFFFFF;
 }
 
 .menu-header {
-  	text-align: center;
+  text-align: center;
+  width: 100%;
+  padding: 15px;
+  background-color: #62717b;
+  border-bottom: 2px solid #6dffe7;
+  color: #FFFFFF;
 }
 
 .menu>section {
-	margin-bottom: 15px;
-	border-top: 1px solid silver;
+  padding: 15px 10px 20px;
+  border-top: 1px solid #F5F5F6;
 }
 
 .menu-title {
-  	margin: 0;
+  margin: 0;
 }
 
 .menu-item {
-	transition: all .2s;
+  height: 55px;
+  margin: 0;
+  padding: 10px;
+  transition: all .2s;
 }
 
 .menu-item:hover {
-	cursor: pointer;
-  letter-spacing: .1rem;
-  background-color: #1faf75;
+  cursor: pointer;
+  padding-top: 8px;
+  background-color: #1de8b5;
 }
 
 .menu-icon {
@@ -52,19 +48,7 @@
 	transition: all .2s;
 }
 
-.menu-close {
-	text-align: center;
-	width: 100%;
-}
-
-.menu-close:hover {
-	cursor: pointer;
-	color: black;
-}
-
-.menu-icon-close {
-	width: 40px;
-	height: 40px;
-	font-size: 32px;
-	margin-top: 15px;
+.feature-pending {
+  color: silver;
+  font-style: italic;
 }

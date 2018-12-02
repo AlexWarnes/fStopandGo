@@ -7,7 +7,8 @@
   left: 0;
   width: 100%;
   min-height: 100vh;
-  background: #4D5A6F;
+  padding-top: 50px;
+  background: #62717b;
   color: #FFFFFF;
   letter-spacing: .2rem;
   font-weight: 100;
@@ -16,7 +17,7 @@
 .acct-action-form {
   max-width: 375px;
   padding: 20px;
-  margin: 20px auto;
+  margin: 0 auto;
 }
 
 .acct-action-form label {

@@ -1,74 +1,80 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { toggleNavDrawer } from '../../store/actions/uiActions';
+import { toggleMenu, toggleWarning } from '../../store/actions/uiActions';
 import { logout, deleteUser } from '../../store/actions/authActions';
+import Warning from '../universal/Warning';
 
 import './Menu.css';
 
 export const Menu = (props) => {
-    const { dispatch } = props;
-    // const logUserOut = () => {
-    //     dispatch(toggleNavDrawer(false));
-    //     dispatch(logout());
-    // }
+  const { dispatch } = props;
+  
+  const handleLogout = () => {
+    dispatch(toggleMenu());
+    dispatch(logout());
+  }
 
-    // const handleDeleteUser = (userID, userJWT) => {
-    //     dispatch(deleteUser(userID, userJWT));
-    //     dispatch(toggleNavDrawer(false));
-    // }
+  const handleDeleteUser = (userID, userJWT) => {
+    dispatch(toggleMenu());
+    dispatch(toggleWarning());
+    dispatch(deleteUser(userID, userJWT));
+  }
 
-    // const closeNavDrawer = () => {
-    //     dispatch(toggleNavDrawer(false));
-    // }
-    
-
-    switch(props.menuIsOpen){
-      case true:
-      return(
-        <div className="menu">
-          <section className="menu-header">
-            <h2 className="menu-title">f/StopandGo</h2>
-            <h3 className="menu-username">{props.userName}</h3>
-          </section>
-          <section>
-            <Link to="/dashboard">
-              <p className="menu-item"><i className="fas fa-home drawer-icon"></i>Dashboard</p>
-            </Link>
-            <Link to="/dashboard/map">
-              <p className="menu-item"><i className="fas fa-map drawer-icon"></i>Map View</p>
-            </Link>
-            <Link to="/dashboard/learning">
-              <p className="menu-item"><i className="fas fa-lightbulb drawer-icon"></i>Learning Center</p>
-            </Link>
-            <Link to="/dashboard/about">
-              <p className="menu-item"><i className="fas fa-info-circle drawer-icon"></i>About</p>
-            </Link>
-          </section>
-          <section>
-            <Link to="/">
-              <p className="menu-item"><i className="fas fa-sign-out-alt drawer-icon"></i>Log Out</p>
-            </Link>
-              <p className="menu-item"><i className="fas fa-exclamation-circle drawer-icon"></i>Delete Account</p>
-          </section>
-          <section>
-              <a href="https://github.com/AlexWarnes/fStopandGo" target="_blank" rel="noopener noreferrer">
-                  <p className="menu-item"><i className="fas fa-code drawer-icon"></i>View the Code</p>
-              </a>
-          </section>
-          {/* <div className="menu-close" onClick={()=> closeNavDrawer()}>
-              <i className="fas fa-chevron-down drawer-icon-close"></i>
-          </div> */}
+  switch(props.menuIsOpen){
+    case true:
+    return(
+      <div className="menu">
+        <div className="menu-header">
+          <p className="logo">
+            <i className="material-icons logo-icon">filter_center_focus</i>
+            f/StopandGo
+          </p>
+          <h3 className="menu-username">{props.username}</h3>
         </div>
-      );
-      default:
-        return <div></div>;
-    }
+        <section>
+          <Link to="/dashboard">
+            <p className="menu-item"><i className="fas fa-home menu-icon"></i>Dashboard</p>
+          </Link>
+          <Link to="/dashboard/map">
+            <p className="menu-item feature-pending"><i className="fas fa-map menu-icon"></i>Map View (feature pending)</p>
+          </Link>
+          <Link to="/dashboard/learning">
+            <p className="menu-item feature-pending"><i className="fas fa-lightbulb menu-icon"></i>Learning Center (feature pending)</p>
+          </Link>
+          <Link to="/">
+            <p className="menu-item"><i className="fas fa-info-circle menu-icon"></i>About</p>
+          </Link>
+        </section>
+        <section>
+          <Link to="/">
+            <p className="menu-item" onClick={()=> handleLogout()}><i className="fas fa-sign-out-alt menu-icon"></i>Log Out</p>
+          </Link>
+            <p className="menu-item" onClick={()=> dispatch(toggleWarning())}><i className="fas fa-exclamation-circle menu-icon"></i>Delete Account</p>
+            <Warning 
+              onAffirm={()=> handleDeleteUser(props.userID, props.userJWT)}
+              message='Are you sure you want to delete your account?'
+              affirmTxt='Yes, delete my account.'
+            />
+        </section>
+        <section>
+            <a href="https://github.com/AlexWarnes/fStopandGo" target="_blank" rel="noopener noreferrer">
+                <p className="menu-item"><i className="fas fa-laptop-code menu-icon"></i>Frontend Code</p>
+            </a>
+            <a href="https://github.com/AlexWarnes/fStopandGo-api" target="_blank" rel="noopener noreferrer">
+                <p className="menu-item"><i className="fas fa-server menu-icon"></i>Backend Code</p>
+            </a>
+        </section>
+      </div>
+    );
+    default:
+      return <div></div>;
+  }
 };
 
 const mapStateToProps = (state) => {
     return {
-        userName: state.auth.userName,
+        username: state.auth.username,
         userJWT: state.auth.userJWT,
         userID: state.auth.userID,
         menuIsOpen: state.ui.menuIsOpen

@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import Landing from './components/landing/Landing';
 import Dashboard from './components/dashboard/Dashboard';
