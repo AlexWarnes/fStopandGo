@@ -5,9 +5,8 @@ export const toggleMenu = () => ({
 });
 
 export const TOGGLE_WARNING = 'TOGGLE_WARNING';
-export const toggleWarning = (warningIsDisplayed) => ({
+export const toggleWarning = () => ({
   type: TOGGLE_WARNING,
-  warningIsDisplayed
 });
 
 export const TOGGLE_ERROR = 'TOGGLE_ERROR';

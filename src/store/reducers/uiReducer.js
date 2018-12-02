@@ -18,7 +18,7 @@ const uiReducer = (state = initialState, action) => {
         case TOGGLE_WARNING:
             return Object.assign({}, state, {
                 ...state,
-                warningIsDisplayed: action.warningIsDisplayed
+                warningIsDisplayed: !state.warningIsDisplayed
             });
         case TOGGLE_ERROR:
             return Object.assign({}, state, {
