@@ -1,4 +1,3 @@
-// import shortid from 'shortid';
 const { API_BASE_URL } = require('../../config/config');
 
 export const SET_PHOTOSHOOTS = 'SET_PHOTOSHOOTS';
@@ -11,15 +10,14 @@ export const NEW_SHOOT = 'NEW_SHOOT';
 export const newShoot = (newShootInfo) => ({
   type: NEW_SHOOT,
   newShootInfo: {
-    // id: shortid.generate(),
     gearList: [],
     ...newShootInfo
   }
 });
 
-export const UPDATE_SHOOT = 'UPDATE_SHOOT';
-export const updateShoot = (data) => ({
-  type: UPDATE_SHOOT,
+export const UPDATE_SHOOT_SUCCESS = 'UPDATE_SHOOT_SUCCESS';
+export const updateShootSuccess = (data) => ({
+  type: UPDATE_SHOOT_SUCCESS,
   data
 });
 
@@ -46,6 +44,7 @@ export const getUserPhotoshoots = (userID, userJWT) => dispatch => {
     dispatch(setPhotoshoots(data))
   }).catch(err => {
     console.log('ERROR');
+    // TODO: dispatch(errorIsDisplayed(true));
   });
 };
 
@@ -84,7 +83,7 @@ export const updatePhotoshoot = (updateData, shootID, userJWT) => dispatch => {
     }
     return res;
   }).then(shoot => {
-    dispatch(updateShoot(shoot));
+    dispatch(updateShootSuccess(shoot));
   }).catch(err => {
     console.error(err);
     //dispatch(updateShootFailure());

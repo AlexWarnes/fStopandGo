@@ -1,44 +1,51 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleNavDrawer } from '../../store/actions/uiActions';
-import Menu from './Menu';
+import { Link } from 'react-router-dom';
+import Burger from './Burger';
+
 import './NavBar.css';
 
-export class NavBar extends React.Component{
-    
-    openMenu(){
-        this.props.dispatch(toggleNavDrawer(true));
-    }
-    
-    render(){   
-        switch (this.props.navDrawerIsOpen){
-            case false:
-                return(
-                    <nav>
-                        <div className="nav-hamburger">
-                            <button 
-                                onClick={()=> this.openMenu()}
-                                className="nav-hamburger-button">
-                                <i className="fas fa-bars nav-hamburger-icon nav-icon"></i>
-                            </button>
-                        </div>
-                    </nav>
-                );
-            case true:
-                return(
-                    <Menu />
-                );
-            default:
-                return(
-                    <div><p>We have a problem.</p></div>
-                );
-        }
-    }
-};
+export const NavBar = (props) => {
+
+  switch(props.isLoggedIn) {
+    case true:
+      return(
+        <div className="navbar">
+          <Link to="/">
+              <p className="logo">
+                  <i className="material-icons logo-icon">filter_center_focus</i>
+              </p>
+          </Link>
+          <section className="navbar-main">
+            <Link to="/dashboard" className="navbar-link">
+              Dashboard
+            </Link>
+            <Burger />
+          </section>
+        </div>
+      );
+    default:
+      return(
+        <div className="navbar">
+          <Link to="/">
+            <p className="logo">
+              <i className="material-icons logo-icon">filter_center_focus</i>
+              f/StopandGo
+            </p>
+          </Link>
+          <section className="navbar-main">
+            <Link to="/login" className="navbar-link">Login</Link>
+            {/* TODO: Create launchDemo action */}
+            <Link to="/"  className="navbar-link" >Demo</Link>
+          </section>
+        </div>
+      );
+  }
+}
 
 const mapStateToProps = (state) => {
     return {
-        navDrawerIsOpen: state.ui.navDrawerIsOpen
+        isLoggedIn: state.auth.isLoggedIn
     }
 }
 

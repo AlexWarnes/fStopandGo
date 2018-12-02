@@ -33,3 +33,20 @@
   width: 40px;
   height: 40px;
 }
+
+.new-shoot-btn {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #223145;
+  border-radius: 10px;
+  background-color: #61e4a6;
+  margin: 15px;
+}
+
+.new-shoot-btn p {
+  margin: 5px 0 0;
+}

@@ -1,7 +1,7 @@
-import { TOGGLE_NAV_DRAWER, TOGGLE_WARNING, TOGGLE_ERROR, DISPLAY_VALIDATION_ERROR, CLEAR_VALIDATION_ERROR } from "../actions/uiActions";
+import { TOGGLE_MENU, TOGGLE_WARNING, TOGGLE_ERROR, DISPLAY_VALIDATION_ERROR, CLEAR_VALIDATION_ERROR } from "../actions/uiActions";
 
 const initialState = {
-    navDrawerIsOpen: false,
+    menuIsOpen: false,
     warningIsDisplayed: false,
     errorIsDisplayed: false,
     isValidationError: false,
@@ -10,15 +10,15 @@ const initialState = {
 
 const uiReducer = (state = initialState, action) => {
     switch (action.type) {
-        case TOGGLE_NAV_DRAWER:
+        case TOGGLE_MENU:
             return Object.assign({}, state, {
                 ...state,
-                navDrawerIsOpen: action.navDrawerIsOpen
+                menuIsOpen: !state.menuIsOpen
             });
         case TOGGLE_WARNING:
             return Object.assign({}, state, {
                 ...state,
-                warningIsDisplayed: action.warningIsDisplayed
+                warningIsDisplayed: !state.warningIsDisplayed
             });
         case TOGGLE_ERROR:
             return Object.assign({}, state, {

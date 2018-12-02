@@ -45,11 +45,13 @@ button:hover {
 }
 
 .btn-grey {
-  background-color: rgb(121, 121, 121);
+  background-color: #37464f;
+  color: #FFFFFF;
 }
 
 .btn-red {
-  background-color: #FF4420;
+  background-color: #B00020;
+  color: #FFFFFF;
 }
 
 .btn-blue {
@@ -57,5 +59,6 @@ button:hover {
 }
 
 .btn-green {
-  background-color: #47AD66;
+  background-color: #1de8b5;
+  color: #000000;
 }
