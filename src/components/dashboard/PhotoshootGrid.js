@@ -29,10 +29,11 @@ export class PhotoshootGrid extends React.Component {
                     <div>
                         <h2>Hi {this.props.username}, you don't have any photoshoots yet!</h2>
                         <p>Click the + button to create a new shoot.</p>
-                        <Link to="/dashboard/newshoot">
-                            <button className="new-shoot-fab floating-action-button">
-                                <i className="fas fa-plus-circle fab-icon"></i>
-                            </button>
+                        <Link to="/dashboard/newshoot" className="new-shoot-btn">
+                          <div className="new-shoot-btn">
+                            <i class="material-icons">add</i>
+                            <p>New Shoot</p>
+                          </div>
                         </Link>
                     </div>
                 );
@@ -40,10 +41,11 @@ export class PhotoshootGrid extends React.Component {
                 return(
                     <div className="photoshootGrid">
                         {photoshoots}
-                        <Link to="/dashboard/newshoot">
-                            <button className="new-shoot-fab floating-action-button">
-                                <i className="fas fa-plus-circle fab-icon"></i>
-                            </button>
+                        <Link to="/dashboard/newshoot" className="new-shoot-btn">
+                          <div className="new-shoot-btn">
+                            <i class="material-icons">add</i>
+                            <p>New Shoot</p>
+                          </div>
                         </Link>
                     </div>
                 );
