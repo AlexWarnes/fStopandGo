@@ -34,16 +34,16 @@ export const Menu = (props) => {
         </div>
         <section>
           <Link to="/dashboard">
-            <p className="menu-item"><i className="fas fa-home menu-icon"></i>Dashboard</p>
+            <p className="menu-item" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-home menu-icon"></i>Dashboard</p>
           </Link>
           <Link to="/dashboard/map">
-            <p className="menu-item feature-pending"><i className="fas fa-map menu-icon"></i>Map View (feature pending)</p>
+            <p className="menu-item feature-pending" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-map menu-icon"></i>Map View (feature pending)</p>
           </Link>
           <Link to="/dashboard/learning">
-            <p className="menu-item feature-pending"><i className="fas fa-lightbulb menu-icon"></i>Learning Center (feature pending)</p>
+            <p className="menu-item feature-pending" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-lightbulb menu-icon"></i>Learning Center (feature pending)</p>
           </Link>
           <Link to="/">
-            <p className="menu-item"><i className="fas fa-info-circle menu-icon"></i>About</p>
+            <p className="menu-item" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-info-circle menu-icon"></i>About</p>
           </Link>
         </section>
         <section>
