@@ -11,7 +11,6 @@ import Menu from './components/navigation/Menu';
 
 
 export const App = (props) => {
-
 	return(
 		<Router>
 			<div className="app">

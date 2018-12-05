@@ -8,6 +8,7 @@ import { deletePhotoshoot } from '../../store/actions/photoshootActions'
 import { toggleWarning } from '../../store/actions/uiActions';
 
 export const SingleShoot = (props) => {
+
     const shoot = props.photoshoots.find((item) => item.id === props.match.params.shootId);
     
     let gearList;

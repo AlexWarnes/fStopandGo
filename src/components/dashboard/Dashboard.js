@@ -18,7 +18,6 @@ export class Dashboard extends React.Component {
 	}
 
 	render(){
-		console.log('DASHBOARD RENDER!!!', this.props.isLoggedIn)
 		switch (this.props.isLoggedIn) {
 			case true:
 				return (

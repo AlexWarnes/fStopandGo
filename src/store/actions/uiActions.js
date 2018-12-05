@@ -44,3 +44,9 @@ export const clearValidationError = () => ({
   type: CLEAR_VALIDATION_ERROR
   
 })
+
+export const CURRENT_VIEW = 'CURRENT_VIEW';
+export const setCurrentView = (currentView) => ({
+  type: CURRENT_VIEW,
+  currentView
+})

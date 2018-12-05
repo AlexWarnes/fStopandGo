@@ -1,11 +1,19 @@
-import { TOGGLE_MENU, TOGGLE_WARNING, TOGGLE_ERROR, DISPLAY_VALIDATION_ERROR, CLEAR_VALIDATION_ERROR } from "../actions/uiActions";
+import { 
+  TOGGLE_MENU,
+  TOGGLE_WARNING,
+  TOGGLE_ERROR,
+  DISPLAY_VALIDATION_ERROR,
+  CLEAR_VALIDATION_ERROR,
+  CURRENT_VIEW 
+} from "../actions/uiActions";
 
 const initialState = {
     menuIsOpen: false,
     warningIsDisplayed: false,
     errorIsDisplayed: false,
     isValidationError: false,
-    validationMessage: null
+    validationMessage: null,
+    currentView: null
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -37,6 +45,11 @@ const uiReducer = (state = initialState, action) => {
                 isValidationError: false,
                 validationMessage: null
             });
+        case CURRENT_VIEW:
+            return Object.assign({}, state, {
+              ...state,
+              currentView: action.currentView
+            })
         default:
             return state;
     }

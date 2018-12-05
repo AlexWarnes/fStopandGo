@@ -7,7 +7,6 @@ import { displayValidationError, clearValidationError } from '../../store/action
 import ValidationError from '../universal/ValidationError';
 
 
-
 import './forms.css';
 
 const LoginForm = (props) => {
