@@ -1,21 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import Header from './Header';
+import AppDescription from './AppDescription';
 
 import './Landing.css';
 
-import Header from './Header';
-// import LandingActions from './LandingActions';
-import AppDescription from './AppDescription';
 
-export const Landing = () => {
-    return(
-        <div>
-            {/* <LandingActions />     */}
-            <header className="landing-header">
-                <Header />
-            </header>
-            <AppDescription />
-        </div>
-    );
+export const Landing = (props) => {
+  return(
+    <div>
+      <header className="landing-header">
+          <Header userStatus={props.isLoggedIn}/>
+      </header>
+      <AppDescription />
+    </div>
+  );
 }
 
-export default Landing;
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.auth.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps)(Landing);

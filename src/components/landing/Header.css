@@ -12,18 +12,18 @@
   color: #FFFFFF;
 }
 
-.header-intro {
+.header {
   width: 70%;
 }
 
-.header-intro h1 {
+.header h1 {
   font-weight: 100;
   font-size: 2.2em;
   letter-spacing: .12rem;
   font-family: 'Palatino', serif;
 }
 
-.header-intro p {
+.header p {
   font-weight: 100;
   line-height: 24px;
   border-left: 2px solid #e29191;
