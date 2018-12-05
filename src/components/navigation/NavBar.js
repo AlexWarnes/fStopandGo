@@ -7,7 +7,6 @@ import './NavBar.css';
 import { toggleMenu } from '../../store/actions/uiActions';
 
 export const NavBar = (props) => {
-
   switch(props.isLoggedIn) {
     case true:
       return(
