@@ -31,7 +31,7 @@ export class PhotoshootGrid extends React.Component {
                         <p>Click the + button to create a new shoot.</p>
                         <Link to="/dashboard/newshoot" className="new-shoot-btn">
                           <div className="new-shoot-btn">
-                            <i class="material-icons">add</i>
+                            <i className="material-icons">add</i>
                             <p>New Shoot</p>
                           </div>
                         </Link>
@@ -43,7 +43,7 @@ export class PhotoshootGrid extends React.Component {
                         {photoshoots}
                         <Link to="/dashboard/newshoot" className="new-shoot-btn">
                           <div className="new-shoot-btn">
-                            <i class="material-icons">add</i>
+                            <i className="material-icons">add</i>
                             <p>New Shoot</p>
                           </div>
                         </Link>
