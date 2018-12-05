@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Burger from './Burger';
 
 import './NavBar.css';
+import { toggleMenu } from '../../store/actions/uiActions';
 
 export const NavBar = (props) => {
 
@@ -20,7 +21,7 @@ export const NavBar = (props) => {
             <Link to="/dashboard" className="navbar-link">
               Dashboard
             </Link>
-            <Burger />
+            <Burger menuStatus={props.menuIsOpen} onClick={()=>props.dispatch(toggleMenu())}/>
           </section>
         </div>
       );
@@ -45,7 +46,8 @@ export const NavBar = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        isLoggedIn: state.auth.isLoggedIn
+        isLoggedIn: state.auth.isLoggedIn,
+        menuIsOpen: state.ui.menuIsOpen
     }
 }
 
