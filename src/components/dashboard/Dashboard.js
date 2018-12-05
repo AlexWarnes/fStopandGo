@@ -6,11 +6,8 @@ import PhotoshootGrid from './PhotoshootGrid';
 import SingleShoot from './SingleShoot';
 import NewShoot from '../forms/NewShoot';
 import EditShoot from '../forms/EditShoot';
-import Menu from '../navigation/Menu';
 
 import { getUserInfo } from '../../store/actions/authActions';
-
-// import AppDescription from './AppDescription';
 
 import './Dashboard.css';
 
@@ -26,7 +23,6 @@ export class Dashboard extends React.Component {
 			case true:
 				return (
 					<div className="dashboard">
-            <Menu />
 						<Switch>
 							<Route exact path="/dashboard" component={PhotoshootGrid} />                    
 							{/* <Route path="/dashboard/about" component={AppDescription} /> */}

@@ -7,13 +7,16 @@ import CreateAcctForm from './components/forms/CreateAcct';
 import LoginForm from './components/forms/Login';
 import { Error } from './components/universal/Error';
 import NavBar from './components/navigation/NavBar';
+import Menu from './components/navigation/Menu';
+
 
 export const App = (props) => {
 
 	return(
 		<Router>
 			<div className="app">
-				{/* <Error /> */}
+        {/* <Error /> */}
+        <Menu />
 				<NavBar />
 				<Switch>
 					<Route exact path="/" component={Landing} />
