@@ -32,15 +32,11 @@ export const SingleShoot = (props) => {
                 message='Are you sure you want to delete this shoot?'
                 affirmTxt='Yes, delete this shoot.'
             />
-            <main>
-                <Link to='/dashboard'>
-                    <i className="fas fa-chevron-left back-to-dash-icon"></i>
-                    <p className="back-to-dash">Back to Dashboard</p>
-                </Link>
+            <div>
                 <section className="shoot">
                     <div className="shoot-header">
                         <h2 className="shoot-title">{shoot.title}</h2>
-                        <p className="shoot-location">{shoot.location.name}</p>
+                        <p className="shoot-location">{shoot.location}</p>
                     </div>
 
                     <article className="shoot-description-box">
@@ -53,21 +49,23 @@ export const SingleShoot = (props) => {
                         </ul>
                     </article>
                 </section>
-                <div className="app-bar-actions">
+                <div className="btn-container-row">
+                  <div className="btn-box">
                     <Link to={`/dashboard/editshoot/${props.match.params.shootId}`}>
-                        <button className="edit-shoot-btn app-bar-btn">
-                            <i className="far fa-edit app-bar-icon"></i>
+                        <button className="btn btn-lightgrey">
+                            <i className="far fa-edit btn-icon"></i>
                             Edit Shoot
                         </button>
                     </Link>
 
-                    <button className="delete-shoot-btn app-bar-btn"
+                    <button className="btn btn-red"
                         onClick={()=> props.dispatch(toggleWarning(true))}>
-                        <i className="far fa-trash-alt app-bar-icon"></i>
+                        <i className="far fa-trash-alt btn-icon"></i>
                         Delete
                     </button>
+                  </div>
                 </div>
-            </main>
+            </div>
         </div>
     );
 };

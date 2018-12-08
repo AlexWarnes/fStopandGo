@@ -15,24 +15,13 @@ main {
 
 .about-icon {
   font-size: 40px;
-}
-
-.about-icon.fa-check-circle {
-  color: rgb(196, 105, 105);
-}
-
-.about-icon.fa-camera {
-  color: rgb(32, 178, 122);
-}
-
-.about-icon.fa-lightbulb {
-  color: rgb(80, 129, 219);
+  color: #00b585;
 }
   
 .landing-footer {
   width: 100%;
   padding: 10px 0 0;
-  background-color: #4b5a71;
+  background-color: #101f27;
   color: #ffffff;
 }
 

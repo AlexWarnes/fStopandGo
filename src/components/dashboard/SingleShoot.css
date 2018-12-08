@@ -1,8 +1,66 @@
-.back-to-dash, .back-to-dash-icon {
-    color: lightslategray;
+.shoot {
+  padding: 30px 20px;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f0f8ff;
 }
 
-.back-to-dash {
-    display: inline-block;
-    margin: 10px 0 0 5px;
+.shoot-title {
+  width: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  color: #37464f;
+  margin: 0 0 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #1de8b5;
+  font-weight: 200;
+  font-size: 2em;
+  letter-spacing: .1rem;
+}
+
+.shoot-location {
+  margin: 0;
+  color: #62717b;
+  font-weight: 100;
+  font-size: 1em;
+}
+
+.shoot-description {
+  margin: 20px 0 20px 0;
+}
+
+.shoot-gearList-box {
+  margin: 20px 0;
+  padding: 15px;
+  color:#FFFFFF;
+  background-color: #62717b;
+  border-radius: 5px;
+
+}
+
+.shoot-gearList-box h3 {
+  width: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  margin: 0 0 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #1de8b5;
+  font-weight: 200;
+  font-size: 1.2em;
+  letter-spacing: .08rem;
+}
+
+.shoot-gearList {
+  list-style: none;
+  padding: 0;
+}
+
+.gearList-item {
+  width: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  margin: 10px 0;
+  padding: 12px;
+  background-color: #101f27;
+  border-radius: 5px;
 }

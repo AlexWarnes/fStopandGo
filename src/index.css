@@ -16,6 +16,7 @@ main {
 .app {
   width: 100%;
   min-height: 100vh;
+  background-color: #fafdff;
 }
 
 a {
@@ -54,8 +55,8 @@ button:hover {
   color: #FFFFFF;
 }
 
-.btn-blue {
-  background-color: steelblue;
+.btn-lightgrey {
+  background-color: #62717b;
 }
 
 .btn-green {

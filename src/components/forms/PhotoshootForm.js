@@ -15,13 +15,6 @@ const renderField = ({ input, label, meta: { touched, error } }) => (
 
 const renderGearList = ({ fields, meta: { error } }) => (
 	<ul className="shoot-form-gearList">
-		<li className="add-gear">
-			<button className="add-gear-btn" type="button" onClick={() => fields.push()}>
-				<i className="far fa-plus-square add-gear-icon"></i>
-				Add Gear
-			</button>
-		</li>
-		
 		{fields.map((item, index) => (
 			<li className="gearList-entry" key={index}>
 				
@@ -33,14 +26,20 @@ const renderGearList = ({ fields, meta: { error } }) => (
 				/>
 				
 				<button
-					className="remove-gear-btn"
+					className="remove-gear-btn btn-red"
 					type="button"
 					title="Remove Item"
 					onClick={() => fields.remove(index)}>
 					<i className="fas fa-trash-alt"></i>
 				</button>
 			</li>
-		))}
+    ))}
+    <li className="add-gear">
+			<button className="add-gear-btn btn btn-lightgrey" type="button" onClick={() => fields.push()}>
+				<i className="far fa-plus-square add-gear-icon"></i>
+				Add Gear
+			</button>
+		</li>
 		{error && <li className="error">{error}</li>}
 	</ul>
 )
@@ -74,15 +73,17 @@ const PhotoshootForm = (props) => {
                 </div>
             </div>
             <FieldArray name="gearList" component={renderGearList} />
-            <div className="app-bar-actions">
-                <button className="app-bar-btn save-shoot-btn" type="submit" disabled={pristine || submitting}>
-					<i className="far fa-check-circle app-bar-icon nav-complete"></i>
-					Save Shoot
+            <div className="btn-container-row">
+              <div className="btn-box">
+                <button className="btn btn-green" type="submit" disabled={pristine || submitting}>
+                  <i className="far fa-check-circle btn-icon"></i>
+                    Save Shoot
                 </button>
-                <button className="app-bar-btn cancel-btn" type="button" disabled={submitting} onClick={()=> cancel()}>
-					<i className="far fa-times-circle app-bar-icon nav-cancel"></i>
-					Cancel
+                <button className="btn btn-grey" type="button" disabled={submitting} onClick={()=> cancel()}>
+                  <i className="far fa-times-circle btn-icon"></i>
+                  Cancel
                 </button>
+              </div>
             </div>
         </form>
     )
