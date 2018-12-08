@@ -13,16 +13,22 @@ export const NavBar = (props) => {
       return(
         <div className="navbar">
           <Link to="/">
-              <p className="logo">
+              {/* <p className="logo"> */}
                   <i className="material-icons logo-icon">filter_center_focus</i>
-              </p>
+              {/* </p> */}
           </Link>
           <section className="navbar-main">
             <Link to="/dashboard" className="navbar-link">
               Dashboard
             </Link>
-            <Burger menuStatus={props.menuIsOpen} onClick={()=>props.dispatch(toggleMenu())}/>
+            <Link to="/map" className="navbar-link">
+              Map
+            </Link>
+            <Link to="/learning" className="navbar-link">
+              Learn
+            </Link>
           </section>
+          <Burger menuStatus={props.menuIsOpen} onClick={()=>props.dispatch(toggleMenu())}/>
         </div>
       );
     default:

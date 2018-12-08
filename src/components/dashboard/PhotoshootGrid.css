@@ -3,50 +3,80 @@
 }
 
 .shoot-card {
-  width: 100%;
+  height: 175px;
   margin: 15px auto;
   padding: 10px;
-  border: 1px solid lightgrey;
+  border: 1px solid #62717b10;
   border-radius: 5px;
+  box-shadow: 2px 2px 4px #62717b2F;
+  overflow: scroll;
+  transition: all .2s;
+}
+
+.shoot-card-title {
+  width: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  color: #37464f;
+  margin: 5px 0 10px 0;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  border-bottom: 2px solid #1de8b5;
+  font-weight: 200;
+  font-size: 1.5em;
+}
+
+.shoot-card-location {
+  margin: 0;
+  padding-left: 10px;
+  color: #62717b;
+  font-weight: 100;
+  font-size: .8em;
+}
+
+.shoot-card-description {
+  padding: 10px;
+  margin: 10px 0 0 0;
 }
   
 .shoot-card:hover {
   cursor: pointer;
-  box-shadow: 5px 5px 5px lightgray;
-}
-
-.floating-action-button {
-  background: none;
-  border: none;
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
-  left: calc(50% - 20px);
-  font-size: 45px;
-  padding: 0;
-}
-
-.fab-icon {
-  color: #4682b4;
-  background-color: #FFFFFF;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  box-shadow: 4px 4px 16px #62717b2F;
 }
 
 .new-shoot-btn {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #223145;
-  border-radius: 10px;
-  background-color: #61e4a6;
-  margin: 15px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #62717b2F;
+  background-color: #6dffe7;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.new-shoot-btn:hover {
+  box-shadow: 0 0 16px #62717b2F;
 }
 
 .new-shoot-btn p {
   margin: 5px 0 0;
+}
+ 
+@media only screen and (min-width: 640px) {
+  .shoot-card {
+    margin: 15px 15px;
+  }
+
+  .new-shoot-btn {
+    position: relative;
+    top: unset;
+    bottom: unset;
+    margin: 70px auto;
+  }
 }

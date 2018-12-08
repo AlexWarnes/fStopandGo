@@ -15,9 +15,9 @@ export class PhotoshootGrid extends React.Component {
         //TODO: Make component ShootSummaryCard for this?
         const photoshoots = this.props.photoshoots.map(shoot => (
             <Link to={`/dashboard/shoot/${shoot.id}`} key={shoot.id}>
-                <div className="shoot-card" >
+                <div className="shoot-card col-4" >
                     <h3 className="shoot-card-title">{shoot.title}</h3>
-                    <p className="shoot-card-location">{shoot.location.name}</p>
+                    <p className="shoot-card-location">{shoot.location}</p>
                     <p className="shoot-card-description">{shoot.description}</p>
                 </div>
             </Link>
@@ -41,10 +41,9 @@ export class PhotoshootGrid extends React.Component {
                 return(
                     <div className="photoshootGrid">
                         {photoshoots}
-                        <Link to="/dashboard/newshoot" className="new-shoot-btn">
+                        <Link to="/dashboard/newshoot">
                           <div className="new-shoot-btn">
                             <i className="material-icons">add</i>
-                            <p>New Shoot</p>
                           </div>
                         </Link>
                     </div>
