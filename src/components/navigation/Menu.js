@@ -36,10 +36,10 @@ export const Menu = (props) => {
           <Link to="/dashboard">
             <p className="menu-item" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-home menu-icon"></i>Dashboard</p>
           </Link>
-          <Link to="/dashboard/map">
+          <Link to="/map">
             <p className="menu-item feature-pending" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-map menu-icon"></i>Map View (feature pending)</p>
           </Link>
-          <Link to="/dashboard/learning">
+          <Link to="/resources">
             <p className="menu-item feature-pending" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-lightbulb menu-icon"></i>Learning Center (feature pending)</p>
           </Link>
           <Link to="/">

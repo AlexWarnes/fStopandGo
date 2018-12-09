@@ -8,6 +8,8 @@ import LoginForm from './components/forms/Login';
 import Error from './components/universal/Error';
 import NavBar from './components/navigation/NavBar';
 import Menu from './components/navigation/Menu';
+import Resources from './components/resources/Resources';
+import MapView from './components/map/MapView';
 
 
 export const App = (props) => {
@@ -23,8 +25,8 @@ export const App = (props) => {
 				<Switch>
 					<Route exact path="/" component={Landing} />
 					<Route path="/dashboard" component={Dashboard} />
-          {/* <Route path="/map" component={MapView} />
-          <Route path="/learning" component={Learning} /> */}
+          <Route path="/map" component={MapView} />
+          <Route path="/resources" component={Resources} />
 					<Route path="/createaccount" component={CreateAcctForm} />
 					<Route path="/login" component={LoginForm} />
 					<Route component={Error} />

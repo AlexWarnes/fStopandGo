@@ -24,7 +24,7 @@ export const NavBar = (props) => {
             <Link to="/map" className="navbar-link">
               Map
             </Link>
-            <Link to="/learning" className="navbar-link">
+            <Link to="/resources" className="navbar-link">
               Learn
             </Link>
           </section>

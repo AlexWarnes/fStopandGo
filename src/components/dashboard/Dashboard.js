@@ -24,7 +24,6 @@ export class Dashboard extends React.Component {
 					<div className="dashboard">
 						<Switch>
 							<Route exact path="/dashboard" component={PhotoshootGrid} />                    
-							{/* <Route path="/dashboard/about" component={AppDescription} /> */}
 							<Route path="/dashboard/shoot/:shootId" component={SingleShoot} />
 							<Route path="/dashboard/newshoot" component={NewShoot} />
 							<Route path="/dashboard/editshoot/:shootId" component={EditShoot} />
