@@ -29,6 +29,12 @@
   margin: 0;
 }
 
+.menu-username {
+  font-weight: 200;
+  font-size: 1.2em;
+  letter-spacing: .08rem;
+}
+
 .menu-item {
   height: 55px;
   margin: 0;

@@ -1,12 +1,8 @@
 .greeting {
-  width: fit-content;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
   color: #37464f;
   margin: 5px 0 10px 0;
   padding-bottom: 5px;
   padding-left: 10px;
-  border-bottom: 2px solid #1de8b5;
   font-weight: 200;
   font-size: 1.5em;
 }
@@ -67,15 +63,23 @@
   align-items: center;
   color: #223145;
   border-radius: 50%;
-  box-shadow: 0 0 8px #62717b2F;
+  box-shadow: 4px 4px 8px #00000015;
   background-color: #6dffe7;
   position: fixed;
   bottom: 30px;
   right: 30px;
 }
 
+.new-shoot-btn i {
+  transition: all ease-out .4s;
+}
+
 .new-shoot-btn:hover {
-  box-shadow: 0 0 16px #62717b2F;
+  box-shadow: 8px 8px 10px #00000025;
+}
+
+.new-shoot-btn:hover i {
+  transform: rotate(270deg);
 }
 
 .new-shoot-btn p {
@@ -101,6 +105,8 @@
   }
 
   .new-shoot-btn i {
+    width: 28px;
+    height: 28px;
     font-size: 1.8em;
   }
 

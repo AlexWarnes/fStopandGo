@@ -40,7 +40,7 @@ export const Menu = (props) => {
             <p className="menu-item feature-pending" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-map menu-icon"></i>Map View (feature pending)</p>
           </Link>
           <Link to="/resources">
-            <p className="menu-item feature-pending" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-lightbulb menu-icon"></i>Learning Center (feature pending)</p>
+            <p className="menu-item feature-pending" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-lightbulb menu-icon"></i>Resources (feature pending)</p>
           </Link>
           <Link to="/">
             <p className="menu-item" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-info-circle menu-icon"></i>About</p>

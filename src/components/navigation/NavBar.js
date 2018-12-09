@@ -19,13 +19,8 @@ export const NavBar = (props) => {
           </Link>
           <section className="navbar-main">
             <Link to="/dashboard" className="navbar-link">
+              <i class="material-icons navbar-icon">dashboard</i>
               Dashboard
-            </Link>
-            <Link to="/map" className="navbar-link">
-              Map
-            </Link>
-            <Link to="/resources" className="navbar-link">
-              Learn
             </Link>
           </section>
           <Burger menuStatus={props.menuIsOpen} onClick={()=>props.dispatch(toggleMenu())}/>
