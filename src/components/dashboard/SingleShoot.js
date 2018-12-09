@@ -54,7 +54,7 @@ export const SingleShoot = (props) => {
                     <Link to={`/dashboard/editshoot/${props.match.params.shootId}`}>
                         <button className="btn btn-lightgrey">
                             <i className="far fa-edit btn-icon"></i>
-                            Edit Shoot
+                            Edit
                         </button>
                     </Link>
 

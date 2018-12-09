@@ -26,13 +26,13 @@ export class PhotoshootGrid extends React.Component {
         switch (this.props.photoshoots.length){
             case (0):
                 return (
-                    <div>
-                        <h2>Hi {this.props.username}, you don't have any photoshoots yet!</h2>
-                        <p>Click the + button to create a new shoot.</p>
-                        <Link to="/dashboard/newshoot" className="new-shoot-btn">
+                    <div className="photoshootGrid">
+                        <h2 className="greeting">Hi {this.props.username}</h2>
+                        <p>You don't have any photoshoots yet!</p>
+                        <Link to="/dashboard/newshoot">
                           <div className="new-shoot-btn">
                             <i className="material-icons">add</i>
-                            <p>New Shoot</p>
+                            <p>Photoshoot</p>
                           </div>
                         </Link>
                     </div>
@@ -40,10 +40,12 @@ export class PhotoshootGrid extends React.Component {
             default:
                 return(
                     <div className="photoshootGrid">
+                    <h2 className="greeting">Hi {this.props.username}</h2>
                         {photoshoots}
                         <Link to="/dashboard/newshoot">
                           <div className="new-shoot-btn">
                             <i className="material-icons">add</i>
+                            <p>Photoshoot</p>
                           </div>
                         </Link>
                     </div>

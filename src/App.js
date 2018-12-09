@@ -11,6 +11,9 @@ import Menu from './components/navigation/Menu';
 
 
 export const App = (props) => {
+
+  // TODO: add a call to wake up the API server so Heroku doesn't sleep on users trying to fetch/login
+
 	return(
 		<Router>
 			<div className="app">

@@ -32,11 +32,12 @@ button:hover {
   display: flex;
   align-items: center;
   color: #FFFFFF;
-  padding: 15px;
   border: none;
   border-radius: 3px;
   margin: 5px;
+  padding: 10px;
   box-shadow: 4px 4px 8px #00000015;
+  font-size: .8em;
   text-align: center;
   transition: all .3s;
 }
@@ -62,4 +63,11 @@ button:hover {
 .btn-green {
   background-color: #1de8b5;
   color: #000000;
+}
+
+@media only screen and (min-width: 640px) {
+  .btn {
+    font-size: 1em;
+    padding: 15px;
+  }
 }
