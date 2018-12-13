@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../../config/config";
 
 export const TOGGLE_MENU = 'TOGGLE_MENU';
 export const toggleMenu = () => ({
@@ -50,3 +51,26 @@ export const setCurrentView = (currentView) => ({
   type: CURRENT_VIEW,
   currentView
 })
+
+export const SERVER_AWAKE = 'SERVER_AWAKE';
+export const serverAwake = () => ({
+  type: SERVER_AWAKE
+})
+
+export const SERVER_ASLEEP = 'SERVER_ASLEEP';
+export const serverAsleep = () => ({
+  type: SERVER_ASLEEP
+})
+
+export const SERVER_DOWN = 'SERVER_DOWN';
+export const serverDown = () => ({
+  type: SERVER_DOWN
+})
+
+export const getServerStatus = () => dispatch => {
+  dispatch(serverAsleep());
+  fetch(`${API_BASE_URL}/api/status`, {
+    method: 'GET',
+  }).then(() => dispatch(serverAwake()))
+  .catch(()=> dispatch(serverDown()))
+}

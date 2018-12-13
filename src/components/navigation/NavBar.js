@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Burger from './Burger';
+import Logo from './Logo';
 
 import './NavBar.css';
 import { toggleMenu } from '../../store/actions/uiActions';
@@ -12,11 +13,7 @@ export const NavBar = (props) => {
     case true:
       return(
         <div className="navbar">
-          <Link to="/">
-              {/* <p className="logo"> */}
-                  <i className="material-icons logo-icon">filter_center_focus</i>
-              {/* </p> */}
-          </Link>
+          <Logo status={props.serverStatus} logoSize={'small'} />
           <section className="navbar-main">
             <Link to="/dashboard" className="navbar-link">
               <i className="fas fa-th-large navbar-icon"></i>
@@ -29,12 +26,7 @@ export const NavBar = (props) => {
     default:
       return(
         <div className="navbar">
-          <Link to="/">
-            <p className="logo">
-              <i className="material-icons logo-icon">filter_center_focus</i>
-              f/StopandGo
-            </p>
-          </Link>
+          <Logo status={props.serverStatus} logoSize={'large'} />
           <section className="navbar-main">
             <Link to="/login" className="navbar-link">Login</Link>
             {/* TODO: Create launchDemo action */}
@@ -49,7 +41,8 @@ const mapStateToProps = (state) => {
     return {
         isLoggedIn: state.auth.isLoggedIn,
         menuIsOpen: state.ui.menuIsOpen,
-        currentView: state.ui.currentView
+        currentView: state.ui.currentView,
+        serverStatus: state.ui.serverStatus
     }
 }
 

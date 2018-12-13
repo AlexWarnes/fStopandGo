@@ -5,6 +5,7 @@ import { toggleMenu, toggleWarning } from '../../store/actions/uiActions';
 import { resetState, deleteUser } from '../../store/actions/authActions';
 import { clearAuthToken } from '../../store/localStorage';
 
+import Logo from './Logo';
 import Warning from '../universal/Warning';
 
 import './Menu.css';
@@ -28,10 +29,11 @@ export const Menu = (props) => {
     return(
       <div className="menu">
         <div className="menu-header">
-          <p className="logo">
+          {/* <p className="logo">
             <i className="material-icons logo-icon">filter_center_focus</i>
             f/StopandGo
-          </p>
+          </p> */}
+          <Logo status={props.serverStatus} logoSize={'large'} />
           <h3 className="menu-username">{props.username}</h3>
         </div>
         <section>
@@ -79,7 +81,8 @@ const mapStateToProps = (state) => {
         username: state.auth.username,
         userJWT: state.auth.userJWT,
         userID: state.auth.userID,
-        menuIsOpen: state.ui.menuIsOpen
+        menuIsOpen: state.ui.menuIsOpen,
+        serverStatus: state.ui.serverStatus
     }
 }
 

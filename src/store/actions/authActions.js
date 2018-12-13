@@ -22,7 +22,6 @@ const { API_BASE_URL } = require('../../config/config');
 // })
 
 
-// BREAK
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
     type: SET_AUTH_TOKEN,
@@ -51,11 +50,6 @@ export const authError = error => ({
     error
 });
 
-
-// BREAK
-
-
-
 export const SET_USER_INFO = 'SET_USER_INFO';
 export const setUserInfo = (data) => ({
   type: SET_USER_INFO,
@@ -81,6 +75,7 @@ export const demoLogin = () => ({
 });
 
 export const getUserInfo = (userID, userJWT) => dispatch => {
+  console.log('GETTING USER INFO')
   fetch(`${API_BASE_URL}/api/users/${userID}`, {
     method: 'GET',
     headers: {
@@ -106,6 +101,7 @@ const storeAuthInfo = (authInfo, dispatch) => {
   dispatch(setAuthToken(JWT));
   dispatch(authSuccess(userID));
   saveAuthToken(JWT);
+  dispatch(getUserInfo(userID, JWT));
 }
 
 export const login = (creds) => dispatch => {

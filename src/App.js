@@ -13,11 +13,14 @@ import Resources from './components/resources/Resources';
 import MapView from './components/map/MapView';
 
 import { refreshAuthToken } from './store/actions/authActions';
+import { getServerStatus } from './store/actions/uiActions';
 
 
 export class App extends React.Component {
 
-  // TODO: add a call to wake up the API server so Heroku doesn't sleep on users trying to fetch/login
+  componentDidMount() {
+    this.props.dispatch(getServerStatus());
+  }
 
   componentDidUpdate(prevProps) {
     if (!prevProps.isLoggedIn && this.props.isLoggedIn) {
