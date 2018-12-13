@@ -1,4 +1,14 @@
-import { NEW_SHOOT, UPDATE_SHOOT_SUCCESS, DELETE_SHOOT_SUCCESS, DEMO_DATA, SET_PHOTOSHOOTS } from "../actions/photoshootActions";
+import { 
+  NEW_SHOOT, 
+  UPDATE_SHOOT_SUCCESS, 
+  DELETE_SHOOT_SUCCESS, 
+  DEMO_DATA, 
+  SET_PHOTOSHOOTS,
+} from "../actions/photoshootActions";
+
+import { 
+  RESET_STATE 
+} from "../actions/authActions";
 
 const initialState = {
     photoshoots: []
@@ -46,6 +56,11 @@ const photoshootReducer = (state = initialState, action) => {
                 ...state,
                 photoshoots: action.photoshoots
             })
+            case RESET_STATE:
+            console.log('TRYING TO RESET PHOTOSHOOT STATE')
+              return Object.assign({}, state, {
+                ...initialState
+              })
         default:
             return state;
     }

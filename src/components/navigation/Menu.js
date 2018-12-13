@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggleMenu, toggleWarning } from '../../store/actions/uiActions';
-import { logout, deleteUser } from '../../store/actions/authActions';
+import { resetState, deleteUser } from '../../store/actions/authActions';
+import { clearAuthToken } from '../../store/localStorage';
+
 import Warning from '../universal/Warning';
 
 import './Menu.css';
@@ -11,8 +13,8 @@ export const Menu = (props) => {
   const { dispatch } = props;
   
   const handleLogout = () => {
-    dispatch(toggleMenu());
-    dispatch(logout());
+    clearAuthToken();
+    dispatch(resetState());
   }
 
   const handleDeleteUser = (userID, userJWT) => {
@@ -34,7 +36,7 @@ export const Menu = (props) => {
         </div>
         <section>
           <Link to="/dashboard">
-            <p className="menu-item" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-home menu-icon"></i>Dashboard</p>
+            <p className="menu-item" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-th-large menu-icon"></i>Dashboard</p>
           </Link>
           <Link to="/map">
             <p className="menu-item feature-pending" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-map menu-icon"></i>Map View (feature pending)</p>

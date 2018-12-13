@@ -19,7 +19,7 @@ export const NavBar = (props) => {
           </Link>
           <section className="navbar-main">
             <Link to="/dashboard" className="navbar-link">
-              <i class="material-icons navbar-icon">dashboard</i>
+              <i className="fas fa-th-large navbar-icon"></i>
               Dashboard
             </Link>
           </section>

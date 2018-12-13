@@ -1,8 +1,8 @@
 import React from 'react'; 
 import { connect } from 'react-redux';
-import { Field, reduxForm, focus } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router-dom';
-import { createNewUser, getToken } from '../../store/actions/authActions';
+import { createNewUser, login } from '../../store/actions/authActions';
 import { displayValidationError, clearValidationError } from '../../store/actions/uiActions';
 import {required, nonEmpty, matches, length, isTrimmed} from '../../store/validators';
 import ValidationError from '../universal/ValidationError';
@@ -26,7 +26,7 @@ export const CreateAcctForm = (props) => {
 			password: userData.password 
 		}
 		return dispatch(createNewUser(userData))
-		.then(() => dispatch(getToken(credentials)))
+		.then(() => dispatch(login(credentials)))
 		.then(() => dispatch(clearValidationError()));
 	}
 

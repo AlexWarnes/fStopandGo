@@ -7,6 +7,10 @@ import {
   CURRENT_VIEW 
 } from "../actions/uiActions";
 
+import { 
+  RESET_STATE 
+} from "../actions/authActions";
+
 const initialState = {
     menuIsOpen: false,
     warningIsDisplayed: false,
@@ -50,6 +54,10 @@ const uiReducer = (state = initialState, action) => {
               ...state,
               currentView: action.currentView
             })
+        case RESET_STATE:
+          return Object.assign({}, state, {
+            ...initialState
+        });
         default:
             return state;
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router-dom';
-import { getToken} from '../../store/actions/authActions';
+import { login } from '../../store/actions/authActions';
 import { displayValidationError, clearValidationError } from '../../store/actions/uiActions';
 import ValidationError from '../universal/ValidationError';
 
@@ -18,17 +18,13 @@ const LoginForm = (props) => {
 		dispatch(clearValidationError());
 	}
 
-	const logUserIn = (credentials) => {
-		dispatch(getToken(credentials))
-	}
-
 	switch (props.isLoggedIn){
 		case true:
 			return <Redirect to="/dashboard" />
 		default:
 			return(
 				<section className="acct-action-container">
-					<form onSubmit={handleSubmit(credentials => logUserIn(credentials))} className="login-form acct-action-form">
+					<form onSubmit={handleSubmit(credentials => dispatch(login(credentials)))} className="login-form acct-action-form">
 						<label htmlFor="login-username">Username</label>
 						<Field name="username" component="input" type="text" autoComplete="off" required={true} />
 
