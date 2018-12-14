@@ -64,7 +64,7 @@ export const resetState = () => ({
 
 export const logout = () => dispatch => {
   clearAuthToken();
-  dispatch(resetState);
+  dispatch(resetState());
 }
 
 export const DEMO_LOGIN = 'DEMO_LOGIN';

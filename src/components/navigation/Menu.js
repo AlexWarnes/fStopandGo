@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggleMenu, toggleWarning } from '../../store/actions/uiActions';
-import { resetState, deleteUser } from '../../store/actions/authActions';
-import { clearAuthToken } from '../../store/localStorage';
+import { deleteUser, logout } from '../../store/actions/authActions';
 
 import Logo from './Logo';
 import Warning from '../universal/Warning';
@@ -14,14 +13,12 @@ export const Menu = (props) => {
   const { dispatch } = props;
   
   const handleLogout = () => {
-    clearAuthToken();
-    dispatch(resetState());
+    dispatch(logout());
   }
 
   const handleDeleteUser = (userID, userJWT) => {
-    dispatch(toggleMenu());
-    dispatch(toggleWarning());
     dispatch(deleteUser(userID, userJWT));
+    dispatch(logout());
   }
 
   switch(props.menuIsOpen){
