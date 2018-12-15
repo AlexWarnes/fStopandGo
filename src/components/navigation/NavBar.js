@@ -6,20 +6,26 @@ import Logo from './Logo';
 
 import './NavBar.css';
 import { toggleMenu } from '../../store/actions/uiActions';
+import { login } from '../../store/actions/authActions';
 
 export const NavBar = (props) => {
+
+  const demoCredentials = {
+    username: 'demoUser',
+    password: 'demoUserPW'
+  }
 
   switch(props.isLoggedIn) {
     case true:
       return(
         <div className="navbar">
           <Logo status={props.serverStatus} logoSize={'small'} />
-          <section className="navbar-main">
+          <div className="navbar-main">
             <Link to="/dashboard" className="navbar-link">
               <i className="fas fa-th-large navbar-icon"></i>
               Dashboard
             </Link>
-          </section>
+          </div>
           <Burger menuStatus={props.menuIsOpen} onClick={()=>props.dispatch(toggleMenu())}/>
         </div>
       );
@@ -27,11 +33,10 @@ export const NavBar = (props) => {
       return(
         <div className="navbar">
           <Logo status={props.serverStatus} logoSize={'large'} />
-          <section className="navbar-main">
+          <div className="navbar-main">
             <Link to="/login" className="navbar-link">Login</Link>
-            {/* TODO: Create launchDemo action */}
-            <Link to="/"  className="navbar-link" >Demo</Link>
-          </section>
+            <p  className="navbar-link" onClick={()=> props.dispatch(login(demoCredentials))}>Demo</p>
+          </div>
         </div>
       );
   }
