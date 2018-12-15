@@ -8,8 +8,8 @@ export const Burger = (props) => {
   props.menuStatus === true ? menuStatus = 'open' : menuStatus = null;
 
   return(
-    <div className="burger-box">
-      <div className={`burger ${menuStatus}`} onClick={props.onClick}>
+    <div className="burger-box" onClick={props.onClick}>
+      <div className={`burger ${menuStatus}`}>
         <div className="burger-layer"></div>
         <div className="burger-layer"></div>
         <div className="burger-layer"></div>
