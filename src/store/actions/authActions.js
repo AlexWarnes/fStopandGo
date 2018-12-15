@@ -2,17 +2,17 @@ import { SubmissionError } from 'redux-form';
 import { normalizeResponseErrors } from './uiActions';
 import { displayValidationError } from '../../store/actions/uiActions';
 import { saveAuthToken, clearAuthToken } from '../localStorage';
+import { getUserPhotoshoots } from './photoshootActions';
 
 const { API_BASE_URL } = require('../../config/config');
 
 const storeAuthInfo = (authInfo, dispatch) => {
   const JWT = authInfo.authToken;
   const userID = authInfo.userID;
-  dispatch(authSuccess())
+  dispatch(authSuccess());
   dispatch(setAuthToken(JWT));
   dispatch(setUserId(userID));
   saveAuthToken(JWT);
-  dispatch(getUserInfo(userID, JWT));
 }
 
 export const AUTH_REQUEST = 'AUTH_REQUEST';
@@ -84,7 +84,7 @@ export const getUserInfo = (userID, userJWT) => dispatch => {
     console.log(data)
     dispatch(setUserInfo(data));
   }).catch(err => {
-    console.log('ERROR');
+    console.log('ERROR', JSON.stringify(err));
   });
 }
 
@@ -102,7 +102,9 @@ export const login = (creds) => dispatch => {
     }
     return res.json();
   }).then(authInfo => {
-    storeAuthInfo(authInfo, dispatch)
+    storeAuthInfo(authInfo, dispatch);
+    dispatch(getUserInfo(authInfo.userID, authInfo.authToken));
+    dispatch(getUserPhotoshoots(authInfo.userID, authInfo.authToken));
   }).catch(err => {
     // TODO: Revisit validation of Redux form
     console.log(JSON.stringify(err));

@@ -7,15 +7,9 @@ import SingleShoot from './SingleShoot';
 import NewShoot from '../forms/NewShoot';
 import EditShoot from '../forms/EditShoot';
 
-import { getUserInfo } from '../../store/actions/authActions';
-
 import './Dashboard.css';
 
 export class Dashboard extends React.Component {
-
-	componentDidMount(){
-		this.props.dispatch(getUserInfo(this.props.userID, this.props.userJWT))
-	}
 
 	render(){
 		switch (this.props.isLoggedIn) {

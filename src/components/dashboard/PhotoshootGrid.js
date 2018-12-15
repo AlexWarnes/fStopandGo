@@ -1,15 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getUserPhotoshoots } from '../../store/actions/photoshootActions';
 
 import './PhotoshootGrid.css';
 
 export class PhotoshootGrid extends React.Component {
-    
-    componentDidMount() {       
-        this.props.dispatch(getUserPhotoshoots(this.props.userID, this.props.userJWT))
-    }
     
     render(){
         //TODO: Make component ShootSummaryCard for this?

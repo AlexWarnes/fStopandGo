@@ -11,7 +11,7 @@ export const ValidationError = (props) => {
         case true:
             return(
                 <div className="validation-error">
-                    <i class="material-icons validation-error-icon">error</i>
+                    <i className="material-icons validation-error-icon">error</i>
                     <p className="validation-error-message">{capFirstLetter(props.validationMessage)}</p>
                 </div>
             );
