@@ -9,7 +9,7 @@ export const Logo = ({logoSize, status}) => {
   switch(status) {
     case 'asleep':
       iconText = 'Asleep';
-      iconColor = 'yellow';
+      iconColor = 'status-yellow';
       break;
     case 'awake':
       iconText = 'Awake';
