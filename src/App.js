@@ -1,8 +1,9 @@
 import React from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Landing from './components/landing/Landing';
+import About from './components/dashboard/About';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateAcctForm from './components/forms/CreateAcct';
 import LoginForm from './components/forms/Login';
@@ -53,14 +54,19 @@ stopPeriodicRefresh() {
 
   render(){
     return(
-      // <Router>
         <div className="app">
-          {/* <Error /> */}
           <Menu />
           <NavBar />
           <Switch>
-            <Route exact path="/" component={Landing} />
+            <Route exact path="/" render={()=>(
+              this.props.isLoggedIn ? (
+                <Redirect to="/dashboard" />
+              ) : (
+                <Landing />
+              )
+            )} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/about" component={About} />
             <Route path="/map" component={MapView} />
             <Route path="/resources" component={Resources} />
             <Route path="/createaccount" component={CreateAcctForm} />
@@ -68,7 +74,6 @@ stopPeriodicRefresh() {
             <Route component={Error} />
           </Switch>
         </div>
-      //</Router>
     );
   }
 }

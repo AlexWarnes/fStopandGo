@@ -9,35 +9,29 @@ import EditShoot from '../forms/EditShoot';
 
 import './Dashboard.css';
 
-export class Dashboard extends React.Component {
+export const Dashboard = ({ isLoggedIn }) => {
 
-	render(){
-		switch (this.props.isLoggedIn) {
-			case true:
-				return (
-					<div className="dashboard">
-						<Switch>
-							<Route exact path="/dashboard" component={PhotoshootGrid} />                    
-							<Route path="/dashboard/shoot/:shootId" component={SingleShoot} />
-							<Route path="/dashboard/newshoot" component={NewShoot} />
-							<Route path="/dashboard/editshoot/:shootId" component={EditShoot} />
-							{/* <Route component={Error} /> */}
-						</Switch>
-					</div>
-				)
-			default:
-				return(
-					<Redirect exact to="/" />
-				);
-		}
-	}
+  return(
+    <div className="dashboard">
+      <Switch>
+        <Route exact path="/dashboard" render={() => (
+          isLoggedIn ? (
+            <PhotoshootGrid />
+          ) : (
+            <Redirect to="/" />
+          )
+        )} />
+        <Route path="/dashboard/shoot/:shootId" component={SingleShoot} />
+        <Route path="/dashboard/newshoot" component={NewShoot} />
+        <Route path="/dashboard/editshoot/:shootId" component={EditShoot} />
+      </Switch>
+    </div>
+  )
 }
 
 const mapStateToProps = (state) => {
 	return {
-		isLoggedIn: state.auth.isLoggedIn,
-		userID: state.auth.userID,
-		userJWT: state.auth.userJWT
+		isLoggedIn: state.auth.isLoggedIn
 	}
 }
 
