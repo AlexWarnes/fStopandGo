@@ -3,24 +3,33 @@ import { normalizeResponseErrors } from './uiActions';
 import { displayValidationError } from '../../store/actions/uiActions';
 import { saveAuthToken, clearAuthToken } from '../localStorage';
 
-
 const { API_BASE_URL } = require('../../config/config');
 
-// export const LOGIN = 'LOGIN';
-// export const login = () => ({
-//   type: LOGIN
-  // isLoggedIn: true,
-  // authToken: data.authToken,
-  // userID: data.userID
-// });
+const storeAuthInfo = (authInfo, dispatch) => {
+  const JWT = authInfo.authToken;
+  const userID = authInfo.userID;
+  dispatch(authSuccess())
+  dispatch(setAuthToken(JWT));
+  dispatch(setUserId(userID));
+  saveAuthToken(JWT);
+  dispatch(getUserInfo(userID, JWT));
+}
 
-// export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
-// export const setAuthToken = (token) => ({
-//   type: SET_AUTH_TOKEN,
-//   authToken: token.authToken,
-//   userID: token.userID
-// })
+export const AUTH_REQUEST = 'AUTH_REQUEST';
+export const authRequest = () => ({
+    type: AUTH_REQUEST
+});
 
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const authSuccess = () => ({
+    type: AUTH_SUCCESS,
+});
+
+export const SET_USER_ID = 'SET_USER_ID';
+export const setUserId = userID => ({
+    type: SET_USER_ID,
+    userID
+});
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
@@ -28,20 +37,9 @@ export const setAuthToken = authToken => ({
     authToken
 });
 
-export const AUTH_SUCCESS = 'AUTH_SUCCESS';
-export const authSuccess = userID => ({
-    type: AUTH_SUCCESS,
-    userID
-});
-
 export const CLEAR_AUTH = 'CLEAR_AUTH';
 export const clearAuth = () => ({
     type: CLEAR_AUTH
-});
-
-export const AUTH_REQUEST = 'AUTH_REQUEST';
-export const authRequest = () => ({
-    type: AUTH_REQUEST
 });
 
 export const AUTH_ERROR = 'AUTH_ERROR';
@@ -57,21 +55,16 @@ export const setUserInfo = (data) => ({
   userEmail: data.email
 });
 
-export const RESET_STATE = 'RESET_STATE';
-export const resetState = () => ({
-  type: RESET_STATE
-});
-
-export const logout = () => dispatch => {
-  clearAuthToken();
-  dispatch(resetState());
-}
-
 export const DEMO_LOGIN = 'DEMO_LOGIN';
 export const demoLogin = () => ({
   type: DEMO_LOGIN,
   isLoggedIn: true,
   username: 'Demo User'
+});
+
+export const RESET_STATE = 'RESET_STATE';
+export const resetState = () => ({
+  type: RESET_STATE
 });
 
 export const getUserInfo = (userID, userJWT) => dispatch => {
@@ -93,15 +86,6 @@ export const getUserInfo = (userID, userJWT) => dispatch => {
   }).catch(err => {
     console.log('ERROR');
   });
-}
-
-const storeAuthInfo = (authInfo, dispatch) => {
-  const JWT = authInfo.authToken;
-  const userID = authInfo.userID;
-  dispatch(setAuthToken(JWT));
-  dispatch(authSuccess(userID));
-  saveAuthToken(JWT);
-  dispatch(getUserInfo(userID, JWT));
 }
 
 export const login = (creds) => dispatch => {
@@ -194,3 +178,8 @@ export const refreshAuthToken = () => (dispatch, getState) => {
     clearAuthToken();
   });
 };
+
+export const logout = () => dispatch => {
+  clearAuthToken();
+  dispatch(resetState());
+}
