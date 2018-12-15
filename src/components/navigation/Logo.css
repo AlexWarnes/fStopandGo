@@ -39,7 +39,7 @@
   position: absolute;
   font-family: sans-serif;
   font-weight: 100;
-  font-size: .4em;
+  font-size: .6em;
   letter-spacing: .02rem;
   top: 36px;
   color: #cacaca;
@@ -49,7 +49,7 @@
 }
 
 .icon-box:hover {
-  cursor: crosshair;
+  cursor: default;
 }
 
 .icon-box:hover .status-text {
