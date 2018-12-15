@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 import { normalizeResponseErrors } from './uiActions';
-import { displayValidationError } from '../../store/actions/uiActions';
+import { displayValidationError, getServerStatus } from '../../store/actions/uiActions';
 import { saveAuthToken, clearAuthToken } from '../localStorage';
 import { getUserPhotoshoots } from './photoshootActions';
 
@@ -105,10 +105,12 @@ export const login = (creds) => dispatch => {
     storeAuthInfo(authInfo, dispatch);
     dispatch(getUserInfo(authInfo.userID, authInfo.authToken));
     dispatch(getUserPhotoshoots(authInfo.userID, authInfo.authToken));
+    dispatch(getServerStatus());
   }).catch(err => {
     // TODO: Revisit validation of Redux form
     console.log(JSON.stringify(err));
     dispatch(displayValidationError('Incorrect Username or Password'))
+    dispatch(getServerStatus());
   });
 };
 
@@ -121,8 +123,12 @@ export const createNewUser = credentials => dispatch => {
     body: JSON.stringify(credentials)
   })
   .then(res => normalizeResponseErrors(res))
-  .then(res => res.json())
+  .then(res => {
+    res.json();
+    dispatch(getServerStatus());
+  })
   .catch(err => {
+    dispatch(getServerStatus());
     const {reason, message, location} = err;
     if (reason === 'ValidationError') {
     // Convert ValidationErrors into SubmissionErrors for Redux Form
@@ -151,8 +157,8 @@ export const deleteUser = (userID, userJWT) => dispatch => {
     console.log(`DELETED: ${userID}`);
     dispatch(logout());
   }).catch(err=>{
-    console.error(err);
-    //dispatch(something())
+    console.log(JSON.stringify(err));
+    dispatch(getServerStatus());
   });
 };
 
@@ -173,10 +179,16 @@ export const refreshAuthToken = () => (dispatch, getState) => {
   .then(res =>{ 
     return res.json();
   })
-  .then(authInfo => storeAuthInfo(authInfo, dispatch))
+  .then(authInfo => {
+    storeAuthInfo(authInfo, dispatch);
+    dispatch(getUserInfo(authInfo.userID, authInfo.authToken));
+    dispatch(getUserPhotoshoots(authInfo.userID, authInfo.authToken));
+    dispatch(getServerStatus());
+  })
   .catch(err => {
     dispatch(authError(err));
     dispatch(clearAuth());
+    dispatch(getServerStatus());
     clearAuthToken();
   });
 };
@@ -184,4 +196,5 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 export const logout = () => dispatch => {
   clearAuthToken();
   dispatch(resetState());
+  dispatch(getServerStatus());
 }

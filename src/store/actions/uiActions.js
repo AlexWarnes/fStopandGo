@@ -68,7 +68,6 @@ export const serverDown = () => ({
 })
 
 export const getServerStatus = () => dispatch => {
-  dispatch(serverAsleep());
   fetch(`${API_BASE_URL}/api/status`, {
     method: 'GET',
   }).then(() => dispatch(serverAwake()))
