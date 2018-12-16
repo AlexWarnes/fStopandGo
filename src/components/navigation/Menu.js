@@ -26,10 +26,6 @@ export const Menu = (props) => {
     return(
       <div className="menu">
         <div className="menu-header">
-          {/* <p className="logo">
-            <i className="material-icons logo-icon">filter_center_focus</i>
-            f/StopandGo
-          </p> */}
           <Logo status={props.serverStatus} logoSize={'large'} />
           <h3 className="menu-username">{props.username}</h3>
         </div>
@@ -43,7 +39,7 @@ export const Menu = (props) => {
           <Link to="/resources">
             <p className="menu-item feature-pending" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-lightbulb menu-icon"></i>Resources (feature pending)</p>
           </Link>
-          <Link to="/">
+          <Link to="/about">
             <p className="menu-item" onClick={()=> dispatch(toggleMenu())}><i className="fas fa-info-circle menu-icon"></i>About</p>
           </Link>
         </section>
@@ -51,12 +47,12 @@ export const Menu = (props) => {
           <Link to="/">
             <p className="menu-item" onClick={()=> handleLogout()}><i className="fas fa-sign-out-alt menu-icon"></i>Log Out</p>
           </Link>
-            <p className="menu-item" onClick={()=> dispatch(toggleWarning())}><i className="fas fa-exclamation-circle menu-icon"></i>Delete Account</p>
-            <Warning 
-              onAffirm={()=> handleDeleteUser(props.userID, props.userJWT)}
-              message='Are you sure you want to delete your account?'
-              affirmTxt='Yes, delete my account.'
-            />
+          <p className="menu-item" onClick={()=> dispatch(toggleWarning())}><i className="fas fa-exclamation-circle menu-icon"></i>Delete Account</p>
+          <Warning 
+            onAffirm={()=> handleDeleteUser(props.userID, props.userJWT)}
+            message='Are you sure you want to delete your account?'
+            affirmTxt='Yes, delete my account.'
+          />
         </section>
         <section>
             <a href="https://github.com/AlexWarnes/fStopandGo" target="_blank" rel="noopener noreferrer">
