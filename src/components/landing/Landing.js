@@ -11,7 +11,7 @@ export const Landing = (props) => {
   return(
     <div>
       <header className="landing-header">
-          <Header userStatus={props.isLoggedIn}/>
+        <Header userStatus={props.isLoggedIn}/>
       </header>
       <AppDescription />
     </div>
