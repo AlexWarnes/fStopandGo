@@ -3,7 +3,6 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Landing from './components/landing/Landing';
-import About from './components/dashboard/About';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateAcctForm from './components/forms/CreateAcct';
 import LoginForm from './components/forms/Login';
@@ -15,6 +14,7 @@ import MapView from './components/map/MapView';
 
 import { refreshAuthToken } from './store/actions/authActions';
 import { getServerStatus } from './store/actions/uiActions';
+import { Loading } from './components/universal/Loading';
 
 
 export class App extends React.Component {
@@ -44,43 +44,44 @@ export class App extends React.Component {
     );
   }
 
-stopPeriodicRefresh() {
-  if (!this.refreshInterval) {
-    return;
+  stopPeriodicRefresh() {
+    if (!this.refreshInterval) {
+      return;
+    }
+    clearInterval(this.refreshInterval);
   }
-  clearInterval(this.refreshInterval);
-}
-
 
   render(){
     return(
-        <div className="app">
-          <Menu />
-          <NavBar />
-          <Switch>
-            <Route exact path="/" render={()=>(
-              this.props.isLoggedIn ? (
-                <Redirect to="/dashboard" />
+      <div className="app">
+        <Menu />
+        <NavBar />
+        {this.props.contentIsLoading && <Loading />}
+        <Switch>
+          <Route exact path="/" render={()=>(
+            this.props.isLoggedIn ? (
+              <Redirect to="/dashboard" />
               ) : (
-                <Landing />
-              )
-            )} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/about" component={About} />
-            <Route path="/map" component={MapView} />
-            <Route path="/resources" component={Resources} />
-            <Route path="/createaccount" component={CreateAcctForm} />
-            <Route path="/login" component={LoginForm} />
-            <Route component={Error} />
-          </Switch>
-        </div>
+              <Landing />
+            )
+          )} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/about" component={Landing} />
+          <Route path="/map" component={MapView} />
+          <Route path="/resources" component={Resources} />
+          <Route path="/createaccount" component={CreateAcctForm} />
+          <Route path="/login" component={LoginForm} />
+          <Route component={Error} />
+        </Switch>
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.auth.isLoggedIn
+    isLoggedIn: state.auth.isLoggedIn,
+    contentIsLoading: state.ui.contentIsLoading
   }
 }
 

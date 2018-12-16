@@ -7,7 +7,8 @@ import {
   CURRENT_VIEW, 
   SERVER_ASLEEP,
   SERVER_AWAKE,
-  SERVER_DOWN
+  SERVER_DOWN,
+  TOGGLE_CONTENT_LOADING
 } from "../actions/uiActions";
 
 import { 
@@ -21,41 +22,36 @@ const initialState = {
   isValidationError: false,
   validationMessage: null,
   currentView: null,
-  serverStatus: 'asleep'
+  serverStatus: 'asleep',
+  contentIsLoading: false
 };
 
 const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_MENU:
       return Object.assign({}, state, {
-        ...state,
         menuIsOpen: !state.menuIsOpen
       });
     case TOGGLE_WARNING:
       return Object.assign({}, state, {
-        ...state,
         warningIsDisplayed: !state.warningIsDisplayed
       });
     case TOGGLE_ERROR:
       return Object.assign({}, state, {
-        ...state,
         errorIsDisplayed: action.errorIsDisplayed
       });
     case DISPLAY_VALIDATION_ERROR:
       return Object.assign({}, state, {
-        ...state,
         isValidationError: true,
         validationMessage: action.message        
       });
     case CLEAR_VALIDATION_ERROR:
       return Object.assign({}, state, {
-        ...state,
         isValidationError: false,
         validationMessage: null
       });
     case CURRENT_VIEW:
       return Object.assign({}, state, {
-        ...state,
         currentView: action.currentView
       });
     case SERVER_ASLEEP:
@@ -69,6 +65,10 @@ const uiReducer = (state = initialState, action) => {
     case SERVER_DOWN:
       return Object.assign({}, state, {
         serverStatus: 'down'
+      });
+    case TOGGLE_CONTENT_LOADING:
+      return Object.assign({}, state, {
+        contentIsLoading: !state.contentIsLoading
       });
     case RESET_STATE:
       return Object.assign({}, state, {

@@ -67,6 +67,11 @@ export const serverDown = () => ({
   type: SERVER_DOWN
 })
 
+export const TOGGLE_CONTENT_LOADING = 'TOGGLE_CONTENT_LOADING';
+export const toggleContentLoading = () => ({
+  type: TOGGLE_CONTENT_LOADING
+})
+
 export const getServerStatus = () => dispatch => {
   fetch(`${API_BASE_URL}/api/status`, {
     method: 'GET',
