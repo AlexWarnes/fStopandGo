@@ -12,7 +12,7 @@ const renderField = ({ input, label, meta: { touched, error } }) => (
     <div className="gearList-entry-field">
         <label>{label}</label>
         <div>
-            <input {...input} type="text" autocomplete="off" placeholder="e.g. tripod" autoFocus={true} />
+            <input {...input} type="text" autoComplete="off" placeholder="e.g. tripod" autoFocus={true} />
             {touched && error && <span>{error}</span>}
         </div>
     </div>
@@ -63,19 +63,19 @@ const PhotoshootForm = (props) => {
             <div className="form-row">
                 <label htmlFor="shoot-form-title">Title</label>
                 <div>
-                    <Field name="title" component="input" type="text" placeholder="Title" autocomplete="off" />
+                    <Field name="title" component="input" type="text" placeholder="Title" autoComplete="off" />
                 </div>
             </div>
             <div className="form-row">
                 <label htmlFor="shoot-form-location">Location</label>
                 <div>
-                    <Field name="location" component="input" type="text" placeholder="Location" autocomplete="off" />
+                    <Field name="location" component="input" type="text" placeholder="Location" autoComplete="off" />
                 </div>
             </div>
             <div className="form-row">
                 <label htmlFor="shoot-form-description">Description</label>
                 <div>
-                    <Field name="description" component="textarea" autocomplete="off" />
+                    <Field name="description" component="textarea" autoComplete="off" />
                 </div>
             </div>
             <FieldArray name="gearList" component={renderGearList} />
