@@ -1,8 +1,7 @@
 import { SubmissionError } from 'redux-form';
-import { normalizeResponseErrors } from './uiActions';
-import { displayValidationError, getServerStatus } from '../../store/actions/uiActions';
-import { saveAuthToken, clearAuthToken } from '../localStorage';
+import { normalizeResponseErrors, displayValidationError, getServerStatus, toggleContentLoading } from './uiActions';
 import { getUserPhotoshoots } from './photoshootActions';
+import { saveAuthToken, clearAuthToken } from '../localStorage';
 
 const { API_BASE_URL } = require('../../config/config');
 
@@ -68,7 +67,7 @@ export const resetState = () => ({
 });
 
 export const getUserInfo = (userID, userJWT) => dispatch => {
-  console.log('GETTING USER INFO')
+  dispatch(toggleContentLoading());
   fetch(`${API_BASE_URL}/api/users/${userID}`, {
     method: 'GET',
     headers: {
@@ -83,13 +82,16 @@ export const getUserInfo = (userID, userJWT) => dispatch => {
   }).then(data => {
     console.log(data)
     dispatch(setUserInfo(data));
+    dispatch(toggleContentLoading());
   }).catch(err => {
     console.log('ERROR', JSON.stringify(err));
+    dispatch(toggleContentLoading());
   });
 }
 
 export const login = (creds) => dispatch => {
   dispatch(authRequest());
+  dispatch(toggleContentLoading());
   fetch(`${API_BASE_URL}/auth/login`, {
     method: 'POST',
     headers: {
@@ -106,15 +108,18 @@ export const login = (creds) => dispatch => {
     dispatch(getUserInfo(authInfo.userID, authInfo.authToken));
     dispatch(getUserPhotoshoots(authInfo.userID, authInfo.authToken));
     dispatch(getServerStatus());
+    dispatch(toggleContentLoading());
   }).catch(err => {
     // TODO: Revisit validation of Redux form
     console.log(JSON.stringify(err));
     dispatch(displayValidationError('Incorrect Username or Password'))
     dispatch(getServerStatus());
+    dispatch(toggleContentLoading());
   });
 };
 
 export const createNewUser = credentials => dispatch => {
+  dispatch(toggleContentLoading());
   return fetch(`${API_BASE_URL}/api/users`, {
     method: 'POST',
     headers: {
@@ -126,9 +131,11 @@ export const createNewUser = credentials => dispatch => {
   .then(res => {
     res.json();
     dispatch(getServerStatus());
+    dispatch(toggleContentLoading());
   })
   .catch(err => {
     dispatch(getServerStatus());
+    dispatch(toggleContentLoading());
     const {reason, message, location} = err;
     if (reason === 'ValidationError') {
     // Convert ValidationErrors into SubmissionErrors for Redux Form
@@ -142,6 +149,7 @@ export const createNewUser = credentials => dispatch => {
 };
 
 export const deleteUser = (userID, userJWT) => dispatch => {
+  dispatch(toggleContentLoading());
   fetch(`${API_BASE_URL}/api/users/${userID}`, {
     method: 'DELETE',
     headers: {
@@ -159,6 +167,7 @@ export const deleteUser = (userID, userJWT) => dispatch => {
   }).catch(err=>{
     console.log(JSON.stringify(err));
     dispatch(getServerStatus());
+    dispatch(toggleContentLoading());
   });
 };
 

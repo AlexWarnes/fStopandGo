@@ -11,7 +11,6 @@ import {
 } from '../actions/authActions';
 
 const initialState = {
-  isLoading: false,
   isLoggedIn: false,
   error: null,
   username: null,
@@ -24,7 +23,6 @@ const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_REQUEST:
       return Object.assign({}, state, {
-        isLoading: true,
         error: null
     });
     case AUTH_SUCCESS:
