@@ -83,7 +83,7 @@ const PhotoshootForm = (props) => {
               <div className="btn-box">
                 <button className="btn btn-green" type="submit" disabled={pristine || submitting}>
                   <i className="far fa-check-circle btn-icon"></i>
-                    Save Shoot
+                  Save Shoot
                 </button>
                 <button className="btn btn-grey" type="button" disabled={submitting} onClick={()=> cancel()}>
                   <i className="far fa-times-circle btn-icon"></i>

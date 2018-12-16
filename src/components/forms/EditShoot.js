@@ -4,14 +4,13 @@ import { updatePhotoshoot } from '../../store/actions/photoshootActions';
 import PhotoshootForm from './PhotoshootForm';
 
 export const EditShoot = (props) => {
-    const shootId = props.match.params.shootId;
-    const shootToEdit = props.photoshoots.find((item) => item.id === shootId);
+  const shootId = props.match.params.shootId;
+  const shootToEdit = props.photoshoots.find((item) => item.id === shootId);
 
-    const submitUpdate = (values) => {
-        props.dispatch(updatePhotoshoot(values, shootId, props.userJWT));
-        //TODO: Need this to show updated shoot (or just go back to dashboard)
-        props.history.push(`/dashboard/shoot/${shootId}`);
-    };
+  const submitUpdate = (values) => {
+      props.dispatch(updatePhotoshoot(values, shootId, props.userJWT))
+      .then(props.history.push(`/dashboard/shoot/${shootId}`));
+  };
 
     return(
         <div className="shoot-form-view">

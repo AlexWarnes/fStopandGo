@@ -1,3 +1,5 @@
+import { toggleContentLoading } from './uiActions';
+
 const { API_BASE_URL } = require('../../config/config');
 
 export const SET_PHOTOSHOOTS = 'SET_PHOTOSHOOTS';
@@ -28,7 +30,7 @@ export const deleteShootSuccess = (shootID) => ({
 });
 
 export const getUserPhotoshoots = (userID, userJWT) => dispatch => {
-  fetch(`${API_BASE_URL}/api/shoots?owner=${userID}`, {
+  return fetch(`${API_BASE_URL}/api/shoots?owner=${userID}`, {
     method: 'GET',
     headers: {
       'Content-Type':'application/json; charset=UTF-8',
@@ -49,7 +51,8 @@ export const getUserPhotoshoots = (userID, userJWT) => dispatch => {
 };
 
 export const createNewPhotoshoot = (newShootData, userJWT) => dispatch => {
-  fetch(`${API_BASE_URL}/api/shoots`, {
+  dispatch(toggleContentLoading());
+  return fetch(`${API_BASE_URL}/api/shoots`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json; charset=utf-8',
@@ -62,15 +65,18 @@ export const createNewPhotoshoot = (newShootData, userJWT) => dispatch => {
     }
     return res.json();
   }).then(shoot => {
+    dispatch(toggleContentLoading());
     dispatch(newShoot(shoot));
   }).catch(err => {
     console.error(err);
-    //dispatch(newShootFailure());
+    dispatch(toggleContentLoading());
   });
 };
 
 export const updatePhotoshoot = (updateData, shootID, userJWT) => dispatch => {
-  fetch(`${API_BASE_URL}/api/shoots/${shootID}`, {
+  dispatch(toggleContentLoading());
+  console.log('UPDATE DATA: ', JSON.stringify(updateData))
+  return fetch(`${API_BASE_URL}/api/shoots/${shootID}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json; charset=utf-8',
@@ -82,15 +88,17 @@ export const updatePhotoshoot = (updateData, shootID, userJWT) => dispatch => {
       Promise.reject(res.statusText);
     }
     return res;
-  }).then(shoot => {
-    dispatch(updateShootSuccess(shoot));
+  }).then(() => {
+    dispatch(updateShootSuccess(updateData));
+    dispatch(toggleContentLoading());
   }).catch(err => {
     console.error(err);
-    //dispatch(updateShootFailure());
+    dispatch(toggleContentLoading());
   });
 }
 
 export const deletePhotoshoot = (shootID, userJWT) => dispatch => {
+  dispatch(toggleContentLoading());
   fetch(`${API_BASE_URL}/api/shoots/${shootID}`, {
     method: 'DELETE',
     headers: {
@@ -103,36 +111,11 @@ export const deletePhotoshoot = (shootID, userJWT) => dispatch => {
     }
     return res;
   }).then((shootID) => {
-    dispatch(deleteShootSuccess(shootID))
+    dispatch(deleteShootSuccess(shootID));
+    dispatch(toggleContentLoading());
   }).catch(err => {
     console.error(err);
+    dispatch(toggleContentLoading());
     //dispatch(deleteShootFailure())
   });
 }
-
-export const DEMO_DATA = 'DEMO_DATA';
-export const demoData = () => ({
-  type: DEMO_DATA,
-  photoshoots: [{
-      id: 'pY5vitWQz',
-      title: 'Milky Way Shoot', 
-      location: {
-        name: 'Range View Overlook, Shenandoah National Park',
-        lat: 38.7643271,
-        lng: -78.2256057
-      },
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quam quae optio recusandae molestias alias?',
-      gearList: ['tripod', 'camera', 'lantern', 'batteries']
-    },{
-      id: '2MqnL1Dht',
-      title: 'City Night Lights', 
-      location: {
-        name: 'Memorial Bridge, Washington, DC',
-        lat: 38.8874085,
-        lng: -77.0574026
-      },
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus velit consequatur error, cupiditate voluptas architecto autem ratione, voluptatibus quibusdam enim dolorem iure ea minus est.',
-      gearList: ['tripod', 'camera', 'lantern', 'batteries']
-    }
-  ]
-});

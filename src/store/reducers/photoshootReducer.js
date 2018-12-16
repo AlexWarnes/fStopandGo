@@ -2,7 +2,6 @@ import {
   NEW_SHOOT, 
   UPDATE_SHOOT_SUCCESS, 
   DELETE_SHOOT_SUCCESS, 
-  DEMO_DATA, 
   SET_PHOTOSHOOTS,
 } from "../actions/photoshootActions";
 
@@ -45,11 +44,6 @@ const photoshootReducer = (state = initialState, action) => {
             return Object.assign({}, state, {
                 ...state,
                 photoshoots: shootsAfterDelete
-            });
-        case DEMO_DATA:
-            return Object.assign({}, state, {
-                ...state,
-                photoshoots: action.photoshoots
             });
         case SET_PHOTOSHOOTS:
             return Object.assign({}, state, {
