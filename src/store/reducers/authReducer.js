@@ -6,7 +6,7 @@ import {
   SET_USER_INFO,
   AUTH_ERROR,
   CLEAR_AUTH,
-  DEMO_LOGIN,
+  DEMO_ACCT,
   RESET_STATE
 } from '../actions/authActions';
 
@@ -16,7 +16,8 @@ const initialState = {
   username: null,
   userID: null,
   userJWT: null,
-  userEmail: null
+  userEmail: null,
+  isDemoAccount: false
 };
 
 const authReducer = (state = initialState, action) => {
@@ -59,12 +60,10 @@ const authReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         ...initialState
     });
-    case DEMO_LOGIN:
+    case DEMO_ACCT:
       return Object.assign({}, state, {
-        ...state,
-        isLoggedIn: action.isLoggedIn,
-        username: action.username,
-    }); 
+        isDemoAccount: true
+    });
     default:
       return state;
   }

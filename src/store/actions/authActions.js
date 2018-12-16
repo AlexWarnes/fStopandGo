@@ -54,11 +54,9 @@ export const setUserInfo = (data) => ({
   userEmail: data.email
 });
 
-export const DEMO_LOGIN = 'DEMO_LOGIN';
-export const demoLogin = () => ({
-  type: DEMO_LOGIN,
-  isLoggedIn: true,
-  username: 'Demo User'
+export const DEMO_ACCT = 'DEMO_ACCT';
+export const demoAcct = () => ({
+  type: DEMO_ACCT,
 });
 
 export const RESET_STATE = 'RESET_STATE';

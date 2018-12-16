@@ -9,10 +9,9 @@ import { toggleMenu } from '../../store/actions/uiActions';
 import { login } from '../../store/actions/authActions';
 
 export const NavBar = (props) => {
-
   const demoCredentials = {
-    username: 'demoUser',
-    password: 'demoUserPW'
+    username: 'publicAccount',
+    password: 'publicAccountPW'
   }
 
   switch(props.isLoggedIn) {
@@ -35,7 +34,7 @@ export const NavBar = (props) => {
           <Logo status={props.serverStatus} logoSize={'large'} />
           <div className="navbar-main">
             <Link to="/login" className="navbar-link">Login</Link>
-            <p  className="navbar-link" onClick={()=> props.dispatch(login(demoCredentials))}>Demo</p>
+            <p className="navbar-link" onClick={() => props.dispatch(login(demoCredentials))}>Demo</p>
           </div>
         </div>
       );

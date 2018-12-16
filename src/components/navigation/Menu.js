@@ -47,7 +47,7 @@ export const Menu = (props) => {
           <Link to="/">
             <p className="menu-item" onClick={()=> handleLogout()}><i className="fas fa-sign-out-alt menu-icon"></i>Log Out</p>
           </Link>
-          <p className="menu-item" onClick={()=> dispatch(toggleWarning())}><i className="fas fa-exclamation-circle menu-icon"></i>Delete Account</p>
+          {props.username === 'publicAccount' || <p className="menu-item" onClick={()=> dispatch(toggleWarning())}><i className="fas fa-exclamation-circle menu-icon"></i>Delete Account</p>}
           <Warning 
             onAffirm={()=> handleDeleteUser(props.userID, props.userJWT)}
             message='Are you sure you want to delete your account?'
