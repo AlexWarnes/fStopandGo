@@ -3,11 +3,16 @@ import { Field, FieldArray, reduxForm } from 'redux-form';
 
 import './forms.css';
 
+const newGearInput = (fields) => {
+  fields.push();
+  window.scrollTo(0, document.querySelector(".shoot-form-gearList").scrollHeight, 'smooth')
+}
+
 const renderField = ({ input, label, meta: { touched, error } }) => (
     <div className="gearList-entry-field">
         <label>{label}</label>
         <div>
-            <input {...input} type="text" placeholder="e.g. tripod" />
+            <input {...input} type="text" autocomplete="off" placeholder="e.g. tripod" autoFocus={true} />
             {touched && error && <span>{error}</span>}
         </div>
     </div>
@@ -20,9 +25,10 @@ const renderGearList = ({ fields, meta: { error } }) => (
 				
 				<Field
 				name={item}
-				type="text"
+        type="text"
 				component={renderField}
-				label={`Gear Item #${index + 1}`}
+        label={`Gear Item #${index + 1}`}
+        id={index+1}
 				/>
 				
 				<button
@@ -35,7 +41,7 @@ const renderGearList = ({ fields, meta: { error } }) => (
 			</li>
     ))}
     <li className="add-gear">
-			<button className="add-gear-btn btn btn-lightgrey" type="button" onClick={() => fields.push()}>
+			<button className="add-gear-btn btn btn-lightgrey" type="button" onClick={() => newGearInput(fields)}>
 				<i className="far fa-plus-square add-gear-icon"></i>
 				Add Gear
 			</button>
@@ -57,19 +63,19 @@ const PhotoshootForm = (props) => {
             <div className="form-row">
                 <label htmlFor="shoot-form-title">Title</label>
                 <div>
-                    <Field name="title" component="input" type="text" placeholder="Title" autoComplete="off" />
+                    <Field name="title" component="input" type="text" placeholder="Title" autocomplete="off" />
                 </div>
             </div>
             <div className="form-row">
                 <label htmlFor="shoot-form-location">Location</label>
                 <div>
-                    <Field name="location" component="input" type="text" placeholder="Location" autoComplete="off" />
+                    <Field name="location" component="input" type="text" placeholder="Location" autocomplete="off" />
                 </div>
             </div>
             <div className="form-row">
                 <label htmlFor="shoot-form-description">Description</label>
                 <div>
-                    <Field name="description" component="textarea" autoComplete="off" />
+                    <Field name="description" component="textarea" autocomplete="off" />
                 </div>
             </div>
             <FieldArray name="gearList" component={renderGearList} />
