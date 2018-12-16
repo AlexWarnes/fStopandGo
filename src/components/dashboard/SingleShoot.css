@@ -13,7 +13,7 @@
   margin: 0 0 10px 0;
   padding-bottom: 5px;
   border-bottom: 2px solid #1de8b5;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 2em;
   letter-spacing: .1rem;
 }
@@ -21,7 +21,7 @@
 .shoot-location {
   margin: 0;
   color: #62717b;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 1em;
 }
 
@@ -45,7 +45,7 @@
   margin: 0 0 10px 0;
   padding-bottom: 5px;
   border-bottom: 2px solid #1de8b5;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 1.2em;
   letter-spacing: .08rem;
 }

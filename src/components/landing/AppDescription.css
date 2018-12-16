@@ -23,21 +23,32 @@ main {
   padding: 10px 0 0;
   background-color: #101f27;
   color: #ffffff;
+  font-weight: 300;
+}
+
+.code-link-container {
+  margin-top: 15px; 
+}
+
+.landing-footer h2 {
+  font-weight: 400;
+  border-bottom: 2px solid #00b483;
 }
 
 .app-info, .tech-stack {
-  padding: 5px 10px;
+  padding: 5px 25px;
 }
 
 .code-block {
   display: block;
   width: 100%;
-  height: 30px;
-  padding: 5px;
+  padding: 15px;
   text-align: center;
   font-size: 16px;
-  /* background-color: #272727; */
   color: #FFFFFF;
+  letter-spacing: .05rem;
+  background-color: #37464f;
+  border: 1px solid #0f1f27;
   transition: all .2s;
 }
 
@@ -45,14 +56,17 @@ main {
   display: inline;
 }
 
-.backend-block:hover {
-  letter-spacing: .1rem;
-  background-color: rgb(196, 105, 105);;
+.code-block p {
+  margin-right: 5px;
 }
 
+
 .frontend-block:hover {
-  letter-spacing: .1rem;
-  background-color: rgb(32, 178, 122);
+  background-color: #00b686;
+}
+
+.backend-block:hover {
+  background-color: #00b686;
 }
 
 @media only screen and (min-width: 640px) {

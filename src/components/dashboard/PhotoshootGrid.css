@@ -3,7 +3,7 @@
   margin: 5px 0 10px 0;
   padding-bottom: 5px;
   padding-left: 10px;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 1.5em;
 }
 
@@ -32,7 +32,7 @@
   padding-bottom: 5px;
   padding-left: 10px;
   border-bottom: 2px solid #1de8b5;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 1.5em;
 }
 
@@ -40,7 +40,7 @@
   margin: 0;
   padding-left: 10px;
   color: #62717b;
-  font-weight: 100;
+  font-weight: 300;
   font-size: .8em;
 }
 
