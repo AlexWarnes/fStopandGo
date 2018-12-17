@@ -3,20 +3,24 @@ import { Field, FieldArray, reduxForm } from 'redux-form';
 
 import './forms.css';
 
-const newGearInput = (fields) => {
-  fields.push();
-  window.scrollTo(0, document.querySelector(".shoot-form-gearList").scrollHeight, 'smooth')
-}
-
-const renderField = ({ input, label, meta: { touched, error } }) => (
+const renderField = ({ input, label, meta: { touched, error } }) => {
+  return (
     <div className="gearList-entry-field">
         <label>{label}</label>
         <div>
             <input {...input} type="text" autoComplete="off" placeholder="e.g. tripod" autoFocus={true} />
             {touched && error && <span>{error}</span>}
         </div>
+        
+        {/* Keep the newest input in view by scrolling to bottom */}
+        {window.scrollTo({
+          top: document.body.scrollHeight,
+          left: 0,
+          behavior: 'smooth'
+        })}
     </div>
-)
+  )
+}
 
 const renderGearList = ({ fields, meta: { error } }) => (
 	<ul className="shoot-form-gearList">
@@ -41,7 +45,7 @@ const renderGearList = ({ fields, meta: { error } }) => (
 			</li>
     ))}
     <li className="add-gear">
-			<button className="add-gear-btn btn btn-lightgrey" type="button" onClick={() => newGearInput(fields)}>
+			<button className="add-gear-btn btn btn-lightgrey" type="button" onClick={() => fields.push()}>
 				<i className="far fa-plus-square add-gear-icon"></i>
 				Add Gear
 			</button>
