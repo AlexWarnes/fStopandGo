@@ -22,16 +22,16 @@ const photoshootReducer = (state = initialState, action) => {
             });
         case UPDATE_SHOOT_SUCCESS:
             const updatedPhotoshoots = state.photoshoots.map(shoot => {
-                if (shoot.id !== action.data.id) {
-                    return shoot;
-                }
-                return {
-                    id: shoot.id, 
-                    title: action.data.title, 
-                    location: action.data.location,
-                    description: action.data.description,
-                    gearList: action.data.gearList,
-                }
+              if (shoot.id !== action.data.id) {
+                return shoot;
+              }
+              return {
+                  id: shoot.id, 
+                  title: action.data.title, 
+                  location: action.data.location,
+                  description: action.data.description,
+                  gearList: action.data.gearList,
+              }
             });
             return Object.assign({}, state, {
                 ...state,

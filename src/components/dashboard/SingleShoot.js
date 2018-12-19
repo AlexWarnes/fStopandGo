@@ -43,12 +43,14 @@ export const SingleShoot = (props) => {
           <article className="shoot-description-box">
             <p className="shoot-description">{shoot.description}</p>
           </article>
-          <article className="shoot-gearList-box">
-            <h3>Gear List</h3>
-            <ul className="shoot-gearList">
-                {gearList}
-            </ul>
-          </article>
+          <div className="col-6">
+            <article className="shoot-gearList-box">
+              <h3>Gear List</h3>
+              <ul className="shoot-gearList">
+                  {gearList}
+              </ul>
+            </article>
+          </div>
         </section>
         <div className="btn-container-row">
           <div className="btn-box">

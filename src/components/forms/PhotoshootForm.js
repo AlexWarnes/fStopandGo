@@ -6,18 +6,18 @@ import './forms.css';
 const renderField = ({ input, label, meta: { touched, error } }) => {
   return (
     <div className="gearList-entry-field">
-        <label>{label}</label>
-        <div>
-            <input {...input} type="text" autoComplete="off" placeholder="e.g. tripod" autoFocus={true} />
-            {touched && error && <span>{error}</span>}
-        </div>
-        
-        {/* Keep the newest input in view by scrolling to bottom */}
-        {window.scrollTo({
-          top: document.body.scrollHeight,
-          left: 0,
-          behavior: 'smooth'
-        })}
+      <label>{label}</label>
+      <div>
+        <input {...input} type="text" autoComplete="off" placeholder="e.g. tripod" autoFocus={true} required={true}/>
+        {touched && error && <span>{error}</span>}
+      </div>
+      
+      {/* Keep the newest input in view by scrolling to bottom when a new field is added*/}
+      {window.scrollTo({
+        top: document.body.scrollHeight,
+        left: 0,
+        behavior: 'smooth'
+      })}
     </div>
   )
 }
@@ -25,16 +25,14 @@ const renderField = ({ input, label, meta: { touched, error } }) => {
 const renderGearList = ({ fields, meta: { error } }) => (
 	<ul className="shoot-form-gearList">
 		{fields.map((item, index) => (
-			<li className="gearList-entry" key={index}>
-				
+			<li className="gearList-entry" key={index}>	
 				<Field
-				name={item}
-        type="text"
-				component={renderField}
-        label={`Gear Item #${index + 1}`}
-        id={index+1}
+          name={item}
+          type="text"
+          component={renderField}
+          label={`Gear Item #${index + 1}`}
+          id={index+1}
 				/>
-				
 				<button
 					className="remove-gear-btn btn-red"
 					type="button"
@@ -50,53 +48,56 @@ const renderGearList = ({ fields, meta: { error } }) => (
 				Add Gear
 			</button>
 		</li>
-		{error && <li className="error">{error}</li>}
 	</ul>
 )
 
 const PhotoshootForm = (props) => {
-    const { handleSubmit, pristine, reset, submitting, history } = props;
+  const { handleSubmit, pristine, reset, submitting, history } = props;
 
-    const cancel = () => {
-        reset();
-        history.goBack();
-	}
+  const cancel = () => {
+    reset();
+    history.goBack();
+  }
+  
+  return(
+    <form onSubmit={handleSubmit(values => props.onSubmit(values))} className="shoot-form">
+      <div className="form-row">
+        <label htmlFor="shoot-form-title">Title</label>
+        <div>
+          <Field name="title" component="input" type="text" placeholder="Title" required={true} autoComplete="off" />
+        </div>
+      </div>
 
-    return(
-        <form onSubmit={handleSubmit(values => props.onSubmit(values))} className="shoot-form">
-            <div className="form-row">
-                <label htmlFor="shoot-form-title">Title</label>
-                <div>
-                    <Field name="title" component="input" type="text" placeholder="Title" autoComplete="off" />
-                </div>
-            </div>
-            <div className="form-row">
-                <label htmlFor="shoot-form-location">Location</label>
-                <div>
-                    <Field name="location" component="input" type="text" placeholder="Location" autoComplete="off" />
-                </div>
-            </div>
-            <div className="form-row">
-                <label htmlFor="shoot-form-description">Description</label>
-                <div>
-                    <Field name="description" component="textarea" autoComplete="off" />
-                </div>
-            </div>
-            <FieldArray name="gearList" component={renderGearList} />
-            <div className="btn-container-row">
-              <div className="btn-box">
-                <button className="btn btn-green" type="submit" disabled={pristine || submitting}>
-                  <i className="far fa-check-circle btn-icon"></i>
-                  Save Shoot
-                </button>
-                <button className="btn btn-grey" type="button" disabled={submitting} onClick={()=> cancel()}>
-                  <i className="far fa-times-circle btn-icon"></i>
-                  Cancel
-                </button>
-              </div>
-            </div>
-        </form>
-    )
+      <div className="form-row">
+        <label htmlFor="shoot-form-location">Location</label>
+        <div>
+          <Field name="location" component="input" type="text" placeholder="Location" autoComplete="off" />
+        </div>
+      </div>
+
+      <div className="form-row">
+        <label htmlFor="shoot-form-description">Description</label>
+        <div>
+          <Field name="description" component="textarea" autoComplete="off" />
+        </div>
+      </div>
+      
+      <FieldArray name="gearList" component={renderGearList} />
+        
+      <div className="btn-container-row">
+        <div className="btn-box">
+          <button className="btn btn-green" type="submit" disabled={pristine || submitting}>
+            <i className="far fa-check-circle btn-icon"></i>
+            Save Shoot
+          </button>
+          <button className="btn btn-grey" type="button" disabled={submitting} onClick={()=> cancel()}>
+            <i className="far fa-times-circle btn-icon"></i>
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  )
 }
 
 export default reduxForm({form: 'PhotoshootForm'})(PhotoshootForm);
