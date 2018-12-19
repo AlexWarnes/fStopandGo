@@ -99,7 +99,7 @@ export const updatePhotoshoot = (updateData, shootID, userJWT) => dispatch => {
 
 export const deletePhotoshoot = (shootID, userJWT) => dispatch => {
   dispatch(toggleContentLoading());
-  fetch(`${API_BASE_URL}/api/shoots/${shootID}`, {
+  return fetch(`${API_BASE_URL}/api/shoots/${shootID}`, {
     method: 'DELETE',
     headers: {
       'content-type': 'application/json; charset=utf-8',
@@ -110,12 +110,11 @@ export const deletePhotoshoot = (shootID, userJWT) => dispatch => {
       Promise.reject(res.statusText);
     }
     return res;
-  }).then((shootID) => {
+  }).then(() => {
     dispatch(deleteShootSuccess(shootID));
     dispatch(toggleContentLoading());
   }).catch(err => {
     console.error(err);
     dispatch(toggleContentLoading());
-    //dispatch(deleteShootFailure())
   });
 }
