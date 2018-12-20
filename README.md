@@ -1,6 +1,8 @@
 # f/StopandGo
 _Meet your photography goals by planning photoshoots._
 
+[Get started!](https://fstopandgo.herokuapp.com)
+
 ## What is f/StopandGo?
 I wanted to build something to replace the notepad in my camera bag that's full of disorganized techniques, settings, gear, specific shots, timelapse math, and other notes. **_f/StopandGo_** aims to solve that problem, by motivating people to get out and _use_ thier camera, build on one technique at a time, and not be intimidated by the endless combination of settings.
 
