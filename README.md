@@ -47,7 +47,6 @@ _To view the backend code and documentation, please visit [the API repo.](https:
   * React Router
   * Redux Form
   * Redux Thunk
-  * React Transition Group
 
 ### Styles
   * Google [Fonts](https://fonts.google.com/)
