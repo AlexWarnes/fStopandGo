@@ -18,6 +18,17 @@
   }
 }
 
+@keyframes fadeInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(15px)
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fadeInFromLeft {
   from {
     opacity: 0;
@@ -44,5 +55,23 @@
   }
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(60px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: .2;
   }
 }

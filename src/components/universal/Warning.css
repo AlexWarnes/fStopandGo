@@ -1,3 +1,5 @@
+@import '../../animations.css';
+
 .warning-shade {
   position: fixed;
   top: 0;
@@ -23,4 +25,5 @@
   box-shadow: 0px 0px 25px #000000FF;
   border-radius: 5px;
   border-top: 5px solid #b11121;
+  animation: fadeInFromTop .25s ease-out 0s 1 forwards;
 }
