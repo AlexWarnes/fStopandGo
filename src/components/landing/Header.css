@@ -40,9 +40,10 @@
   border-radius: 5px;
   letter-spacing: .08rem;
   font-weight: 400;
-  box-shadow: 0 0 10px #272727;
+  box-shadow: 0 0 10px #000000;
+  border: 1px solid black;
 }
 
 .create-account-btn:hover {
-  /* something fun */
+  box-shadow: 0 0 30px #000000A4;
 }

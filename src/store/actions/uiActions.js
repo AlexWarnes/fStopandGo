@@ -19,17 +19,17 @@ export const toggleError = (errorIsDisplayed) => ({
 export const normalizeResponseErrors = res => {
   console.log('RUNNING NORMALIZING ERRORS')
   if (!res.ok) {
-      if (
-          res.headers.has('content-type') &&
-          res.headers.get('content-type').startsWith('application/json')
-      ) {
-        console.log('BLOCK ONE')
-          return res.json().then(err => Promise.reject(err));
-      }
-      return Promise.reject({
-          code: res.status,
-          message: res.statusText
-      });
+    if (
+      res.headers.has('content-type') &&
+      res.headers.get('content-type').startsWith('application/json')
+    ) {
+      console.log('BLOCK ONE')
+      return res.json().then(err => Promise.reject(err));
+    }
+    return Promise.reject({
+      code: res.status,
+      message: res.statusText
+    });
   }
   return res;
 };
@@ -43,7 +43,6 @@ export const displayValidationError = (message) => ({
 export const CLEAR_VALIDATION_ERROR = 'CLEAR_VALIDATION_ERROR';
 export const clearValidationError = () => ({
   type: CLEAR_VALIDATION_ERROR
-  
 })
 
 export const CURRENT_VIEW = 'CURRENT_VIEW';

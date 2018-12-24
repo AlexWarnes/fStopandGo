@@ -32,7 +32,7 @@ export const CreateAcctForm = (props) => {
 
 	switch (props.isLoggedIn){
 		case true:
-			return <Redirect to="/dashboard" />
+			return <Redirect to="/dashboard" />;
 		default:
 			return(
 				<section className="acct-action-container">
@@ -45,7 +45,8 @@ export const CreateAcctForm = (props) => {
 									component="input" 
 									type="text" 
 									autoComplete="off" 
-									required={true}
+                  required={true}
+                  autoFocus={true}
 									validate={[required, nonEmpty, isTrimmed]} 
 								/>
 							</div>
@@ -99,7 +100,7 @@ export const CreateAcctForm = (props) => {
 						</div>
 					</form>
 				</section>
-			)
+			);
 	}
 }
 
@@ -109,8 +110,6 @@ const mapStateToProps = (state) => {
 		isValidationError: state.ui.isValidationError
 	}
 }
-
-
 
 export default connect(mapStateToProps)(reduxForm({
 	form: 'createAccount',

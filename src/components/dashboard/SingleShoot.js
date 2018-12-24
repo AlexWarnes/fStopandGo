@@ -8,7 +8,8 @@ import { deletePhotoshoot } from '../../store/actions/photoshootActions'
 import { toggleWarning } from '../../store/actions/uiActions';
 
 export const SingleShoot = (props) => {
-
+  window.scrollTo(0,0);
+  
   const shoot = props.photoshoots.find((item) => item.id === props.match.params.shootId);
     
   let gearList;
@@ -25,8 +26,8 @@ export const SingleShoot = (props) => {
     props.dispatch(deletePhotoshoot(shootID, props.userJWT))
     .then(props.dispatch(toggleWarning()))
     .then(props.history.push('/dashboard'))
-  } 
-
+  }
+  
   return(
     <div>
       <Warning 
@@ -47,7 +48,7 @@ export const SingleShoot = (props) => {
             <article className="shoot-gearList-box">
               <h3>Gear List</h3>
               <ul className="shoot-gearList">
-                  {gearList}
+                {gearList}
               </ul>
             </article>
           </div>

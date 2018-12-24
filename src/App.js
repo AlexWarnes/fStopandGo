@@ -54,7 +54,8 @@ export class App extends React.Component {
   render(){
     return(
       <div className="app">
-        <Menu />
+        {this.props.menuIsOpen && <Menu />}
+        {/* <Menu /> */}
         <NavBar />
         {this.props.contentIsLoading && <Loading />}
         <Switch>
@@ -81,7 +82,8 @@ export class App extends React.Component {
 const mapStateToProps = state => {
   return {
     isLoggedIn: state.auth.isLoggedIn,
-    contentIsLoading: state.ui.contentIsLoading
+    contentIsLoading: state.ui.contentIsLoading,
+    menuIsOpen: state.ui.menuIsOpen
   }
 }
 

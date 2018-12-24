@@ -8,25 +8,26 @@ export const EditShoot = (props) => {
   const shootToEdit = props.photoshoots.find((item) => item.id === shootId);
 
   const submitUpdate = (values) => {
-      props.dispatch(updatePhotoshoot(values, shootId, props.userJWT))
-      .then(props.history.push(`/dashboard/shoot/${shootId}`));
+    props.dispatch(updatePhotoshoot(values, shootId, props.userJWT))
+    .then(props.history.push(`/dashboard/shoot/${shootId}`));
   };
 
-    return(
-        <div className="shoot-form-view">
-            <PhotoshootForm 
-                onSubmit={(values)=> submitUpdate(values)} 
-                initialValues={shootToEdit} 
-                {...props}/> 
-        </div>
-    );
+  return(
+    <div className="shoot-form-view">
+      <PhotoshootForm 
+        onSubmit={(values)=> submitUpdate(values)} 
+        initialValues={shootToEdit} 
+        {...props}
+      /> 
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => {
-    return {
-        photoshoots: state.photoshoot.photoshoots,
-        userJWT: state.auth.userJWT
-    };
+  return {
+    photoshoots: state.photoshoot.photoshoots,
+    userJWT: state.auth.userJWT
+  };
 };
 
 export default connect(mapStateToProps)(EditShoot);

@@ -17,6 +17,7 @@ import {
 
 const initialState = {
   menuIsOpen: false,
+  scrollIsLocked: false,
   warningIsDisplayed: false,
   errorIsDisplayed: false,
   isValidationError: false,
@@ -30,7 +31,8 @@ const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_MENU:
       return Object.assign({}, state, {
-        menuIsOpen: !state.menuIsOpen
+        menuIsOpen: !state.menuIsOpen,
+        scrollIsLocked: !state.menuIsOpen
       });
     case TOGGLE_WARNING:
       return Object.assign({}, state, {

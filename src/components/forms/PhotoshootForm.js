@@ -52,19 +52,21 @@ const renderGearList = ({ fields, meta: { error } }) => (
 )
 
 const PhotoshootForm = (props) => {
+  window.scrollTo(0,0)
+
   const { handleSubmit, pristine, reset, submitting, history } = props;
 
   const cancel = () => {
     reset();
     history.goBack();
   }
-  
+
   return(
     <form onSubmit={handleSubmit(values => props.onSubmit(values))} className="shoot-form">
       <div className="form-row">
         <label htmlFor="shoot-form-title">Title</label>
         <div>
-          <Field name="title" component="input" type="text" placeholder="Title" required={true} autoComplete="off" />
+          <Field id="shoot-form-title" name="title" component="input" type="text" placeholder="Title" required={true} autoFocus={true} autoComplete="off" />
         </div>
       </div>
 
@@ -83,7 +85,7 @@ const PhotoshootForm = (props) => {
       </div>
       
       <FieldArray name="gearList" component={renderGearList} />
-        
+      
       <div className="btn-container-row">
         <div className="btn-box">
           <button className="btn btn-green" type="submit" disabled={pristine || submitting}>
@@ -97,7 +99,7 @@ const PhotoshootForm = (props) => {
         </div>
       </div>
     </form>
-  )
+  ) 
 }
 
 export default reduxForm({form: 'PhotoshootForm'})(PhotoshootForm);

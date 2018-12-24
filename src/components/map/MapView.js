@@ -1,7 +1,7 @@
 import React from 'react';
 import './MapView.css';
 
-export const MapView = (props) => {
+export const MapView = () => {
   return (
     <div className="map-view development">
       <h2>Feature is Under Development</h2>
