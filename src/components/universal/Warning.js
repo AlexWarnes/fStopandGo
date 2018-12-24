@@ -5,31 +5,31 @@ import { toggleWarning } from '../../store/actions/uiActions';
 import './Warning.css';
 
 export const Warning = (props) => {
-    const cancel = () => {
-        props.dispatch(toggleWarning(false));
-    }
+  const cancel = () => {
+    props.dispatch(toggleWarning(false));
+  }
 
-    if (props.warningIsDisplayed === true) {
-        return (
-            <div className="warning-shade">
-                <div className="warning-box">
-                    <p>{props.message}</p>
-                    <button className="btn btn-red" onClick={props.onAffirm}>{props.affirmTxt}</button>
-                    <button className="btn btn-grey" onClick={()=> cancel()}>Cancel</button>
-                </div>
-            </div>
-        );
-    } else {
-        return (
-            <div></div>
-        );
-    }
+  if (props.warningIsDisplayed === true) {
+    return (
+      <div className="warning-shade">
+        <div className="warning-box">
+          <p>{props.message}</p>
+          <button className="btn btn-red" onClick={props.onAffirm}>{props.affirmTxt}</button>
+          <button className="btn btn-grey" onClick={()=> cancel()}>Cancel</button>
+        </div>
+      </div>
+    );
+  } else {
+      return (
+        <div></div>
+      );
+  }
 };
 
 const mapStateToProps = (state) => {
-    return {
-        warningIsDisplayed: state.ui.warningIsDisplayed
-    }
+  return {
+    warningIsDisplayed: state.ui.warningIsDisplayed
+  }
 }
 
 export default connect(mapStateToProps)(Warning);

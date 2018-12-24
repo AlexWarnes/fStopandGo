@@ -9,6 +9,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.scrollLock {
+  position: fixed;
+}
+
 h1, h2, h3, h4 {
   font-family: 'Montserrat', sans-serif;
 }
@@ -20,7 +24,7 @@ main {
 .app {
   width: 100%;
   min-height: 100vh;
-  background-color: #fafdff;
+  background-color: #e5e8ea;
 }
 
 a {

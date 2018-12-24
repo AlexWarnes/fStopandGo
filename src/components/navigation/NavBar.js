@@ -42,12 +42,12 @@ export const NavBar = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    return {
-        isLoggedIn: state.auth.isLoggedIn,
-        menuIsOpen: state.ui.menuIsOpen,
-        currentView: state.ui.currentView,
-        serverStatus: state.ui.serverStatus
-    }
+  return {
+    isLoggedIn: state.auth.isLoggedIn,
+    menuIsOpen: state.ui.menuIsOpen,
+    currentView: state.ui.currentView,
+    serverStatus: state.ui.serverStatus
+  }
 }
 
 export default connect(mapStateToProps)(NavBar);

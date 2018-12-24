@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
-export const Header = ({userStatus}) => {
+export const Header = ({ userStatus }) => {
   return(
     <section className="header">
       <h1 className="title">f/StopandGo</h1>

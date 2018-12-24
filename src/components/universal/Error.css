@@ -1,11 +1,11 @@
 .error-container {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    z-index: 8000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #27272788;
-    color: #ffffff;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 8000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #27272788;
+  color: #ffffff;
 }

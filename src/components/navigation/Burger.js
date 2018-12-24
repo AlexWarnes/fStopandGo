@@ -3,9 +3,7 @@ import React from 'react';
 import './Burger.css';
 
 export const Burger = (props) => {
-  let menuStatus;
-
-  props.menuStatus === true ? menuStatus = 'open' : menuStatus = null;
+  let menuStatus = props.menuStatus === true ? 'open' : null;
 
   return(
     <div className="burger-box" onClick={props.onClick}>

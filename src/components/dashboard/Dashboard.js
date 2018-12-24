@@ -9,10 +9,14 @@ import EditShoot from '../forms/EditShoot';
 
 import './Dashboard.css';
 
-export const Dashboard = ({ isLoggedIn }) => {
+export const Dashboard = ({ isLoggedIn, scrollIsLocked }) => {
+  window.scrollTo(0,0);
+
+  //Prevents over-scrolling when Menu is open
+  let scrollLock = scrollIsLocked ? 'scrollLock' : null;
 
   return(
-    <div className="dashboard">
+    <div className={`dashboard ${scrollLock}`}>
       <Switch>
         <Route exact path="/dashboard" render={() => (
           isLoggedIn ? (
@@ -31,7 +35,8 @@ export const Dashboard = ({ isLoggedIn }) => {
 
 const mapStateToProps = (state) => {
 	return {
-		isLoggedIn: state.auth.isLoggedIn
+    isLoggedIn: state.auth.isLoggedIn,
+    scrollIsLocked: state.ui.scrollIsLocked
 	}
 }
 

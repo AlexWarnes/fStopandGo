@@ -7,11 +7,16 @@ import AppDescription from './AppDescription';
 import './Landing.css';
 
 
-export const Landing = (props) => {
+export const Landing = ({ isLoggedIn, scrollIsLocked }) => {
+  window.scrollTo(0,0);
+
+  //Prevents over-scrolling when Menu is open
+  let scrollLock = scrollIsLocked ? 'scrollLock' : null;
+
   return(
-    <div>
+    <div className={`${scrollLock}`}>
       <header className="landing-header">
-        <Header userStatus={props.isLoggedIn}/>
+        <Header userStatus={isLoggedIn}/>
       </header>
       <AppDescription />
     </div>
@@ -20,7 +25,8 @@ export const Landing = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.auth.isLoggedIn
+    isLoggedIn: state.auth.isLoggedIn,
+    scrollIsLocked: state.ui.scrollIsLocked
   }
 }
 

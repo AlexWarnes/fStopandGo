@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Logo.css';
 
-export const Logo = ({logoSize, status}) => {
+export const Logo = ({ logoSize, status }) => {
   let iconText;
   let iconColor;
 
@@ -28,8 +28,8 @@ export const Logo = ({logoSize, status}) => {
     return (
       <div className="logo">
         <div className="icon-box">
-            <i className={`material-icons logo-icon ${iconColor}`}>filter_center_focus</i>
-            <p className="status-text">Server Status: {iconText}</p>
+          <i className={`material-icons logo-icon ${iconColor}`}>filter_center_focus</i>
+          <p className="status-text">Server Status: {iconText}</p>
         </div>
         <p className="logo-text">f/StopandGo</p>
       </div>)
