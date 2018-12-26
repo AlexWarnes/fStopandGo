@@ -39,9 +39,10 @@ const testPhotoshoots = [
 ];
 
 describe('<PhotoshootGrid />', ()=> {
-	it('Should render without crashing', ()=> {
-		const dispatch = jest.fn();
+  const dispatch = jest.fn();
 
+  test('Should render without crashing', ()=> {
 		shallow(<PhotoshootGrid photoshoots={testPhotoshoots} dispatch={dispatch} />);
-	});
+  });
+
 });
