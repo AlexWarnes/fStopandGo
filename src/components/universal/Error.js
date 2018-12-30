@@ -1,31 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './Error.css';
 
-export const Error = (props) => {
-  switch(props.errorIsDisplayed){
-    case true:
-    return(
-      <div className="error-container">
-        <h1>Uh-oh, we've detected a glitch in the matrix.</h1>
-        <p>ERROR</p>
-      </div>
-    )
-    case false:
-    return(
-      <div></div>
-    )
-    default:
-    return(
-      <div></div>
-    )
-  }
+export const Error = () => {
+  return(
+    <div className="error-container">
+      <p><i className="fas fa-exclamation-circle"></i>ERROR</p>
+      <h1>Uh-oh, we've detected a glitch in the matrix.</h1>
+      <Link to="/">Let's go home</Link>
+    </div>
+  )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    errorIsDisplayed: state.ui.errorIsDisplayed
-  };
-};
-
-export default connect(mapStateToProps)(Error);
+export default Error;
