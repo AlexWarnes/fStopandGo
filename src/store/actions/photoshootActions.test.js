@@ -14,7 +14,7 @@ describe('newShoot', () => {
     const newShootInfo = {
       title: 'Milky Way Shoot',
       location: 'Skyline Drive',
-      desciption: 'Testing',
+      description: 'Testing',
       gearList: ['tripod','lens']
     }
     const action = newShoot(newShootInfo);

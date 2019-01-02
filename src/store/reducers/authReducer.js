@@ -20,7 +20,7 @@ const initialState = {
   isDemoAccount: false
 };
 
-const authReducer = (state = initialState, action) => {
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_REQUEST:
       return Object.assign({}, state, {
@@ -28,8 +28,7 @@ const authReducer = (state = initialState, action) => {
       });
     case AUTH_SUCCESS:
       return Object.assign({}, state, {
-        isLoggedIn: true,
-        isLoading: false,
+        isLoggedIn: true
       });
     case SET_USER_ID:
       return Object.assign({}, state, {
@@ -46,7 +45,6 @@ const authReducer = (state = initialState, action) => {
       });
     case AUTH_ERROR:
       return Object.assign({}, state, {
-        isLoading: false,
         error: action.error
       });
     case CLEAR_AUTH:

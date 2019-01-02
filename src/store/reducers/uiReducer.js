@@ -27,7 +27,7 @@ const initialState = {
   contentIsLoading: false
 };
 
-const uiReducer = (state = initialState, action) => {
+export const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_MENU:
       return Object.assign({}, state, {
