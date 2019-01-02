@@ -13,7 +13,7 @@ const initialState = {
   photoshoots: []
 };
 
-const photoshootReducer = (state = initialState, action) => {
+export const photoshootReducer = (state = initialState, action) => {
   switch (action.type) {
     case NEW_SHOOT:
       return Object.assign({}, state, {

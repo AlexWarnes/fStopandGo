@@ -2,17 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './ValidationError.css';
 
-export const ValidationError = (props) => {
-  function capFirstLetter(str){
+export const ValidationError = ({ isValidationError, validationMessage}) => {
+
+  const capFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
-  switch (props.isValidationError) {
+  switch (isValidationError) {
     case true:
       return(
         <div className="validation-error">
           <i className="material-icons validation-error-icon">error</i>
-          <p className="validation-error-message">{capFirstLetter(props.validationMessage)}</p>
+          <p className="validation-error-message">{capFirstLetter(validationMessage)}</p>
         </div>
       );
     default:

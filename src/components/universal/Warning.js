@@ -4,17 +4,17 @@ import { toggleWarning } from '../../store/actions/uiActions';
 
 import './Warning.css';
 
-export const Warning = (props) => {
+export const Warning = ({ dispatch, warningIsDisplayed, message, affirmTxt, onAffirm }) => {
   const cancel = () => {
-    props.dispatch(toggleWarning(false));
+    dispatch(toggleWarning(false));
   }
 
-  if (props.warningIsDisplayed === true) {
+  if (warningIsDisplayed === true) {
     return (
       <div className="warning-shade">
         <div className="warning-box">
-          <p>{props.message}</p>
-          <button className="btn btn-red" onClick={props.onAffirm}>{props.affirmTxt}</button>
+          <p>{message}</p>
+          <button className="btn btn-red" onClick={onAffirm}>{affirmTxt}</button>
           <button className="btn btn-grey" onClick={()=> cancel()}>Cancel</button>
         </div>
       </div>

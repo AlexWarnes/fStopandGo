@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { PhotoshootGrid } from './PhotoshootGrid';
+import { NewShoot } from './NewShoot';
+import { createNewPhotoshoot } from '../../store/actions/photoshootActions';
 
 const testPhotoshoots = [
 	{
@@ -38,11 +39,11 @@ const testPhotoshoots = [
 	}
 ];
 
-describe('<PhotoshootGrid />', ()=> {
+describe('<NewShoot />', ()=> {
   const dispatch = jest.fn();
 
   test('Should render without crashing', ()=> {
-		shallow(<PhotoshootGrid photoshoots={testPhotoshoots} dispatch={dispatch} />);
+		shallow(<NewShoot dispatch={dispatch} />);
   });
 
 });

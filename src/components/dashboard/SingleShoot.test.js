@@ -39,12 +39,24 @@ const testPhotoshoots = [
 	}
 ];
 
-//TODO: Test is failing to define shoot variable to check for gearList; not sure why.
-describe.skip('<SingleShoot />', ()=> {
-    it('Should render without crashing', ()=> {
-        const dispatch = jest.fn();
-        const match = {params: {shootID: "1"}};
-        
-        shallow(<SingleShoot photoshoots={testPhotoshoots} match={match} dispatch={dispatch} />)
-    })
+describe('<SingleShoot />', () => {
+  const dispatch = jest.fn();
+  const match = {params: {shootId: "1"}};
+  const shoot = testPhotoshoots.find((item) => item.id === match.params.shootId);
+
+  test('Should render without crashing', () => {
+    shallow(<SingleShoot photoshoots={testPhotoshoots} match={match} dispatch={dispatch} />)
+  });
+
+  test('Should render correct number of gearList items', () => {
+    const wrapper = shallow(<SingleShoot photoshoots={testPhotoshoots} match={match} dispatch={dispatch} />);
+    expect(wrapper.find('ul').children().length).toEqual(shoot.gearList.length);
+  });
+
+  test('Should render the correct shoot data', () => {
+    const wrapper = shallow(<SingleShoot photoshoots={testPhotoshoots} match={match} dispatch={dispatch} />);
+    expect(wrapper.find('.shoot-title').text()).toEqual(shoot.title);
+    expect(wrapper.find('.shoot-location').text()).toEqual(shoot.location);
+    expect(wrapper.find('.shoot-description').text()).toEqual(shoot.description);
+  });
 });
