@@ -11,10 +11,6 @@ import './Menu.css';
 
 export const Menu = (props) => {
   const { dispatch } = props;
-  
-  const handleLogout = () => {
-    dispatch(logout());
-  }
 
   const handleDeleteUser = (userID, userJWT) => {
     dispatch(deleteUser(userID, userJWT));
@@ -43,9 +39,9 @@ export const Menu = (props) => {
       </section>
       <section>
         <Link to="/">
-          <p className="menu-item" onClick={()=> handleLogout()}><i className="fas fa-sign-out-alt menu-icon"></i>Log Out</p>
+          <p className="menu-item logout" onClick={()=>dispatch(logout())}><i className="fas fa-sign-out-alt menu-icon"></i>Log Out</p>
         </Link>
-        {props.username === 'publicAccount' || <p className="menu-item" onClick={()=> dispatch(toggleWarning())}><i className="fas fa-exclamation-circle menu-icon"></i>Delete Account</p>}
+        {props.username === 'publicAccount' || <p className="menu-item delete-account" onClick={()=> dispatch(toggleWarning())}><i className="fas fa-exclamation-circle menu-icon"></i>Delete Account</p>}
         <Warning 
           onAffirm={()=> handleDeleteUser(props.userID, props.userJWT)}
           message='Are you sure you want to delete your account?'
