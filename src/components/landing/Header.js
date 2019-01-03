@@ -6,7 +6,7 @@ export const Header = ({ userStatus }) => {
   return(
     <section className="header">
       <h1 className="title">f/StopandGo</h1>
-      <p>Meet your photography goals with an easy way to integrate and organize those goals into photoshoots.</p>
+      <p>The photographer's notepad.</p>
       {
         //If a user is not logged in, offer to Create Account
         !userStatus && 

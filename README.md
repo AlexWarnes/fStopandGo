@@ -1,5 +1,5 @@
 # f/StopandGo
-_Meet your photography goals by planning photoshoots._
+_The photographer's notepad._
 
 [Get started!](https://fstopandgo.herokuapp.com)
 
