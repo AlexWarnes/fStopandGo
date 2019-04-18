@@ -10,4 +10,3 @@ deploy:
   app: fstopandgo
   on:
     repo: AlexWarnes/fStopandGo
-
